@@ -1,74 +1,246 @@
-"""Continuous residual field. All learned and recurrent state lives in matrix."""
+"""Fixed-budget sensory attractor and driven latent dynamics."""
 from pathlib import Path
 import os
 import tempfile
-
 import numpy as np
 
 
 class LokiMemory:
-    motor_width = 8
-    motor_features = 40
-
     def __init__(self, width, budget=262144, *, sleep=True):
-        if not isinstance(width, (int, np.integer)) or width < 1:
+        if not isinstance(width,(int,np.integer)) or width < 1:
             raise ValueError("width must be a positive integer")
         self.width, self.budget, self.sleep = int(width), int(budget), bool(sleep)
-        # A fixed area-average front end for very wide numeric vectors. Small
-        # feature streams (including the multimodal contract) keep every channel.
-        self.group = (width + 2047) // 2048 if width > 4096 else 1
-        self.features = (width + self.group - 1) // self.group
-        for k in range(64, 7, -2):
-            rows = self.features + 21*k + self.motor_features + 7
-            if 4 * k * rows <= self.budget:
+        self.group = (width+2047)//2048
+        f = self.features = (width+self.group-1)//self.group
+        r = self.rank = min(f, 20 if f<=256 else 6)
+        self.bands = 12
+        n = (5+2*self.bands)*3
+        m = 4*r+4
+        # Only immutable shape/offset metadata is external to the one numerical field.
+        for k in range(64,7,-2):
+            shapes = (("decoder",(f,k)),("precision",(k,k)),("h",(k,)),
+                      ("synthesis",(r,f)),("read_precision",(r,r)),
+                      ("force",(n+1,r)),("force_precision",(n+1,n+1)),
+                      ("coupling",(m,r)),("motion_precision",(m,m)),
+                      ("traces",(5+2*self.bands,3)),("anchor",(f,)),("mean",(f,)),
+                      ("z",(r,)),("control",(6,)))
+            cells = sum(int(np.prod(shape)) for _,shape in shapes)
+            rows = (cells+k-1)//k
+            if 4*rows*k<=budget:
                 break
         else:
-            raise ValueError("insufficient budget for eight latent coordinates")
-        self.matrix = np.zeros((rows, k), np.float32)
-        self._precision[:] = np.eye(k, dtype=np.float32)
-        self._motion_precision[:] = 4 * np.eye(4*k, dtype=np.float32)
+            raise ValueError("insufficient budget for this field")
+        self.matrix = np.zeros((rows,k),np.float32)
+        self._layout = {}
+        offset = 0
+        for name,shape in shapes:
+            end = offset + int(np.prod(shape))
+            self._layout[name] = (offset,end,shape)
+            offset = end
+        for name,scale in (("precision",1),("read_precision",20),("force_precision",2),("motion_precision",3)):
+            a = self._part(name)
+            np.fill_diagonal(a,scale)
 
     @property
     def state_bytes(self):
         return self.matrix.nbytes
 
+    def _part(self,name):
+        start,end,shape = self._layout[name]
+        return self.matrix.reshape(-1)[start:end].reshape(shape)
+
     @property
     def _decoder(self):
-        return self.matrix[:self.features]
-
-    @property
-    def _precision(self):
-        return self.matrix[self.features:self.features + self.matrix.shape[1]]
-
-    @property
-    def _turn(self):
-        return self.matrix[-7-self.motor_features:-7]
-
-    @property
-    def _coupling(self):
-        k = self.matrix.shape[1]
-        return self.matrix[self.features+k:self.features+5*k]
-
-    @property
-    def _motion_precision(self):
-        k = self.matrix.shape[1]
-        return self.matrix[self.features+5*k:self.features+21*k].reshape(4*k,4*k)
-
-    @property
-    def _center(self):
-        return self.matrix[-6]
+        return self._part("decoder")
 
     @property
     def _h(self):
-        return self.matrix[-1]
+        return self._part("h")
 
     @property
-    def _traces(self):
-        return self.matrix[-5:-2, :self.motor_width]
+    def _coupling(self):
+        return self._part("coupling")
 
-    @property
-    def _control(self):
-        return self.matrix[-2]
+    def _project(self,x):
+        # A stationary signed sketch: learning the decoder cannot rotate the
+        # coordinates in which a physical transition was measured.
+        i = np.arange(self.features,dtype=np.uint32)
+        h = (i+np.uint32(1))*np.uint32(2654435761)
+        h ^= h>>16
+        bins = (h%self.rank).astype(np.intp)
+        sign = 1-2*((h>>17)&1).astype(np.float32)
+        return (np.bincount(bins,weights=x*sign,minlength=self.rank) /
+                np.sqrt(self.features/self.rank)).astype(np.float32)
+
+    @staticmethod
+    def _motor(action):
+        a = np.asarray(action,dtype=np.float32).ravel()
+        if not len(a) or not np.isfinite(a).all():
+            raise ValueError("expected finite motor input")
+        if len(a)==1:
+            return np.cos((a[0]+.5)*np.arange(1,4)*1.137).astype(np.float32)
+        if len(a)==3:
+            return np.tanh(a)
+        return np.tanh(a @ np.cos(np.outer(np.arange(1,len(a)+1),np.arange(1,4))*1.137)).astype(np.float32)
+
+    def _tick(self,traces,u):
+        next_t = np.empty_like(traces)
+        decay = np.exp(-1/np.array([1,4,16,64,256],np.float32))[:,None]
+        next_t[:5] = decay*traces[:5] + (1-decay)*u
+        angle = 2*np.pi*np.arange(1,self.bands+1,dtype=np.float32)[:,None]/512
+        co,si = np.cos(angle)*np.exp(-1/384),np.sin(angle)*np.exp(-1/384)
+        re,im = traces[5::2],traces[6::2]
+        next_t[5::2] = co*re-si*im+u/32
+        next_t[6::2] = si*re+co*im
+        return next_t
+
+    def _forced(self,traces):
+        coefficients = self._part("force")
+        return traces.ravel() @ coefficients[:-1]+coefficients[-1]
+
+    @staticmethod
+    def _regress(weights,precision,x,error):
+        v = precision @ x
+        gain = v / (1 + max(0.,float(x @ v)))
+        weights += np.outer(gain,error)
+        precision -= np.outer(gain,v)
+
+    def _operator(self,u):
+        r = self.rank
+        terms = self._coupling[:4*r].reshape(4,r,r)
+        delta = terms[0]+np.tensordot(u,terms[1:],axes=1)
+        identity = np.eye(r,dtype=np.float32)
+        skew = .5*(delta-delta.T)
+        spin = np.linalg.solve(identity-.5*skew,identity+.5*skew)
+        deformation = spin.T @ (identity+delta)
+        eig, basis = np.linalg.eigh(.5*(deformation + deformation.T))
+        stable = spin @ ((basis * eig.clip(0,0.995)) @ basis.T)
+        bias = self._coupling[-1] + u @ self._coupling[-4:-1]
+        return stable,bias
+
+    def _next(self,x,z,traces,action):
+        u = self._motor(action)
+        following = self._tick(traces,u)
+        old_force = self._forced(traces)
+        operator,bias = self._operator(u)
+        predicted = (z-old_force) @ operator + bias + self._forced(following)
+        mean = self._part("mean")
+        synthesis = self._part("synthesis")
+        residual = x - mean - (z-self._project(mean)) @ synthesis
+        level = mean + (predicted-self._project(mean)) @ synthesis
+        return (level + .82*residual).clip(-.5,.5),predicted,following
+
+    def _learn_transition(self,old,x,previous,following,u):
+        a,b = self._project(old), self._project(x)
+        dz = b-a
+        read = self._part("synthesis")
+        self._regress(read,self._part("read_precision"),dz,x-old-dz@read)
+        q = a-self._forced(previous)
+        qnext = b-self._forced(following)
+        phi = np.concatenate((q,(u[:,None]*q).ravel(),u,[1])).astype(np.float32)
+        self._regress(self._coupling,self._part("motion_precision"),phi,qnext-q-phi@self._coupling)
+        slow = np.append(following.ravel(),np.float32(1))
+        self._regress(self._part("force"),self._part("force_precision"),slow,b-self._forced(following))
+
+    def _write(self,x,mask):
+        w, p = self._decoder,self._part("precision")
+        z = self._settle(x,mask,self._h)
+        residual = x-w@z
+        if mask is not None:
+            residual[~mask] = 0
+        count = self.features if mask is None else int(mask.sum())
+        key = p@self._key(residual)
+        strength = min(1.,float(np.linalg.norm(residual))/np.sqrt(count)/.08)
+        z = self._bounded(z + key*(strength/max(1e-8,float(np.linalg.norm(key)))))
+        error = x-w@z
+        if mask is not None:
+            error[~mask] = 0
+        v = p@z
+        projected = v/(.04+max(0.,float(v@z)))
+        ordinary = z/(.04+float(z@z))
+        gain = .85*projected+.15*ordinary
+        if self.sleep:
+            # Correct only interference perpendicular to the new activation:
+            # the response to the present write stays exactly the same.
+            direction = projected * ((z@gain)/max(1e-8,float(z@projected)))
+            gain = direction if z@projected>1e-6 else gain
+        w += np.outer(error,gain)
+        remaining = error*(1-z@gain)
+        improvement = max(0.,float(error@error-remaining@remaining)/count)
+        lock = min(1.,improvement/.007)**2
+        used = np.clip(1-p.trace()/len(z),0,1)
+        lock /= 1+(used/.38)**10
+        p -= (lock/(1e-5+max(0.,float(z@v)))) * np.outer(v,v)
+        p *= .99996
+        p.flat[::len(z)+1] += .00004
+        self._h[:] = z
+
+    def observe(self,frame,action=None,*,visible=None):
+        x,mask = self._sense(frame,visible)
+        u = None if action is None else self._motor(action)
+        self._write(x,mask)
+        if mask is not None:
+            x = np.where(mask,x,self._decoder@self._h).clip(-.5,.5)
+        control = self._part("control")
+        anchor,traces = self._part("anchor"),self._part("traces")
+        if u is not None and control[0]:
+            following = self._tick(traces,u)
+            if control[1] and mask is None:
+                self._learn_transition(anchor,x,traces,following,u)
+            traces[:] = following
+        mean = self._part("mean")
+        mean += (.025 if control[0] else 1.)*(x-mean)
+        anchor[:] = x
+        self._part("z")[:] = self._project(x)
+        control[:2] = 1,mask is None
+
+    def _output(self,x):
+        values = (.5+x).clip(0,1)
+        return np.repeat(values,self.group)[:self.width] if self.group!=1 else values.copy()
+
+    def imagine(self,actions=()):
+        x,z,traces = self._part("anchor"),self._part("z"),self._part("traces")
+        for action in actions:
+            x,z,traces = self._next(x,z,traces,action)
+        return self._output(x)
+
+    def advance(self,action):
+        x,z,t = self._next(self._part("anchor"),self._part("z"),self._part("traces"),action)
+        self._part("anchor")[:] = x
+        self._part("z")[:] = z
+        self._part("traces")[:] = t
+        self._part("control")[:2] = 1,0
+        return self._output(x)
+
+    def cut(self):
+        for name in ("anchor","z","traces","control","h"):
+            self._part(name).fill(0)
+
+    def recall(self,cue,visible,actions=(),*,carry=True):
+        x,mask = self._sense(cue,visible)
+        h = self._settle(x,mask,self._h if carry else np.zeros_like(self._h))
+        level = self._decoder@h
+        level[mask] = x[mask]
+        traces = self._part("traces")
+        if not carry:
+            traces = np.zeros_like(traces)
+        z = self._project(level)
+        for a in actions:
+            level,z,traces = self._next(level,z,traces,a)
+        return self._output(level)
+
+    def predict_change(self,delta,visible):
+        """Reconstruct a signed cross-sensor change without any temporal prior."""
+        delta, visible = np.asarray(delta), np.asarray(visible)
+        if delta.shape!=(self.width,) or visible.shape!=delta.shape or visible.dtype!=bool or not visible.any():
+            raise ValueError("expected a component mask and signed cue")
+        x,mask = self._sense(.5+.5*delta,visible)
+        read = self._part("synthesis")
+        design = read[:,mask]
+        gram = design@design.T
+        gram.flat[::len(gram)+1] += .002
+        z = np.linalg.solve(gram,design@(2*x[mask]))
+        return np.repeat((z@read).clip(-1,1),self.group)[:self.width]
 
     def _sense(self, frame, mask=None):
         x = np.asarray(frame)
@@ -132,120 +304,6 @@ class LokiMemory:
         wave = spectrum[pick]
         return np.stack((wave.real, wave.imag), axis=1).astype(np.float32).ravel()
 
-    def _drive(self, action):
-        a = np.asarray(action, dtype=np.float32).reshape(-1)
-        if not len(a) or not np.isfinite(a).all():
-            raise ValueError("expected a finite motor command")
-        freq = np.arange(1, self.motor_width//2 + 1, dtype=np.float32)
-        # Same smooth map for every motor value. No ID-indexed parameters.
-        phase = (a + 1) @ np.sin(np.outer(np.arange(1, len(a)+1), freq) * 1.618)
-        return np.concatenate((np.cos(phase), np.sin(phase))).astype(np.float32)
-
-    def _transport(self, h, traces, action):
-        u = self._drive(action)
-        decay = np.array([0.7, 0.97, 0.996], np.float32)[:, None]
-        traces = decay * traces + (1 - decay) * u
-        drive = np.concatenate((u, traces.ravel(), u * np.tanh(3*h[:self.motor_width])))
-        angle = drive @ self._turn[:, ::2]
-        co, si = np.cos(angle), np.sin(angle)
-        relative = h - self._center
-        pair = relative.reshape(-1, 2)
-        rotated = np.stack((co*pair[:, 0] - si*pair[:, 1], si*pair[:, 0] + co*pair[:, 1]), axis=1)
-        i = np.arange(len(h))
-        features = np.concatenate((relative, relative*u[i%8], relative*u[(i+3)%8], drive[(11*i)%len(drive)]))
-        prediction = self._center + 0.90 * rotated.ravel() + features @ self._coupling
-        return self._bounded(prediction), traces, (drive,features), rotated
-
-    def _render(self, h):
-        values = (0.5 + self._decoder @ h).clip(0, 1)
-        return values if self.group == 1 else np.repeat(values, self.group)[:self.width]
-
-    def observe(self, frame, action=None, *, visible=None):
-        """Learn from available components of the resulting sensation."""
-        x, mask = self._sense(frame, visible)
-        prior = self._h.copy()
-        has_motion = action is not None and bool(self._control[0])
-        if has_motion:
-            prior, traces, u, rotated = self._transport(prior, self._traces, action)
-        settled = self._settle(x, mask, prior)
-        innovation = x - self._decoder @ settled
-        if mask is not None:
-            innovation[~mask] = 0
-        precision = self._precision
-        key = precision @ self._key(innovation)
-        measured = innovation if mask is None else innovation[mask]
-        strength = min(1.0, float(np.sqrt(np.mean(measured**2))) / 0.08)
-        z = self._bounded(settled + strength * key / max(1e-8, float(np.linalg.norm(key))))
-        # Predict dreams before writing; correct their displacement after writing.
-        clock = int(self._control[2])
-        dream = None
-        if self.sleep and clock % 8 == 7:
-            phase = (np.arange(len(z), dtype=np.float32) + 1) * (clock + 1) * 0.618034
-            probe = np.sin(phase)
-            dream = probe - precision @ probe
-            teacher = self._decoder @ dream
-        leverage = precision @ z
-        evidence = max(0., float(z @ leverage))
-        gain = leverage / (0.04 + evidence)
-        write_error = x - self._decoder @ z
-        if mask is not None:
-            write_error[~mask] = 0
-        self._decoder[:] += np.outer(write_error, gain)
-        # High-surprise directions acquire resistance. The diminishing gain
-        # reserves plastic directions as the protected fraction increases.
-        protected = np.clip(1 - precision.trace()/len(z), 0, 1)
-        lock = strength**4 / (1 + (protected/0.3)**12)
-        precision[:] -= (lock / (1e-5 + evidence)) * np.outer(leverage, leverage)
-        precision[:] *= 0.99998
-        precision.flat[::len(z)+1] += 0.00002
-        if dream is not None:
-            self._decoder[:] += np.outer(teacher - self._decoder @ dream, dream) * (0.7 / (0.1 + dream @ dream))
-        if has_motion:
-            if self._control[1]:
-                drive, phi = u
-                # Teach only the inferred consequence; novelty used to WRITE
-                # the new sensation is not itself a consequence of the command.
-                error = settled - prior
-                q = self._motion_precision
-                v = q @ phi
-                g = v / (1 + phi @ v)
-                self._coupling[:] += np.outer(g,error)
-                q[:] -= np.outer(g,v)
-                q[:] *= .999
-                q.flat[::len(q)+1] += .004
-                rate = 0.08 / (0.5 + drive @ drive)
-                tangent = rotated[:, 0] * error[1::2] - rotated[:, 1] * error[::2]
-                self._turn[:, ::2] += rate * np.outer(drive, tangent)
-            self._traces[:] = traces
-        self._h[:] = z
-        self._center[:] += .02 * (z - self._center)
-        self._control[:3] = 1, 1, (clock + 1) % 8192
-
-    def cut(self):
-        self._h.fill(0)
-        self._traces.fill(0)
-        self._control[:2] = 0
-
-    def imagine(self, actions=()):
-        h, traces = self._h, self._traces
-        for action in actions:
-            h, traces, _, _ = self._transport(h, traces, action)
-        return self._render(h)
-
-    def advance(self, action):
-        h, traces, _, _ = self._transport(self._h, self._traces, action)
-        self._h[:] = h
-        self._traces[:] = traces
-        self._control[:2] = 1, 0
-        return self._render(h)
-
-    def recall(self, cue, visible, actions=(), *, carry=True):
-        x, mask = self._sense(cue, visible)
-        h = self._settle(x, mask, self._h if carry else np.zeros_like(self._h))
-        traces = self._traces if carry else np.zeros_like(self._traces)
-        for action in actions:
-            h, traces, _, _ = self._transport(h, traces, action)
-        return self._render(h)
 
     def save(self, path, *, binding=""):
         path = Path(path)
@@ -253,7 +311,7 @@ class LokiMemory:
             name = tmp.name
         try:
             with open(name, "wb") as out:
-                np.savez(out, version=2, config=[self.width, self.budget, self.sleep], binding=binding, field=self.matrix)
+                np.savez(out, version=3, config=[self.width, self.budget, self.sleep], binding=binding, field=self.matrix)
                 out.flush()
                 os.fsync(out.fileno())
             os.replace(name, path)
@@ -263,8 +321,8 @@ class LokiMemory:
     @classmethod
     def load(cls, path, *, binding=""):
         with np.load(path, allow_pickle=False) as data:
-            if "version" not in data or int(data["version"]) != 2 or data["binding"].item() != binding:
-                raise ValueError("expected a v2 field for this body wiring")
+            if "version" not in data or int(data["version"]) != 3 or data["binding"].item() != binding:
+                raise ValueError("expected a v3 field for this body wiring")
             width, budget, sleep = map(int, data["config"])
             model = cls(width, budget, sleep=bool(sleep))
             field = data["field"]
