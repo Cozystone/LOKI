@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "loki-sensory-memory"
-version = "0.1.0"
-description = "Fixed-budget online sensory memory with action-conditioned reconstruction"
+version = "0.2.0"
+description = "Continuous residual memory with action-dependent phase transport"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24"]
 

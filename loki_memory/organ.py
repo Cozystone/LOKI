@@ -1,213 +1,216 @@
-"""LOKI streaming associative memory. Only NumPy is required by the organ."""
+"""Continuous residual field. All learned and recurrent state lives in matrix."""
 from pathlib import Path
 import os
 import tempfile
+
 import numpy as np
 
 
 class LokiMemory:
-    """Store bounded sensory episodes and observed action transitions.
+    motor_width = 8
+    motor_features = 40
 
-    Input order defines neighboring samples in a tile. Input values are [0,1].
-    Each tile borrows a shared unit-RMS waveform under a quantized affine map.
-    """
-    edges = 8
-    overhead = 128  # reserve for scalar configuration and cursors in the byte budget
-
-    def __init__(self, width, budget=262144, tile=64, atoms=32):
-        if width < 1 or tile < 1 or not 0 <= atoms <= 255:
-            raise ValueError("invalid memory dimensions")
-        self.width, self.budget, self.tile = int(width), int(budget), int(tile)
-        self.tiles = (self.width + self.tile - 1) // self.tile
-        fixed = self.overhead + atoms * (4 * tile + 4)
-        per_slot = self.tiles * (3 if atoms else 1) + self.edges * 10 + 6
-        self.capacity = min(32767, (budget - fixed) // per_slot)
-        if self.capacity < 2:
-            raise ValueError("budget cannot hold two experiences at this width")
-        shape = (self.capacity, self.tiles)
-        self.center = np.zeros(shape, np.uint8)
-        self.index = np.zeros(shape if atoms else (0, 0), np.uint8)
-        self.gain = np.zeros_like(self.index, dtype=np.int8)
-        self.atoms = np.zeros((atoms, tile), np.float32)
-        self.refs = np.zeros(atoms, np.int32)
-        links = (self.capacity, self.edges)
-        self.actions = np.full(links, -1, np.int32)
-        self.targets = np.full(links, -1, np.int16)
-        self.counts = np.zeros(links, np.float32)
-        self.strength = np.zeros(self.capacity, np.float32)
-        self.age = np.zeros(self.capacity, np.uint16)
-        self.used = 0
-        self.current = -1
-        self.grounded = False
-
-    def _arrays(self):
-        return {k: v for k, v in vars(self).items() if isinstance(v, np.ndarray)}
+    def __init__(self, width, budget=262144, *, sleep=True):
+        if not isinstance(width, (int, np.integer)) or width < 1:
+            raise ValueError("width must be a positive integer")
+        self.width, self.budget, self.sleep = int(width), int(budget), bool(sleep)
+        # A fixed area-average front end for very wide numeric vectors. Small
+        # feature streams (including the multimodal contract) keep every channel.
+        self.group = (width + 2047) // 2048 if width > 4096 else 1
+        self.features = (width + self.group - 1) // self.group
+        for k in range(64, 7, -2):
+            rows = self.features + k + 2 * self.motor_features + 7
+            if 4 * k * rows <= self.budget:
+                break
+        else:
+            raise ValueError("insufficient budget for eight latent coordinates")
+        self.matrix = np.zeros((rows, k), np.float32)
+        self._precision[:] = np.eye(k, dtype=np.float32)
 
     @property
     def state_bytes(self):
-        return self.overhead + sum(v.nbytes for v in self._arrays().values())
+        return self.matrix.nbytes
 
-    def _tiles(self, frame):
-        frame = np.asarray(frame, dtype=np.float32)
-        if frame.shape != (self.width,) or not np.isfinite(frame).all() or np.any((frame < 0) | (frame > 1)):
-            raise ValueError("expected a finite sensor vector in [0,1]")
-        if self.width % self.tile:
-            frame = np.pad(frame, (0, self.tiles * self.tile - self.width), mode="edge")
-        return frame.reshape(self.tiles, self.tile)
+    @property
+    def _decoder(self):
+        return self.matrix[:self.features]
 
-    def _project(self, blocks, learn):
-        mean = blocks.mean(axis=1)
-        residual = blocks - mean[:, None]
-        dot = (residual @ self.atoms.T) / self.tile
-        if learn and len(self.atoms):
-            energy = (residual ** 2).mean(axis=1)
-            # Reuse unreferenced atoms only. All existing episode decoders stay valid.
-            free = np.flatnonzero(self.refs == 0)
-            for j in free[:8]:
-                unexplained = energy - np.square(dot).max(axis=1)
-                k = int(unexplained.argmax())
-                if unexplained[k] < 0.0003:
-                    break
-                self.atoms[j] = residual[k] / np.sqrt(energy[k])
-                dot[:, j] = residual @ self.atoms[j] / self.tile
-        return mean, dot
+    @property
+    def _precision(self):
+        return self.matrix[self.features:self.features + self.matrix.shape[1]]
 
-    def _distances(self, mean, dot, columns):
-        # Expand squared error algebraically. The cue energy is common to all
-        # candidates. Work scales with the encoded table, without decoding it.
-        centers = self.center[:self.used, columns].astype(np.float32) / 255
-        score = (centers - mean) ** 2
-        if len(self.atoms):
-            gain = self.gain[:self.used, columns].astype(np.float32) / 254
-            ids = self.index[:self.used, columns]
-            score += gain * (gain - 2 * dot[np.arange(len(mean)), ids])
-        return score.mean(axis=1)
+    @property
+    def _turn(self):
+        return self.matrix[-7 - 2*self.motor_features:-7 - self.motor_features]
 
-    def _render(self, slot):
-        if slot < 0:
-            return np.full(self.width, 0.5, np.float32)
-        center = self.center[slot].astype(np.float32) / 255
-        if len(self.atoms):
-            gain = self.gain[slot].astype(np.float32) / 254
-            decoded = center[:, None] + gain[:, None] * self.atoms[self.index[slot]]
+    @property
+    def _shift(self):
+        return self.matrix[-7-self.motor_features:-7]
+
+    @property
+    def _h(self):
+        return self.matrix[-1]
+
+    @property
+    def _traces(self):
+        return self.matrix[-5:-2, :self.motor_width]
+
+    @property
+    def _control(self):
+        return self.matrix[-2]
+
+    def _sense(self, frame, mask=None):
+        x = np.asarray(frame)
+        if x.shape != (self.width,):
+            raise ValueError("wrong sensor shape")
+        if mask is not None:
+            mask = np.asarray(mask)
+            if mask.dtype != bool or mask.shape != x.shape or not mask.any():
+                raise ValueError("expected a nonempty boolean component mask")
+            # Hidden sentinels (including NaNs) never enter the encoder.
+            seen = x[mask]
         else:
-            decoded = np.repeat(center, self.tile)
-        return decoded.ravel()[:self.width].clip(0, 1)
-
-    def locate(self, cue, visible):
-        """Find the sensory address using visible whole tiles only."""
-        mask = np.asarray(visible)
-        if mask.dtype != bool or mask.shape != (self.tiles,) or not mask.any():
-            raise ValueError("visible must select at least one whole tile")
-        cue = np.asarray(cue)
-        if cue.shape != (self.width,):
-            raise ValueError("wrong cue width")
-        columns = np.flatnonzero(mask)
-        locations = (columns[:, None] * self.tile + np.arange(self.tile)).clip(max=self.width - 1)
-        blocks = cue[locations].astype(np.float32)
-        if not np.isfinite(blocks).all() or np.any((blocks < 0) | (blocks > 1)):
-            raise ValueError("invalid visible samples")
-        if not self.used:
-            return -1
-        mean, dot = self._project(blocks, False)
-        return int(self._distances(mean, dot, columns).argmin())
-
-    def recall(self, cue, visible):
-        """Reconstruct from a partial cue without changing the live address."""
-        return self._render(self.locate(cue, visible))
-
-    def cut(self):
-        """Break the causal chain while retaining consolidated experience."""
-        self.current = -1
-        self.grounded = False
+            seen = x
+        if not np.isfinite(seen).all() or np.any((seen < 0) | (seen > 1)):
+            raise ValueError("normalize available sensor components to [0,1]")
+        x = np.where(mask, x, 0) if mask is not None else x
+        x = x.astype(np.float32, copy=False)
+        if self.group == 1:
+            return x - 0.5, mask
+        starts = np.arange(0, self.width, self.group)
+        sums = np.add.reduceat(x, starts)
+        if mask is None:
+            sizes = np.minimum(self.group, self.width - starts)
+            return (sums / sizes).astype(np.float32) - 0.5, None
+        counts = np.add.reduceat(mask, starts, dtype=np.int32)
+        return (sums / np.maximum(counts, 1)).astype(np.float32) - 0.5, counts > 0
 
     @staticmethod
-    def _check_action(action):
-        if not isinstance(action, (int, np.integer)) or not 0 <= action <= 2147483647:
-            raise ValueError("expected a nonnegative int32 motor ID")
+    def _bounded(z):
+        return z * min(1.0, 3.0 / max(1e-9, float(np.linalg.norm(z))))
 
-    def _successor(self, slot, action):
-        if slot < 0:
-            return -1
-        counts = np.where(self.actions[slot] == action, self.counts[slot], 0)
-        return int(self.targets[slot, counts.argmax()]) if counts.max() > 0 else slot
+    def _settle(self, x, visible, prior):
+        # Conjugate-gradient relaxation of a strictly convex quadratic.
+        w = self._decoder if visible is None else self._decoder[visible]
+        y = x if visible is None else x[visible]
+        z = prior.copy()
+        ridge = max(1e-6, len(y) * 2e-5)
+        r = w.T @ (y - w @ z)
+        p = r.copy()
+        rr = float(r @ r)
+        for _ in range(8):
+            if rr < 1e-14:
+                break
+            wp = w @ p
+            alpha = rr / max(1e-18, float(wp @ wp + ridge * (p @ p)))
+            z += alpha * p
+            r -= alpha * (w.T @ wp + ridge * p)
+            new = float(r @ r)
+            p = r + (new / rr) * p
+            rr = new
+        return self._bounded(z)
 
-    def imagine(self, actions, *, start=None):
-        """Roll out action IDs without writing to the live state."""
-        slot = self.current if start is None else int(start)
-        if not -1 <= slot < self.used:
-            raise ValueError("invalid start address")
-        for action in actions:
-            self._check_action(action)
-            slot = self._successor(slot, action)
-        return self._render(slot)
+    def _key(self, error):
+        # A fixed signed Fourier transform spreads innovations over all planes.
+        i = np.arange(len(error), dtype=np.uint32)
+        mixed = i * np.uint32(2654435761)
+        sign = 1.0 - 2.0 * ((mixed ^ (mixed >> 13)) & 1).astype(np.float32)
+        k = len(self._h)
+        spectrum = np.fft.rfft(error * sign, n=max(k, len(error)))
+        pick = np.linspace(1, len(spectrum)-1, k//2, dtype=int)
+        wave = spectrum[pick]
+        return np.stack((wave.real, wave.imag), axis=1).astype(np.float32).ravel()
 
-    def advance(self, action):
-        """Carry the live address across a missing observation."""
-        self._check_action(action)
-        self.current = self._successor(self.current, action)
-        self.grounded = False
-        return self._render(self.current)
+    def _drive(self, action):
+        a = np.asarray(action, dtype=np.float32).reshape(-1)
+        if not len(a) or not np.isfinite(a).all():
+            raise ValueError("expected a finite motor command")
+        freq = np.arange(1, self.motor_width//2 + 1, dtype=np.float32)
+        # Same smooth map for every motor value. No ID-indexed parameters.
+        phase = (a + 1) @ np.sin(np.outer(np.arange(1, len(a)+1), freq) * 1.618)
+        return np.concatenate((np.cos(phase), np.sin(phase))).astype(np.float32)
 
-    def _replace(self):
-        if self.used < self.capacity:
-            slot = self.used
-            self.used += 1
-            return slot
-        slot = int(np.lexsort((-self.age.astype(np.int32), self.strength))[0])
-        if len(self.atoms):
-            self.refs -= np.bincount(self.index[slot], minlength=len(self.atoms)).astype(np.int32)
-        invalid = self.targets == slot
-        invalid[slot] = True
-        self.targets[invalid] = self.actions[invalid] = -1
-        self.counts[invalid] = 0
-        self.strength[slot] = 0
-        if self.current == slot:
-            self.cut()
-        return slot
+    def _transport(self, h, traces, action):
+        u = self._drive(action)
+        decay = np.array([0.7, 0.97, 0.996], np.float32)[:, None]
+        traces = decay * traces + (1 - decay) * u
+        drive = np.concatenate((u, traces.ravel(), u * np.tanh(3*h[:self.motor_width])))
+        angle = drive @ self._turn[:, ::2]
+        co, si = np.cos(angle), np.sin(angle)
+        pair = h.reshape(-1, 2)
+        rotated = np.stack((co*pair[:, 0] - si*pair[:, 1], si*pair[:, 0] + co*pair[:, 1]), axis=1)
+        return self._bounded(rotated.ravel() + drive @ self._shift), traces, drive, rotated
+
+    def _render(self, h):
+        values = (0.5 + self._decoder @ h).clip(0, 1)
+        return values if self.group == 1 else np.repeat(values, self.group)[:self.width]
 
     def observe(self, frame, action=None):
-        """Observe resulting sensation. action is the motor ID since the last frame."""
-        if action is not None:
-            self._check_action(action)
-        blocks = self._tiles(frame)
-        mean, dot = self._project(blocks, True)
-        if len(self.atoms):
-            ids = np.abs(dot).argmax(axis=1)
-            coef = dot[np.arange(self.tiles), ids]
-            best_fit = -np.square(coef).mean()
-        else:
-            best_fit = 0.0
-        slot = -1
-        if self.used:
-            distance = self._distances(mean, dot, slice(None))
-            near = int(distance.argmin())
-            # Admit only differences above our own codec's distortion floor.
-            if distance[near] - best_fit <= 0.0005:
-                slot = near
-        if slot < 0:
-            slot = self._replace()
-            self.center[slot] = np.rint(mean * 255)
-            if len(self.atoms):
-                self.index[slot] = ids
-                self.gain[slot] = np.rint(coef * 254).clip(-127, 127)
-                self.refs += np.bincount(ids, minlength=len(self.atoms)).astype(np.int32)
-        prev = self.current
-        if self.grounded and prev >= 0 and action is not None:
-            hits = (self.actions[prev] == action) & (self.targets[prev] == slot)
-            edge = int(hits.argmax()) if hits.any() else int(self.counts[prev].argmin())
-            if not hits.any():
-                self.counts[prev, edge] = 0
-            self.counts[prev] *= 0.99
-            self.actions[prev, edge], self.targets[prev, edge] = action, slot
-            self.counts[prev, edge] += 1
-        self.strength *= 0.995
-        self.strength[slot] += 1
-        self.age += (self.age < 65535).astype(np.uint16)
-        self.age[slot] = 0
-        self.current = slot
-        self.grounded = True
-        return slot
+        x, _ = self._sense(frame)
+        prior = self._h.copy()
+        has_motion = action is not None and bool(self._control[0])
+        if has_motion:
+            prior, traces, u, rotated = self._transport(prior, self._traces, action)
+        settled = self._settle(x, None, prior)
+        innovation = x - self._decoder @ settled
+        precision = self._precision
+        key = precision @ self._key(innovation)
+        strength = min(1.0, float(np.sqrt(np.mean(innovation**2))) / 0.08)
+        z = self._bounded(settled + strength * key / max(1e-8, float(np.linalg.norm(key))))
+        # Predict dreams before writing; correct their displacement after writing.
+        clock = int(self._control[2])
+        dream = None
+        if self.sleep and clock % 8 == 7:
+            phase = (np.arange(len(z), dtype=np.float32) + 1) * (clock + 1) * 0.618034
+            probe = np.sin(phase)
+            dream = probe - precision @ probe
+            teacher = self._decoder @ dream
+        leverage = precision @ z
+        denominator = 0.08 + float(z @ leverage)
+        gain = leverage / denominator
+        self._decoder[:] += np.outer(x - self._decoder @ z, gain)
+        precision[:] -= np.outer(gain, leverage)
+        # A small floor restores plasticity as evidence ages.
+        precision[:] *= 0.999
+        precision.flat[::len(z)+1] += 0.001
+        if dream is not None:
+            self._decoder[:] += np.outer(teacher - self._decoder @ dream, dream) * (0.7 / (0.1 + dream @ dream))
+        if has_motion:
+            if self._control[1]:
+                error = z - prior
+                rate = 0.2 / (0.5 + u @ u)
+                tangent = rotated[:, 0] * error[1::2] - rotated[:, 1] * error[::2]
+                self._turn[:, ::2] += rate * np.outer(u, tangent)
+                self._shift[:] += rate * np.outer(u, error)
+            self._traces[:] = traces
+        self._h[:] = z
+        self._control[:3] = 1, 1, (clock + 1) % 8192
+
+    def cut(self):
+        self._h.fill(0)
+        self._traces.fill(0)
+        self._control[:2] = 0
+
+    def imagine(self, actions=()):
+        h, traces = self._h, self._traces
+        for action in actions:
+            h, traces, _, _ = self._transport(h, traces, action)
+        return self._render(h)
+
+    def advance(self, action):
+        h, traces, _, _ = self._transport(self._h, self._traces, action)
+        self._h[:] = h
+        self._traces[:] = traces
+        self._control[:2] = 1, 0
+        return self._render(h)
+
+    def recall(self, cue, visible, actions=()):
+        x, mask = self._sense(cue, visible)
+        h = self._settle(x, mask, self._h)
+        traces = self._traces
+        for action in actions:
+            h, traces, _, _ = self._transport(h, traces, action)
+        return self._render(h)
 
     def save(self, path, *, binding=""):
         path = Path(path)
@@ -215,7 +218,7 @@ class LokiMemory:
             name = tmp.name
         try:
             with open(name, "wb") as out:
-                np.savez(out, binding=np.asarray(binding), config=[1, self.width, self.budget, self.tile, len(self.atoms), self.used, self.current, self.grounded], **self._arrays())
+                np.savez(out, version=2, config=[self.width, self.budget, self.sleep], binding=binding, field=self.matrix)
                 out.flush()
                 os.fsync(out.fileno())
             os.replace(name, path)
@@ -225,18 +228,12 @@ class LokiMemory:
     @classmethod
     def load(cls, path, *, binding=""):
         with np.load(path, allow_pickle=False) as data:
-            if str(data["binding"].item()) != binding:
-                raise ValueError("checkpoint belongs to a different body binding")
-            version, width, budget, tile, atoms, used, current, grounded = map(int, data["config"])
-            if version != 1:
-                raise ValueError("unsupported LOKI checkpoint")
-            mem = cls(width, budget, tile, atoms)
-            if not 0 <= used <= mem.capacity or not -1 <= current < used:
-                raise ValueError("invalid LOKI checkpoint cursor")
-            for key, array in mem._arrays().items():
-                saved = data[key]
-                if saved.shape != array.shape or saved.dtype != array.dtype:
-                    raise ValueError(f"invalid LOKI checkpoint array {key}")
-                array[:] = saved
-            mem.used, mem.current, mem.grounded = used, current, bool(grounded)
-        return mem
+            if "version" not in data or int(data["version"]) != 2 or data["binding"].item() != binding:
+                raise ValueError("expected a v2 field for this body wiring")
+            width, budget, sleep = map(int, data["config"])
+            model = cls(width, budget, sleep=bool(sleep))
+            field = data["field"]
+            if field.shape != model.matrix.shape or field.dtype != np.float32 or not np.isfinite(field).all():
+                raise ValueError("invalid field matrix")
+            model.matrix[:] = field
+            return model
