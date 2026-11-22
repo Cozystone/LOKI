@@ -66,11 +66,11 @@ class Trial:
             if name!="no_sleep":
                 c.sleep()
 
-    def predictions(self,x,a):
+    def predictions(self,x,a,episodic=False):
         b = self.core.recall(x,self.mask,[a],carry=False)
         result = dict(v4=b,last=x)
-        result.update({k:c.predict(x,a,b) for k,c in self.fields.items()})
-        result.update({"fifo_"+k:c.predict(x,a,b) for k,c in self.fifos.items()})
+        result.update({k:(c.recall_episode(x,a,b) if episodic else c.predict(x,a,b)) for k,c in self.fields.items()})
+        result.update({"fifo_"+k:(c.recall_episode(x,a,b) if episodic else c.predict(x,a,b)) for k,c in self.fifos.items()})
         result["priority_fifo"] = self.priority.predict(x,a,b)
         return result
 
@@ -118,7 +118,7 @@ def structured(seed):
         rows=[]
         for x,a,y in examples:
             cue = (x+rng.normal(0,.008,x.shape)).clip(0,1).astype(np.float32)
-            rows.append(errors(trial.predictions(cue,a),y))
+            rows.append(errors(trial.predictions(cue,a,episodic=(k=="exception")),y))
         scores[k] = summarize(rows)
     return dict(seed=seed,scores=scores,writes=trial.writes,trained=trial.count)
 
@@ -155,7 +155,7 @@ def rooms():
     trial.sleep()
     scores = summarize([errors(trial.predictions(x,a),y) for x,a,y in old])
     results = []
-    for seed in range(6401,6413):
+    for seed in range(6601,6613):
         w = World(1,make_room(seed),device="cpu",seed=seed,drain=0)
         rng = np.random.default_rng(seed)
         next_scores,effect_scores = [],[]
@@ -239,13 +239,13 @@ if __name__=="__main__":
     args=ap.parse_args()
     if args.task=="structured":
         if args.seed:
-            write("v5_confirm_seed_"+str(args.seed),structured(args.seed))
+            write("v5_final_seed_"+str(args.seed),structured(args.seed))
         else:
-            rows=[structured(s) for s in range(6301,6305)]
-            write("v5_confirm_structured",dict(rows=rows,gates={k:gates(rows,k,3) for k in ("early","novel")}))
+            rows=[structured(s) for s in range(6501,6505)]
+            write("v5_final_structured",dict(rows=rows,gates={k:gates(rows,k,3) for k in ("early","novel")}))
     elif args.task=="rooms":
         result=rooms()
         result["gates"]={k:gates(result["rows"],k,10) for k in ("novel","effect")}
-        write("v5_confirm_rooms",result)
+        write("v5_final_rooms",result)
     else:
-        write("v5_confirm_timing",timing())
+        write("v5_final_timing",timing())

@@ -37,6 +37,14 @@ class LongTermCortex:
             self.phase_projection = (rng.standard_normal((self.features+3,modes+16),
                                                         dtype=np.float32)*5)
             self.hologram = np.zeros((2*modes,self.features+32),np.float32)
+        self.global_projection = rng.normal(size=(self.features,18)).astype(np.float32)/np.sqrt(self.features)
+        self.global_projection = self.global_projection.astype(np.float32)
+        self.global_gram = np.zeros((125,125),np.float32)
+        self.global_cross = np.zeros((125,self.features),np.float32)
+        self.global_weights = np.zeros_like(self.global_cross)
+        self.global_dirty = np.zeros(1,bool)
+        self.global_live = np.zeros(1,bool)
+        self.credits = np.zeros((regions,2,2),np.float32)
         self.activity = np.zeros(2,np.float32)
         self.dirty = np.zeros(regions,bool)
 
@@ -106,10 +114,49 @@ class LongTermCortex:
         output = (law + certainty*(x+scale*delta-law)).clip(0,1)
         return output,wave,tag,read
 
+    def _global_key(self,x,action,b):
+        from .organ import LokiMemory
+        motor = LokiMemory._motor(action)
+        drive = np.r_[1.,motor,motor[0]*motor[1]]
+        cue = self._pool(x-.5) @ self.global_projection
+        trend = self._pool(b-x) @ self.global_projection[:,:6]
+        return np.outer(drive,np.r_[1.,cue*4,trend*4]).astype(np.float32).ravel()
+
+    def _mix(self,base,expert,key,index,truth=None):
+        _,regions,weights = key
+        diff = expert-base
+        credit = 0.
+        for r,w in zip(regions,weights):
+            score = self.credits[r,index]
+            credit += w*np.clip(score[0]/(.003+score[1]),0,1)
+            if truth is not None:
+                score *= 1-.01*w
+                score += w*np.array([np.mean(diff*(truth-base)),np.mean(diff**2)])
+        return base+credit*diff
+
+    def _laws(self,x,action,b,key,truth=None):
+        local = self._read(x,b,key)
+        g = self._global_key(x,action,b)
+        if self.global_live[0]:
+            correction = (g@self.global_weights).repeat(self.group)[:self.width]
+            local = self._mix(local,(b+correction).clip(0,1),key,0,truth)
+        return local,g
+
+    def _query(self,cue,action,baseline,episodic):
+        x,b = self._frame(cue),self._frame(baseline)
+        key = self._key(x,action)
+        law,_ = self._laws(x,action,b,key)
+        if self.modes and self.activity[1]:
+            event = self._episode(x,action,law)[0]
+            return event if episodic else self._mix(law,event,key,1)
+        return law
+
     def predict(self,cue,action,baseline):
-        x = self._frame(cue)
-        law = self._read(x,self._frame(baseline),self._key(x,action))
-        return self._episode(x,action,law)[0] if self.modes and self.activity[1] else law
+        return self._query(cue,action,baseline,False)
+
+    def recall_episode(self,cue,action,baseline):
+        """Query the salient past consequence; fall back to the law on weak resonance."""
+        return self._query(cue,action,baseline,True)
 
     def imprint(self,cue,action,outcome,baseline,*,integrity_change=0.):
         """Return whether this measured transition contributed to the sufficient statistics."""
@@ -117,7 +164,7 @@ class LongTermCortex:
         if not np.isfinite(integrity_change) or abs(integrity_change)>1:
             raise ValueError("expected normalized signed integrity change")
         key = self._key(x,action)
-        law = self._read(x,b,key)
+        law,g = self._laws(x,action,b,key,y)
         error = float(np.sqrt(np.mean((y-law)**2)))
         salient = abs(integrity_change)
         strong = salient>=.08 or error>max(.12,3*self.activity[0])
@@ -129,14 +176,25 @@ class LongTermCortex:
                 evidence = np.array([np.mean(diff*(y-b)),np.mean(diff*diff)])
                 self.skill[region] *= 1-.005*weight
                 self.skill[region] += weight*evidence
+        packet = None
+        if self.modes and (self.activity[1] or strong or not self.selective):
+            packet = self._episode(x,action,law)
+            self._mix(law,packet[0],key,1,y)
         if self.modes and (strong or not self.selective):
-            _,wave,tag,read = self._episode(x,action,law)
-            innovation = np.r_[self._pool(y-x),tag]-read
+            _,wave,tag,read = packet
+            matched = np.clip((float(tag@read[self.features:])/16-.45)/.45,0,1)
+            innovation = np.r_[self._pool(y-x),tag]-matched*read
             self.hologram += np.outer(wave,innovation)  # decoder divides by the squared norm of the wave
             self.activity[1] = min(2*self.modes,self.activity[1]+1)
         if self.selective and error<.025 and salient<.08:
             return False
         phi,regions,mix = key
+        if self.global_gram[0,0]>16384:
+            self.global_gram *= .5
+            self.global_cross *= .5
+        self.global_gram += np.outer(g,g)
+        self.global_cross += np.outer(g,self._pool(y-b))
+        self.global_dirty[:] = True
         gram = np.outer(phi,phi)
         cross = np.outer(phi,self._pool(y-x))
         for region,weight in zip(regions,mix):
@@ -153,6 +211,12 @@ class LongTermCortex:
         """Publish ridge solutions, optionally limiting work per idle interval."""
         if max_regions is not None and (not isinstance(max_regions,int) or max_regions<0):
             raise ValueError("expected a nonnegative idle work limit")
+        if self.global_dirty[0] and max_regions!=0:
+            gram = self.global_gram.astype(np.float64)
+            gram.flat[::len(gram)+1] += .5
+            self.global_weights[:] = np.linalg.solve(gram,self.global_cross)
+            self.global_dirty[:] = False
+            self.global_live[:] = True
         dirty = np.flatnonzero(self.dirty)
         for region in dirty[:max_regions]:
             gram = self.gram[region].astype(np.float64)
@@ -169,7 +233,7 @@ class LongTermCortex:
             name = tmp.name
         try:
             with open(name,"wb") as f:
-                np.savez(f,version=2,config=[self.width,self.regions,self.seed,int(self.selective),self.modes],
+                np.savez(f,version=3,config=[self.width,self.regions,self.seed,int(self.selective),self.modes],
                          binding=binding,**arrays)
                 f.flush()
                 os.fsync(f.fileno())
@@ -180,7 +244,7 @@ class LongTermCortex:
     @classmethod
     def load(cls,path,*,binding=""):
         with np.load(path,allow_pickle=False) as data:
-            if int(data["version"])!=2 or data["binding"].item()!=binding:
+            if int(data["version"])!=3 or data["binding"].item()!=binding:
                 raise ValueError("incompatible cortex or wiring")
             w,b,s,sel,modes = map(int,data["config"])
             cortex = cls(w,b,seed=s,selective=bool(sel),modes=modes)
