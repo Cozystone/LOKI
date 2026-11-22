@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 import tempfile
 import numpy as np
-from . import transport
+from . import transport, effects
 
 
 class LokiMemory:
@@ -44,6 +44,15 @@ class LokiMemory:
                 break
         else:
             raise ValueError("insufficient budget for this field")
+        self._v3_rows = rows
+        if self.grid_shape:
+            out = self.grid_shape[0]*self.grid_shape[2]
+            for dim in range(160,7,-1):
+                extra = dim*(dim+out)+1
+                if 4*k*((cells+extra+k-1)//k)<=budget:
+                    shapes += (("effect_weights",(dim,out)),("effect_precision",(dim,dim)),("effect_count",(1,)))
+                    rows = (cells+extra+k-1)//k
+                    break
         self.matrix = np.zeros((rows,k),np.float32)
         self._layout = {}
         offset = 0
@@ -55,6 +64,8 @@ class LokiMemory:
             a = self._part(name)
             np.fill_diagonal(a,scale)
 
+        if "effect_precision" in self._layout:
+            np.fill_diagonal(self._part("effect_precision"),.25)
         if self.grid_shape:
             np.fill_diagonal(self._part("flow_precision"),20)
 
@@ -302,6 +313,37 @@ class LokiMemory:
                 self._image(x,self._part("retina"),affine)
         return self._output(x)
 
+    def predict_effect(self,left,right):
+        """Signed endpoint difference (left minus right) from one live state."""
+        left,right = tuple(left),tuple(right)
+        if len(left)!=len(right):
+            raise ValueError("paired plans must have equal duration")
+        if "effect_count" not in self._layout or not self._part("effect_count")[0]:
+            return self.imagine(left)-self.imagine(right)
+        design = effects.features(self,left,right)
+        h,w,c = self.grid_shape
+        estimate = (design@self._part("effect_weights")).reshape(w,h,c).transpose(1,0,2)
+        result = (np.zeros(self.width,np.float32) if estimate.size==self.width else
+                  self.imagine(left)-self.imagine(right))
+        self._grid(result)[:] = estimate.clip(-1,1)
+        return result
+
+    def learn_effect(self,left,right,endpoint_left,endpoint_right):
+        """Train from two measured endpoints, anchored at their common start."""
+        if "effect_count" not in self._layout:
+            raise ValueError("this wiring has no budgeted grid-effect readout")
+        a,_ = self._sense(endpoint_left)
+        b,_ = self._sense(endpoint_right)
+        design = effects.features(self,tuple(left),tuple(right))
+        if not design.any():
+            return
+        desired = self._grid(a-b).transpose(1,0,2).reshape(len(design),-1)
+        weights = self._part("effect_weights")
+        covariance = self._part("effect_precision")
+        for phi,target in zip(design,desired):
+            self._regress(weights,covariance,phi,target-phi@weights)
+        self._part("effect_count")[:] = 1
+
     def advance(self,action):
         x,z,t = self._next(self._part("anchor"),self._part("z"),self._part("traces"),action)
         if self.grid_shape:
@@ -442,7 +484,7 @@ class LokiMemory:
             name = tmp.name
         try:
             with open(name, "wb") as out:
-                np.savez(out, version=3, config=[self.width, self.budget, self.sleep], binding=binding, grid=self.grid_shape, field=self.matrix)
+                np.savez(out, version=4, config=[self.width, self.budget, self.sleep], binding=binding, grid=self.grid_shape, field=self.matrix)
                 out.flush()
                 os.fsync(out.fileno())
             os.replace(name, path)
@@ -452,12 +494,17 @@ class LokiMemory:
     @classmethod
     def load(cls, path, *, binding=""):
         with np.load(path, allow_pickle=False) as data:
-            if "version" not in data or int(data["version"]) != 3 or data["binding"].item() != binding:
-                raise ValueError("expected a v3 field for this body wiring")
+            if "version" not in data or int(data["version"]) not in (3,4) or data["binding"].item() != binding:
+                raise ValueError("expected a compatible field for this body wiring")
             width, budget, sleep = map(int, data["config"])
             model = cls(width, budget, sleep=bool(sleep), grid_shape=tuple(map(int,data["grid"])) if "grid" in data else None)
             field = data["field"]
-            if field.shape != model.matrix.shape or field.dtype != np.float32 or not np.isfinite(field).all():
+            rows = model._v3_rows if int(data["version"])==3 else model.matrix.shape[0]
+            if field.shape != (rows,model.matrix.shape[1]) or field.dtype != np.float32 or not np.isfinite(field).all():
                 raise ValueError("invalid field matrix")
-            model.matrix[:] = field
+            if int(data["version"])==3 and "effect_weights" in model._layout:
+                end = model._layout["effect_weights"][0]
+                model.matrix.ravel()[:end] = field.ravel()[:end]
+            else:
+                model.matrix[:rows] = field
             return model

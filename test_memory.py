@@ -66,6 +66,36 @@ class FieldTest(unittest.TestCase):
         m.observe(x,2)
         np.testing.assert_array_equal(m._coupling,law)
 
+    def test_paired_effect_swap_budget_and_resume(self):
+        m = LokiMemory(96,grid_shape=(4,8,3))
+        rng = np.random.default_rng(45)
+        for i in range(12):
+            m.observe(rng.random(96,dtype=np.float32),i%5)
+        a,b = [0,1,0,2],[4,1,4,2]
+        x,y = rng.random((2,96),dtype=np.float32)
+        np.testing.assert_array_equal(m.predict_effect(a,b),m.imagine(a)-m.imagine(b))
+        m.learn_effect(a,b,x,y)
+        state = m.matrix.copy()
+        predicted = m.predict_effect(a,b)
+        self.assertGreater(np.linalg.norm(predicted),0.)
+        np.testing.assert_allclose(predicted,-m.predict_effect(b,a),atol=1e-7)
+        np.testing.assert_array_equal(m.predict_effect(a,a),np.zeros(96))
+        np.testing.assert_array_equal(m.matrix,state)
+        self.assertLessEqual(m.state_bytes,256*1024)
+        self.assertEqual([k for k,v in vars(m).items() if isinstance(v,np.ndarray)],["matrix"])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/"v4.npz"
+            m.save(path)
+            restored = LokiMemory.load(path)
+            np.testing.assert_array_equal(predicted,restored.predict_effect(a,b))
+            # Version 3 ended in row padding where the v4 readout now begins.
+            old = state[:m._v3_rows].copy()
+            old.ravel()[m._layout["effect_weights"][0]:] = 0
+            np.savez(path,version=3,config=[96,262144,1],binding="",grid=m.grid_shape,field=old)
+            restored = LokiMemory.load(path)
+            np.testing.assert_array_equal(restored.imagine(a),m.imagine(a))
+            self.assertEqual(float(restored._part("effect_count")[0]),0.)
+
     def test_contract_partial_sensor_blackout(self):
         c = SimpleNamespace(motors=[3,5],sensors=[SimpleNamespace(kind="image",shape=(7,11,3)),
                                                  SimpleNamespace(kind="audio",shape=(4,))])
