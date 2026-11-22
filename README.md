@@ -1,76 +1,70 @@
-# LOKI Memory v3
+# LOKI Memory v4
 
-LOKI는 정규화한 감각과 직전 행동으로 배우는 로컬 NumPy 기억기관이다. 감각이 끊기면 하나의 출발 상태에서 서로 다른 행동열을 끝까지 실행해 두 미래를 비교할 수 있다. 학습과 추론에 쓰이는 지속 수치 상태 전체를 최대 256 KiB인 float32 행렬 하나에 둔다.
+LOKI는 감각과 행동에서 배우는 로컬 기억기관이다. v4가 답하려는 질문은 “같은 장면에서 같은 순서로 돌되, 멈춰 있던 몇 박자에 앞으로 걸었다면 마지막에 보이는 무엇이 달라질까?”이다. 두 계획을 같은 출발 상태에 주면 각 시야 성분이 얼마나 커지거나 작아질지 부호 있는 벡터로 반환한다.
 
-새 ATANOR 방에서 20박자 혼합 암전 영상과 합성 배선의 256박자 열 개입은 사전 기준을 통과했다. 전진만 바꾼 두 경로의 최종 영상 차이, 독립적인 교차 감각 변화, 수면 보정의 5% 이득은 미달했다.
+본체는 NumPy와 CPU로 실행된다. 가중치, 역공분산, 현재 감각과 운동 흔적을 포함한 지속 수치 상태는 **256 KiB 이하의 float32 행렬 하나**다. 파이썬 런타임, 입력 프레임, 계산 중 작업 메모리는 이 수치에 포함되지 않는다.
 
-[검증 결과](RESULTS.md) · [모형과 수식](THEORY.md) · [최초 가설](V3_PROTOCOL.md) · [수정 전 등록](V3_REVISION.md) · [v2 기록](V2_RESULTS.md)
+## 검증
 
-## 사용
+처음 보는 ATANOR 시뮬레이션 방 12개에서 같은 출발점과 회전열을 유지한 전진·정지 48쌍을 검사했다. **20박자 뒤 최종 시야 차이 MSE는 0.014684**였다.
 
-설치는 `python -m pip install .`이다. 한 박자는 한 번의 호출이며, 두 박자 사이에 실제로 수행한 행동을 다음 관측에 붙인다.
+| 비교 대상 | v4 오차 감소 | 이긴 방 |
+|---|---:|---:|
+| 두 경로의 차이를 항상 0으로 예측 | 22.1% | 11/12 |
+| ATANOR Inner | 23.3% | 10/12 |
+| LOKI v3 | 14.3% | 10/12 |
+
+240개 새 장면 뒤 첫 장면 복원 MSE **0.006366**, 합성 온도계의 256박자 뒤 레버 효과 MSE **0.027190**, 효과 방향 **96/96**으로 v3의 성과를 유지했다. 전진용 행렬은 **239,872바이트**다. 공간, 첫 장면, 온도 시험은 각각의 배선에서 학습한 기관으로 평가했다.
+
+[실험 조건·방별 판정](RESULTS.md) · [결과를 보기 전의 가설](V4_PROTOCOL.md) · [수학과 구현](THEORY.md) · [v3의 결과](V3_RESULTS.md)
+
+## 학습된 기관 사용
+
+저장소 루트에서 `python -m pip install .`을 실행한다. 배포한 체크포인트는 학습 방 1–12에서 얻은 4행×8열 RGB 센서와 다섯 모터 명령의 배선에 맞는다. 다음 예제는 저장소에 포함된 한 번의 실제 분기를 재현한다. 추론이 끝난 뒤 채점에만 두 경로의 마지막 관측을 사용한다.
 
 ```python
 import numpy as np
 from loki_memory import LokiMemory
 
-m = LokiMemory(4)
-m.observe(np.array([.4, .6, .5, .7]))
-m.observe(np.array([.3, .6, .5, .65]), action=[.2, -.1, .4])
-
-left  = m.imagine([[.2, -.1, .4]] * 256)
-right = m.imagine([[.2, -.1, -.4]] * 64 + [[.2, -.1, .4]] * 192)
-effect = right - left
-m.advance([.2, -.1, .4])
-
-cue = np.array([.3, np.nan, np.nan, .65])
-scene = m.recall(cue, np.isfinite(cue), carry=False)
-delta = np.array([-.1, np.nan, np.nan, -.05])
-change = m.predict_change(delta, np.isfinite(delta))
-m.save("loki-v3.npz", binding="body-A")
-m = LokiMemory.load("loki-v3.npz", binding="body-A")
+memory = LokiMemory.load("checkpoints/v4-room-grid.npz")
+with np.load("examples/forward_idle.npz") as trial:
+    memory.cut()
+    memory.observe(trial["prefix"][0])
+    for action, frame in zip(trial["observed_actions"], trial["prefix"][1:]):
+        memory.observe(frame, int(action))
+    a, b = trial["plans"]
+    delta = memory.predict_effect(a, b)   # 최종 시야 A − 최종 시야 B
+    truth = trial["endpoints"][0] - trial["endpoints"][1]
+    print(delta.reshape(4, 8, 3).shape, np.mean((delta - truth) ** 2))
 ```
 
-이 예시는 호출 순서를 보여 준다. 256박자 예측 시험에서는 각 배선마다 관측 전이 3,072개로 먼저 학습했다. `imagine`과 `recall`은 읽기 전용이다. `advance`는 실제 암전 중의 현재 상태를 전진시킨다. `cut()`은 에피소드 경계에서 현재 감각과 운동 흔적, 지역 시야장을 비운다. 학습 가중치는 유지한다. `sleep=False`는 동일한 기관에서 쓰기 직후의 직교 간섭 보정만 끄는 대조군이다.
+새 격자 센서는 `LokiMemory(width, grid_shape=(h,w,c))`로 시작한다. 같은 출발점에서 두 계획을 실행한 관측이 있으면 출발 문맥에서 `learn_effect(a,b,observed_a,observed_b)`를 호출한다. 쌍의 학습 전에는 두 절대 예측을 빼서 응답한다. `predict_effect`는 현재 상태를 변경하지 않는다. 몸이 실제로 수행한 행동과 다음 관측은 `observe`에 전달하고, 암전 중 실제로 진행한 한 박자는 `advance`로 반영한다. ATANOR의 전체 몸 계약 연결과 비영상 스트림 API는 [몸 연결 예제](V3_README.md)에 있다.
 
-## ATANOR 연결
+## 페타바이트 입력과 기억 용량
 
-```python
-from loki_memory.atanor import AtanorMemory
+입력이 계속 들어와도 수치 행렬의 크기는 고정된다. 그러나 **1 PB에서 임의의 과거 원본을 찾아 정확히 복원하는 능력은 없다.** 256 KiB는 최대 2,097,152비트를 표현한다. 1 PB에 8×10¹⁵개의 독립 비트가 있다면 서로 다른 수많은 과거가 같은 기억 상태를 갖게 된다. 학습할 수 있는 것은 입력에 반복되는 구조와 과제에 필요한 일부 차이다.
 
-organ = AtanorMemory(B.c)
-organ.step(B.raw(), cut=True)
-# 몸이 act를 수행한 직후, 같은 raw 번들을 공유한다.
-current = organ.step(B.raw(), previous_action=act)
-# 다음 행동 중 감각 전체를 잃었다면
-forecast = organ.step(None, previous_action=next_act)
-```
-
-어댑터는 몸 계약의 숫자 입력과 모터 배선을 사용한다. 결측 채널은 `None`으로 보낼 수 있다. 마지막 센서가 지원되는 크기의 영상이면 계약에서 공간 인접성을 얻는다. 독립적인 격자형 센서는 `LokiMemory(width, grid_shape=(h,w,c))`로 감각 벡터의 마지막 HWC 구간을 지정할 수 있다. 몸마다 기관 하나를 두고 어댑터 체크포인트에는 고정 배선 식별자를 넘긴다. v2 체크포인트는 커밋 `0c98721`의 코드로 읽는다.
+v4에 독립 균등 난수 **16 GiB**를 실제로 입력했다. 행렬은 처음과 마지막 모두 259,992바이트였다. 마지막에 첫 입력의 75%를 가리면 복원 MSE는 0.08387, 모든 성분에 0.5를 답한 값은 0.08369였다. PB 규모 실행과 그 뒤의 기억 품질은 미검증이다. [스트림 원자료](measurements/v4_stream.json)
 
 ## 재현
 
-PowerShell 기준이다. 학습 본체에는 NumPy, 비교 실험에는 CPU PyTorch, 자원 측정에는 psutil이 필요하다.
+Python 3.10 이상에서 실행한다. 연구용 대조군은 CPU PyTorch를 추가로 사용한다. PowerShell 기준으로 다음 명령은 정확한 비교 버전을 별도 경로에 준비한다.
 
 ```powershell
+python -m pip install . torch
 git worktree add --detach ../loki-v1-reference fc2f85a
-git worktree add --detach ../loki-v2-reference 0c98721
+git worktree add --detach ../loki-v3-reference 6d689b5
 git clone https://github.com/Cozystone/ATANOR_The-Creator.git ../atanor-reference
 git -C ../atanor-reference checkout --detach dc05860ae6837bcdd4de0be34e811bf0848e444f
 $env:LOKI_V1_REFERENCE = (Resolve-Path ../loki-v1-reference).Path
-$env:LOKI_V2_REFERENCE = (Resolve-Path ../loki-v2-reference).Path
+$env:LOKI_V3_REFERENCE = (Resolve-Path ../loki-v3-reference).Path
 $env:ATANOR_REFERENCE = (Resolve-Path ../atanor-reference).Path
 $env:OPENBLAS_NUM_THREADS = "1"
 python -B -m unittest -v test_memory
-python -B -m research.v3_confirm dark
-python -B -m research.v3_confirm rooms
-python -B -m research.v3_confirm retention
-python -B -m research.v3_confirm heat
-python -B -m research.v3_forward
-python -B -m research.v3_forward --idle
-python -B -m research.v3_trace_ablation
-python -B -m research.v3_pooling_floor
-python -B -m research.v3_resources
+python -B -m research.v4_forward train
+python -B -m research.v4_forward confirm
+python -B -m research.v4_regression
+python -B -m research.v4_stream
 ```
 
-최종 판정은 `measurements/v3_confirm_*.json`에 쓴다. 최초 v3 실험은 `e6ca0ee`에서 `research.v3_dark`, `research.v3_rooms`, `research.v3_retention`, `research.v3_heat`를 실행한다. 과거 v2 측정은 `0c98721`에서 재현한다.
+이전 버전의 설계와 한계는 [v3](V3_README.md), [v2](V2_README.md), [v1](history/v1/README.md)에 남아 있다.
