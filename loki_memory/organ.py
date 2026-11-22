@@ -19,13 +19,14 @@ class LokiMemory:
         self.group = (width + 2047) // 2048 if width > 4096 else 1
         self.features = (width + self.group - 1) // self.group
         for k in range(64, 7, -2):
-            rows = self.features + k + 2 * self.motor_features + 7
+            rows = self.features + 21*k + self.motor_features + 7
             if 4 * k * rows <= self.budget:
                 break
         else:
             raise ValueError("insufficient budget for eight latent coordinates")
         self.matrix = np.zeros((rows, k), np.float32)
         self._precision[:] = np.eye(k, dtype=np.float32)
+        self._motion_precision[:] = 4 * np.eye(4*k, dtype=np.float32)
 
     @property
     def state_bytes(self):
@@ -41,11 +42,21 @@ class LokiMemory:
 
     @property
     def _turn(self):
-        return self.matrix[-7 - 2*self.motor_features:-7 - self.motor_features]
+        return self.matrix[-7-self.motor_features:-7]
 
     @property
-    def _shift(self):
-        return self.matrix[-7-self.motor_features:-7]
+    def _coupling(self):
+        k = self.matrix.shape[1]
+        return self.matrix[self.features+k:self.features+5*k]
+
+    @property
+    def _motion_precision(self):
+        k = self.matrix.shape[1]
+        return self.matrix[self.features+5*k:self.features+21*k].reshape(4*k,4*k)
+
+    @property
+    def _center(self):
+        return self.matrix[-6]
 
     @property
     def _h(self):
@@ -137,25 +148,33 @@ class LokiMemory:
         drive = np.concatenate((u, traces.ravel(), u * np.tanh(3*h[:self.motor_width])))
         angle = drive @ self._turn[:, ::2]
         co, si = np.cos(angle), np.sin(angle)
-        pair = h.reshape(-1, 2)
+        relative = h - self._center
+        pair = relative.reshape(-1, 2)
         rotated = np.stack((co*pair[:, 0] - si*pair[:, 1], si*pair[:, 0] + co*pair[:, 1]), axis=1)
-        return self._bounded(rotated.ravel() + drive @ self._shift), traces, drive, rotated
+        i = np.arange(len(h))
+        features = np.concatenate((relative, relative*u[i%8], relative*u[(i+3)%8], drive[(11*i)%len(drive)]))
+        prediction = self._center + 0.90 * rotated.ravel() + features @ self._coupling
+        return self._bounded(prediction), traces, (drive,features), rotated
 
     def _render(self, h):
         values = (0.5 + self._decoder @ h).clip(0, 1)
         return values if self.group == 1 else np.repeat(values, self.group)[:self.width]
 
-    def observe(self, frame, action=None):
-        x, _ = self._sense(frame)
+    def observe(self, frame, action=None, *, visible=None):
+        """Learn from available components of the resulting sensation."""
+        x, mask = self._sense(frame, visible)
         prior = self._h.copy()
         has_motion = action is not None and bool(self._control[0])
         if has_motion:
             prior, traces, u, rotated = self._transport(prior, self._traces, action)
-        settled = self._settle(x, None, prior)
+        settled = self._settle(x, mask, prior)
         innovation = x - self._decoder @ settled
+        if mask is not None:
+            innovation[~mask] = 0
         precision = self._precision
         key = precision @ self._key(innovation)
-        strength = min(1.0, float(np.sqrt(np.mean(innovation**2))) / 0.08)
+        measured = innovation if mask is None else innovation[mask]
+        strength = min(1.0, float(np.sqrt(np.mean(measured**2))) / 0.08)
         z = self._bounded(settled + strength * key / max(1e-8, float(np.linalg.norm(key))))
         # Predict dreams before writing; correct their displacement after writing.
         clock = int(self._control[2])
@@ -166,24 +185,40 @@ class LokiMemory:
             dream = probe - precision @ probe
             teacher = self._decoder @ dream
         leverage = precision @ z
-        denominator = 0.08 + float(z @ leverage)
-        gain = leverage / denominator
-        self._decoder[:] += np.outer(x - self._decoder @ z, gain)
-        precision[:] -= np.outer(gain, leverage)
-        # A small floor restores plasticity as evidence ages.
-        precision[:] *= 0.999
-        precision.flat[::len(z)+1] += 0.001
+        evidence = max(0., float(z @ leverage))
+        gain = leverage / (0.04 + evidence)
+        write_error = x - self._decoder @ z
+        if mask is not None:
+            write_error[~mask] = 0
+        self._decoder[:] += np.outer(write_error, gain)
+        # High-surprise directions acquire resistance. The diminishing gain
+        # reserves plastic directions as the protected fraction increases.
+        protected = np.clip(1 - precision.trace()/len(z), 0, 1)
+        lock = strength**4 / (1 + (protected/0.3)**12)
+        precision[:] -= (lock / (1e-5 + evidence)) * np.outer(leverage, leverage)
+        precision[:] *= 0.99998
+        precision.flat[::len(z)+1] += 0.00002
         if dream is not None:
             self._decoder[:] += np.outer(teacher - self._decoder @ dream, dream) * (0.7 / (0.1 + dream @ dream))
         if has_motion:
             if self._control[1]:
-                error = z - prior
-                rate = 0.2 / (0.5 + u @ u)
+                drive, phi = u
+                # Teach only the inferred consequence; novelty used to WRITE
+                # the new sensation is not itself a consequence of the command.
+                error = settled - prior
+                q = self._motion_precision
+                v = q @ phi
+                g = v / (1 + phi @ v)
+                self._coupling[:] += np.outer(g,error)
+                q[:] -= np.outer(g,v)
+                q[:] *= .999
+                q.flat[::len(q)+1] += .004
+                rate = 0.08 / (0.5 + drive @ drive)
                 tangent = rotated[:, 0] * error[1::2] - rotated[:, 1] * error[::2]
-                self._turn[:, ::2] += rate * np.outer(u, tangent)
-                self._shift[:] += rate * np.outer(u, error)
+                self._turn[:, ::2] += rate * np.outer(drive, tangent)
             self._traces[:] = traces
         self._h[:] = z
+        self._center[:] += .02 * (z - self._center)
         self._control[:3] = 1, 1, (clock + 1) % 8192
 
     def cut(self):
@@ -204,10 +239,10 @@ class LokiMemory:
         self._control[:2] = 1, 0
         return self._render(h)
 
-    def recall(self, cue, visible, actions=()):
+    def recall(self, cue, visible, actions=(), *, carry=True):
         x, mask = self._sense(cue, visible)
-        h = self._settle(x, mask, self._h)
-        traces = self._traces
+        h = self._settle(x, mask, self._h if carry else np.zeros_like(self._h))
+        traces = self._traces if carry else np.zeros_like(self._traces)
         for action in actions:
             h, traces, _, _ = self._transport(h, traces, action)
         return self._render(h)

@@ -1,0 +1,11 @@
+{
+  "matrix_bytes": 249504,
+  "imported_rss_bytes": 39223296,
+  "final_rss_bytes": 45027328,
+  "os_peak_rss_bytes": 45686784,
+  "traced_write_peak_bytes": 291112,
+  "recall_ms_p50_p95": [
+    0.3028999926755205,
+    0.37009999505244195
+  ]
+}

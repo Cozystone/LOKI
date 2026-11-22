@@ -71,11 +71,10 @@ def run():
             visible = np.ones(64,bool)
             addr = v1.locate(start,visible)
             future, preds = [], []
+            fixed_low = rng.integers(4,size=16)
             for sign in (0,1):
                 plant = deepcopy(p)
-                fixed = rng.integers(4,size=16) if sign==0 else fixed_low
-                fixed_low = fixed
-                ids = np.repeat(fixed,16)
+                ids = np.repeat(fixed_low,16)
                 ids[:64] += 4*sign
                 plan = [command(i) for i in ids]
                 for act in plan:

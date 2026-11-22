@@ -1,74 +1,84 @@
-"""Regression tests for address reuse, imagined transitions, and sparse cues."""
 import tempfile
-import unittest
-from types import SimpleNamespace
 from pathlib import Path
+from types import SimpleNamespace
+import unittest
 import numpy as np
 
 from loki_memory import LokiMemory
-from loki_memory.atanor import AtanorImageMemory
+from loki_memory.atanor import AtanorMemory
 
 
-class MemoryTest(unittest.TestCase):
-    def test_body_wiring_and_black_frame(self):
-        contract = SimpleNamespace(motors=[3, 5], sensors=[SimpleNamespace(kind="image", shape=(4, 6, 3))])
-        observer = AtanorImageMemory(contract)
-        black = [np.zeros((1, 4, 6, 3), np.uint8)]
-        observer.step(black)
-        self.assertEqual(observer.memory.used, 0)
-        observer.step(black, available=True)
-        self.assertEqual(observer.memory.used, 1)
-        with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "body.npz"
-            observer.save(path, "body-1")
+class FieldTest(unittest.TestCase):
+    def test_single_matrix_and_budget(self):
+        for width in (1,64,96,4096,65536,122880):
+            m = LokiMemory(width)
+            self.assertEqual([k for k,v in vars(m).items() if isinstance(v,np.ndarray)],["matrix"])
+            self.assertLessEqual(m.state_bytes,262144)
+            x = np.full(width,.6,np.float32)
+            shape = m.matrix.shape
+            for a in range(3):
+                m.observe(x,a)
+            self.assertEqual(m.matrix.shape,shape)
+            self.assertEqual(m.imagine([5,1]).shape,(width,))
+
+    def test_mask_and_nondestructive_imagination(self):
+        rng = np.random.default_rng(900)
+        for n in (97, 4201):
+            m = LokiMemory(n)
+            x = rng.random(n,dtype=np.float32)
+            mask = np.arange(n)%4==1
+            m.observe(x)
+            state = m.matrix.copy()
+            a = m.recall(x,mask,[2,3])
+            b = m.recall(np.where(mask,x,np.nan),mask,[2,3])
+            np.testing.assert_array_equal(a,b)
+            np.testing.assert_array_equal(state,m.matrix)
+            m.observe(np.where(mask,x,np.nan),2,visible=mask)
+            self.assertTrue(np.isfinite(m.matrix).all())
+            current = m.matrix.copy()
             with self.assertRaises(ValueError):
-                observer.restore(path, "body-2")
-            observer.restore(path, "body-1")
-        np.testing.assert_array_equal(observer.step(black, 14), black[0][0])
+                m.observe(np.full(n,np.nan),4)
+            np.testing.assert_array_equal(current,m.matrix)
 
-    def test_blackout_cannot_teach_an_edge(self):
-        mem = LokiMemory(100)
-        first = np.full(100, 0.15, np.float32)
-        mem.observe(first)
-        mem.advance(10)
-        with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "paused.npz"
-            mem.save(path)
-            mem = LokiMemory.load(path)
-        mem.observe(1 - first, 33)
-        self.assertFalse((mem.actions == 33).any())
-        mem.observe(first, 33)
-        self.assertTrue((mem.actions == 33).any())
-        mem.cut()
-        mem.observe(first, 39)
-        self.assertFalse((mem.actions == 39).any())
+    def test_cut_blackout_and_resume(self):
+        rng = np.random.default_rng(6)
+        m = LokiMemory(32)
+        for t in range(20):
+            m.observe(rng.random(32,dtype=np.float32),t%3)
+        law = m._coupling.copy()
+        prediction = m.imagine([[.1,-.2]])
+        np.testing.assert_array_equal(prediction,m.advance([.1,-.2]))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"field.npz"
+            m.save(path,binding="w")
+            with self.assertRaises(ValueError):
+                LokiMemory.load(path,binding="q")
+            loaded = LokiMemory.load(path,binding="w")
+            for t in range(16):
+                x = rng.random(32,dtype=np.float32)
+                m.observe(x,t%3)
+                loaded.observe(x,t%3)
+                np.testing.assert_array_equal(m.matrix,loaded.matrix)
+                if t==0:
+                    np.testing.assert_array_equal(m._coupling,law)
+        m.cut()
+        law = m._coupling.copy()
+        m.observe(x,2)
+        np.testing.assert_array_equal(m._coupling,law)
 
-    def test_hidden_values_and_padding(self):
-        rng = np.random.default_rng(20)
-        mem = LokiMemory(97, tile=16)
-        frame = rng.random(97, dtype=np.float32)
-        mem.observe(frame)
-        visible = np.array([1, 0, 0, 1, 0, 0, 1], bool)
-        a = mem.recall(frame, visible)
-        frame[~np.repeat(visible, 16)[:97]] = np.nan
-        np.testing.assert_array_equal(a, mem.recall(frame, visible))
-
-    def test_reused_address_removes_stale_edges_and_refs(self):
-        mem = LokiMemory(128, budget=650, tile=8, atoms=4)
-        self.assertEqual(mem.capacity, 2)
-        rng = np.random.default_rng(33)
-        frames = rng.random((5, 128), dtype=np.float32)
-        mem.observe(frames[0])
-        old = mem.imagine(())
-        mem.observe(frames[1], 555)
-        np.testing.assert_array_equal(mem.imagine((), start=0), old)
-        for frame in frames[2:]:
-            mem.observe(frame, 42)
-            expected = np.bincount(mem.index[:mem.used].ravel(), minlength=len(mem.refs))
-            np.testing.assert_array_equal(expected, mem.refs)
-        self.assertFalse((mem.actions == 555).any())
-        self.assertLessEqual(mem.state_bytes, 650)
+    def test_contract_partial_sensor_blackout(self):
+        c = SimpleNamespace(motors=[3,5],sensors=[SimpleNamespace(kind="image",shape=(7,11,3)),
+                                                 SimpleNamespace(kind="audio",shape=(4,))])
+        adapter = AtanorMemory(c)
+        rgb = np.ones((1,7,11,3),np.float32)*128
+        audio = np.zeros((1,4),np.float32)
+        adapter.step([rgb,audio],cut=True)
+        partial = adapter.step([None,audio],11)
+        self.assertEqual(partial.shape,(10,))
+        self.assertTrue(np.isfinite(adapter.step(None,3)).all())
+        with self.assertRaises(ValueError):
+            adapter.step([rgb,audio],15)
 
 
-if __name__ == "__main__":
+if __name__=="__main__":
     unittest.main()

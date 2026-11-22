@@ -30,11 +30,17 @@ class AtanorMemory:
         widths = [((s[0]+7)//8)*((s[1]+7)//8)*s[2] if k == "image" else prod(s) for k,s in self.channels]
         self.memory = LokiMemory(sum(widths), budget)
 
-    def features(self, raw, body=0):
+    def _bundle(self, raw, body, available):
         parts = []
-        if len(raw) != len(self.channels):
+        masks = []
+        if len(raw) != len(self.channels) or (available is not None and len(available) != len(raw)):
             raise ValueError("unexpected raw channel count")
-        for value, (kind, shape) in zip(raw, self.channels):
+        for i, (value, (kind, shape)) in enumerate(zip(raw, self.channels)):
+            if value is None or (available is not None and not available[i]):
+                size = ((shape[0]+7)//8)*((shape[1]+7)//8)*shape[2] if kind=="image" else prod(shape)
+                parts.append(np.zeros(size,np.float32))
+                masks.append(np.zeros(size,bool))
+                continue
             x = array(value[body])
             if x.shape != shape:
                 raise ValueError("unexpected raw shape")
@@ -43,7 +49,12 @@ class AtanorMemory:
             else:
                 x = 0.5 + 0.5 * x / (1 + np.abs(x))
             parts.append(x.ravel())
-        return np.concatenate(parts)
+            masks.append(np.ones(x.size,bool))
+        return np.concatenate(parts), np.concatenate(masks)
+
+    def features(self, raw, body=0):
+        values, mask = self._bundle(raw, body, None)
+        return np.where(mask, values, np.nan)
 
     def motor(self, action):
         if hasattr(action, "item"):
@@ -56,14 +67,16 @@ class AtanorMemory:
             values.append(digit / max(1, radix-1))
         return np.array(values[::-1], np.float32)
 
-    def step(self, raw, previous_action=None, *, body=0, cut=False):
+    def step(self, raw, previous_action=None, *, body=0, cut=False, available=None):
         command = self.motor(previous_action) if previous_action is not None and not cut else None
         if cut:
             self.memory.cut()
-        if raw is None:
-            return self.memory.advance(command) if command is not None else self.memory.imagine()
-        self.memory.observe(self.features(raw, body), command)
-        return self.memory.imagine()
+        if raw is not None:
+            features, mask = self._bundle(raw, body, available)
+            if mask.any():
+                self.memory.observe(features, command, visible=None if mask.all() else mask)
+                return self.memory.imagine()
+        return self.memory.advance(command) if command is not None else self.memory.imagine()
 
     def _binding(self, wiring_id):
         if not isinstance(wiring_id, str) or not wiring_id:

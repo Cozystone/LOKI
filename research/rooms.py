@@ -24,7 +24,7 @@ def room(seed, old, fifo_type):
             world.step(torch.tensor([actions[t-1]]))
         raw = world.raw()
         stream.append(adapter.features(raw))
-        images.append(raw[-1][0].numpy().astype(np.uint8))
+        images.append(raw[-1][0].numpy().copy())
     shape = images[0].shape
     grid = pool_image(images[0])[0].shape
     nvis = int(np.prod(grid))
@@ -58,9 +58,11 @@ def room(seed, old, fifo_type):
             # nearest-neighbor readout to exactly the same component mask as v2.
             candidates = np.stack([v1multi.imagine((),start=s) for s in range(v1multi.used)])
             for mask_name, known in (("body_cue",~vmask),("vision_cue",vmask)):
-                pred = multi.recall(np.where(known,target,np.nan),known)
+                cue = np.where(known,target,np.nan)
+                pred = multi.recall(cue,known)
+                standalone = multi.recall(cue,known,carry=False)
                 baseline = candidates[np.square(candidates[:,known]-target[known]).mean(axis=1).argmin()]
-                for label, val in (("v1",baseline),("v2",pred)):
+                for label, val in (("v1",baseline),("v2",pred),("cue_alone",standalone),("prior_alone",multi.imagine())):
                     add(mask_name+"_"+label,val[~known], target[~known])
                     if mask_name=="vision_cue":
                         add("vision_cue_dynamic_"+label,val[:nbody][varying],target[:nbody][varying])
@@ -87,7 +89,8 @@ def main():
     old, _, _, _, fifo = setup()
     torch.set_num_threads(1)
     result = {}
-    for group,seeds,needed in (("original",range(401,409),7),("fresh",range(1201,1213),10)):
+    for group,seeds,needed in (("original",range(401,409),7),("fresh",range(1201,1213),10),
+                               ("sealed",range(1801,1813),10)):
         rows = [room(s,old,fifo) for s in seeds]
         means = {k:float(np.mean([r["mse"][k] for r in rows])) for k in rows[0]["mse"]}
         gates = {}

@@ -65,13 +65,15 @@ def main():
             train = [compound(s,208) if mode=="compound" else ref.record(s,208,False) for s in range(1,13)]
             ref.train_inner(base,train,500,803)
         rows = []
-        for seed in range(101,113):
+        for seed in [*range(101,113), *range(1801,1813)]:
             stream = compound(seed,368) if mode=="compound" else ref.record(seed,368,mode=="unobserved_forward")
             rows.append(score(seed,mode,stream,old,recurrence,base,ref))
-        means = {k:float(np.mean([r["mse"][k] for r in rows])) for k in rows[0]["mse"]}
-        wins = {k:sum(r["mse"]["v2"]<r["mse"][k] for r in rows) for k in means if k!="v2"}
-        result[mode] = dict(rows=rows, mean_mse=means,wins=wins,
-                            passed=all(n==12 and means["v2"]<=.9*means[k] for k,n in wins.items()))
+        result[mode] = {"rows":rows}
+        for group, subset in (("original",rows[:12]),("sealed",rows[12:])):
+            means = {k:float(np.mean([r["mse"][k] for r in subset])) for k in subset[0]["mse"]}
+            wins = {k:sum(r["mse"]["v2"]<r["mse"][k] for r in subset) for k in means if k!="v2"}
+            result[mode][group] = dict(mean_mse=means,wins=wins,
+                                       passed=all(n==12 and means["v2"]<=.9*means[k] for k,n in wins.items()))
     write("dark",result)
 
 

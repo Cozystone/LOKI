@@ -1,6 +1,7 @@
 """Load pinned, external v1 controls only inside an experiment process."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -8,8 +9,8 @@ from unittest.mock import patch
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-V1 = ROOT / ".git/loki-v1"
-ATANOR = ROOT / ".git/atanor-source"
+V1 = Path(os.environ.get("LOKI_V1_REFERENCE", ROOT / ".git/loki-v1"))
+ATANOR = Path(os.environ.get("ATANOR_REFERENCE", ROOT / ".git/atanor-source"))
 
 
 def module(name, path):
@@ -28,10 +29,9 @@ def setup():
     recurrence = module("v1rec", V1/"loki_memory/recurrence.py")
     hd = module("hd", V1/"high_dim_experiment.py")
     with patch.dict(sys.modules, {"loki_memory.recurrence":recurrence, "high_dim_experiment":hd,
-                                "loki_memory.atanor":old}):
-        # The pinned body script imports the old adapter by name; only its FIFO
-        # class is used by this judge.
-        old.AtanorImageMemory = None
+                                  "loki_memory.organ":old}):
+        adapter = module("loki_memory.v1adapter",V1/"loki_memory/atanor.py")
+        sys.modules["loki_memory.atanor"] = adapter
         dark = module("v1dark", V1/"experiment.py")
         body = module("v1body", V1/"body_experiment.py")
     return old.LokiMemory, recurrence.RecurrenceMemory, hd.scenes, dark, body.PooledFIFO
