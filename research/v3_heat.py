@@ -116,10 +116,14 @@ def world(seed,v2):
     return out
 
 
-if __name__=="__main__":
+def run(seeds=range(3201,3209),file="v3_heat"):
     setup()
     torch.set_num_threads(1)
-    rows = [world(s,prior_version()) for s in range(3201,3209)]
+    rows = [world(s,prior_version()) for s in seeds]
     gates = compare(rows,"pulse_difference",("v2","inner","last"),.5,7)
     sign = float(np.mean([r["pulse_sign"]["v3"] for r in rows]))
-    write("v3_heat",dict(rows=rows,gates=gates,sign=sign,passed=sign>=.9 and all(g["passed"] for g in gates.values())))
+    write(file,dict(rows=rows,gates=gates,sign=sign,passed=sign>=.9 and all(g["passed"] for g in gates.values())))
+
+
+if __name__=="__main__":
+    run()

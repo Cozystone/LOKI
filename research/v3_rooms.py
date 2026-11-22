@@ -2,13 +2,13 @@
 import numpy as np
 import torch
 from loki_memory import LokiMemory
-from loki_memory.atanor import AtanorMemory, pool_image
+from loki_memory.atanor import AtanorMemory, pool_image, complete_pixels
 from .reference import mse, setup, write
 from .rooms import lift
 from .v3_common import compare, prior_version
 
 
-def room(seed, v2, fifo_type):
+def room(seed, v2, fifo_type, lattice):
     from atanor_os.emerge.room_body import RoomBody
     from atanor_os.emerge.room_vary import condition
     motor, judge, pairs = [np.random.default_rng(s) for s in np.random.SeedSequence(seed).spawn(3)]
@@ -27,6 +27,10 @@ def room(seed, v2, fifo_type):
     nvis = int(np.prod(grid))
     width = len(stream[0])
     visual = {"v2":v2(nvis), "v3":LokiMemory(nvis)}
+    if lattice:
+        visual["v2_wired"] = v2(nvis)
+        visual["flat"] = visual["v3"]
+        visual["v3"] = LokiMemory(nvis,grid_shape=grid)
     joint = {"v2":v2(width), "v3":adapter.memory}
     fifo = fifo_type(images[0].shape)
     scores = {}
@@ -46,12 +50,16 @@ def room(seed, v2, fifo_type):
             for name, model in visual.items():
                 y = model.recall(small.ravel(), present.ravel()).reshape(grid)
                 score("hidden", name, lift(y)[~known], x.ravel()[~known])
-                score("next", name, lift(model.imagine([cmd]).reshape(grid)), x.ravel())
+                if lattice and name=="v3":
+                    high = complete_pixels(lift(y).reshape(x.shape),partial.reshape(x.shape),known.reshape(x.shape))
+                    score("hidden","v3_native",high.ravel()[~known],x.ravel()[~known])
+                score("next", name, lift(model.imagine([adapter.motor(cmd) if lattice and name in ("v3","v2_wired") else cmd]).reshape(grid)), x.ravel())
             score("hidden", "fifo", fifo.recall(partial, known)[~known], x.ravel()[~known])
             score("hidden", "cue", lift(np.where(present, small, .5))[~known], x.ravel()[~known])
             score("next", "last", images[i-1].ravel()/255, x.ravel())
-        for model in visual.values():
-            model.observe(full[-nvis:], cmd)
+        for name,model in visual.items():
+            action = adapter.motor(cmd) if i and lattice and name in ("v3","v2_wired") else cmd
+            model.observe(full[-nvis:], action)
         fifo.observe(x.ravel())
         if i <= 40:
             for model in joint.values():
@@ -74,10 +82,10 @@ def room(seed, v2, fifo_type):
     return dict(seed=seed,**{k:{n:float(np.mean(v)) for n,v in by.items()} for k,by in scores.items()})
 
 
-def run(seeds=range(3301,3313), file="v3_rooms"):
+def run(seeds=range(3301,3313), file="v3_rooms", *, lattice=False):
     *_, fifo = setup()
     torch.set_num_threads(1)
-    rows = [room(s, prior_version(), fifo) for s in seeds]
+    rows = [room(s, prior_version(), fifo, lattice) for s in seeds]
     controls = dict(hidden=("v2","fifo"),next=("v2","last"),
                     body_to_vision=("v2","zero"),vision_to_body=("v2","zero"))
     write(file, dict(rows=rows, gates={k:compare(rows,k,c,.1,10) for k,c in controls.items()}))

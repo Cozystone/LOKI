@@ -3,16 +3,21 @@ from pathlib import Path
 import os
 import tempfile
 import numpy as np
+from . import transport
 
 
 class LokiMemory:
-    def __init__(self, width, budget=262144, *, sleep=True):
+    def __init__(self, width, budget=262144, *, sleep=True, grid_shape=None):
         if not isinstance(width,(int,np.integer)) or width < 1:
             raise ValueError("width must be a positive integer")
         self.width, self.budget, self.sleep = int(width), int(budget), bool(sleep)
         self.group = (width+2047)//2048
         f = self.features = (width+self.group-1)//self.group
         r = self.rank = min(f, 20 if f<=256 else 6)
+        self.grid_shape = () if grid_shape is None else tuple(grid_shape)
+        if self.grid_shape and (len(self.grid_shape)!=3 or min(self.grid_shape)<1
+                or self.grid_shape[1]<2 or np.prod(self.grid_shape)>width or self.group!=1):
+            raise ValueError("grid_shape must describe an unpooled HWC sensor suffix")
         self.bands = 12
         n = (5+2*self.bands)*3
         m = 4*r+4
@@ -24,6 +29,14 @@ class LokiMemory:
                       ("coupling",(m,r)),("motion_precision",(m,m)),
                       ("traces",(5+2*self.bands,3)),("anchor",(f,)),("mean",(f,)),
                       ("z",(r,)),("control",(6,)))
+            if f>256:
+                shapes += (("variance",(f,)),("samples",(1,)))
+            if self.grid_shape:
+                height,columns,channels = self.grid_shape
+                bands = min(64,4*columns)
+                shapes += (("flow",(16,3)),("flow_precision",(16,16)),("origin",(1,)),
+                           ("affine",(3,)),("retina",self.grid_shape),
+                           ("chart",(1+2*bands,1+height*channels)))
             cells = sum(int(np.prod(shape)) for _,shape in shapes)
             rows = (cells+k-1)//k
             if 4*rows*k<=budget:
@@ -40,6 +53,9 @@ class LokiMemory:
         for name,scale in (("precision",1),("read_precision",20),("force_precision",2),("motion_precision",3)):
             a = self._part(name)
             np.fill_diagonal(a,scale)
+
+        if self.grid_shape:
+            np.fill_diagonal(self._part("flow_precision"),20)
 
     @property
     def state_bytes(self):
@@ -134,7 +150,13 @@ class LokiMemory:
         a,b = self._project(old), self._project(x)
         dz = b-a
         read = self._part("synthesis")
-        self._regress(read,self._part("read_precision"),dz,x-old-dz@read)
+        target = x-old
+        if self.features>256:
+            target = x-self._part("mean")
+            dz = self._project(target)
+            self._part("variance")[:] += target**2
+            self._part("samples")[:] += 1
+        self._regress(read,self._part("read_precision"),dz,target-dz@read)
         q = a-self._forced(previous)
         qnext = b-self._forced(following)
         phi = np.concatenate((q,(u[:,None]*q).ravel(),u,[1])).astype(np.float32)
@@ -144,36 +166,95 @@ class LokiMemory:
 
     def _write(self,x,mask):
         w, p = self._decoder,self._part("precision")
-        z = self._settle(x,mask,self._h)
+        z = self._settle(x,mask,np.zeros_like(self._h))
         residual = x-w@z
         if mask is not None:
             residual[~mask] = 0
         count = self.features if mask is None else int(mask.sum())
         key = p@self._key(residual)
         strength = min(1.,float(np.linalg.norm(residual))/np.sqrt(count)/.08)
-        z = self._bounded(z + key*(strength/max(1e-8,float(np.linalg.norm(key)))))
+        unexplained = min(1.,float(residual@residual)/max(1e-8,float(x[mask]@x[mask] if mask is not None else x@x)))
+        novel = key*(strength/max(1e-8,float(np.linalg.norm(key))))
+        z = self._bounded((1-unexplained)*z + novel)
         error = x-w@z
         if mask is not None:
             error[~mask] = 0
         v = p@z
-        projected = v/(.04+max(0.,float(v@z)))
-        ordinary = z/(.04+float(z@z))
-        gain = .85*projected+.15*ordinary
+        gain = z/(.04+float(z@z))
         if self.sleep:
             # Correct only interference perpendicular to the new activation:
             # the response to the present write stays exactly the same.
-            direction = projected * ((z@gain)/max(1e-8,float(z@projected)))
-            gain = direction if z@projected>1e-6 else gain
+            free = p@v
+            direction = free*((z@gain)/max(1e-8,float(z@free)))
+            if z@free>1e-6 and np.linalg.norm(direction)<=2*np.linalg.norm(gain):
+                gain = direction
         w += np.outer(error,gain)
         remaining = error*(1-z@gain)
         improvement = max(0.,float(error@error-remaining@remaining)/count)
         lock = min(1.,improvement/.007)**2
         used = np.clip(1-p.trace()/len(z),0,1)
-        lock /= 1+(used/.38)**10
+        history = self._part("control")
+        typical = float(history[3])
+        exceptional = np.clip((improvement/(.001+typical)-1.5)/2,0,1)
+        lock *= max(exceptional,1/(1+(used/.38)**10))
+        history[3] += .035*(improvement-history[3])
         p -= (lock/(1e-5+max(0.,float(z@v)))) * np.outer(v,v)
-        p *= .99996
-        p.flat[::len(z)+1] += .00004
+        p *= .9999995
+        p.flat[::len(z)+1] += .0000005
         self._h[:] = z
+
+    def _flow_key(self,action):
+        a = np.asarray(action,dtype=np.float32).ravel()
+        u = self._motor(action)
+        v = a if len(a)==3 else u
+        phase = v[:,None]*np.pi*np.array([1,2],np.float32)
+        return np.r_[1.,u,np.cos(phase).ravel(),np.sin(phase).ravel()].astype(np.float32)
+
+    def _affine_step(self, affine, action):
+        u = self._flow_key(action)
+        dx, ds, uncertainty = u@self._part("flow")
+        return np.array([affine[0]+np.exp(np.clip(affine[1],-1.8,1.8))*dx,
+                         np.clip(affine[1]+ds,-1.8,1.8),affine[2]+np.clip(uncertainty,0.,.5)],np.float32)
+
+    def _grid(self,x):
+        return x[-int(np.prod(self.grid_shape)):].reshape(self.grid_shape)
+
+    def _image(self,x,source,affine):
+        self._grid(x)[:] = transport.render(source,self._grid(self._part("mean")),
+                 self._part("chart"),float(self._part("origin")[0]),*affine)
+        return x
+
+    def _see_grid(self,x,action,complete):
+        flags = self._part("control")
+        origin = self._part("origin")
+        chart = self._part("chart")
+        affine = self._part("affine")
+        retinal = self._part("retina")
+        if flags[0] and action is not None:
+            moved = self._affine_step(affine,action)
+            if flags[1] and complete:
+                delta, confidence = transport.register(retinal,self._grid(x))
+                h,w = self.grid_shape[:2]
+                zoom = np.exp(delta[1])
+                cols = (np.arange(w)-(w-1)/2)*zoom+(w-1)/2+delta[0]
+                rows = (np.arange(h)-(h-1)/2)*zoom+(h-1)/2
+                shared = (cols>=0)&(cols<=w-1)
+                truth = self._grid(x)[:,shared]
+                warp = transport.sample(retinal,cols,rows)[:,shared]
+                baseline = self._grid(self._part("mean")).mean(axis=1,keepdims=True)
+                risk = np.mean((warp-truth)**2)/(.001+np.mean((truth-baseline)**2))
+                delta = np.r_[delta,np.float32(min(.5,.6*risk))]
+                u = self._flow_key(action)
+                amp = np.sqrt(confidence)
+                self._regress(self._part("flow"),self._part("flow_precision"),u*amp,
+                              (delta-u@self._part("flow"))*amp)
+                moved = self._affine_step(affine,action)
+            origin[:] = (origin+moved[0])%(8*self.grid_shape[1])
+        else:
+            moved = np.zeros(3)
+        retinal[:] = self._grid(x)
+        transport.deposit(chart,retinal,float(origin[0]),moved[1])
+        affine.fill(0)
 
     def observe(self,frame,action=None,*,visible=None):
         x,mask = self._sense(frame,visible)
@@ -181,6 +262,8 @@ class LokiMemory:
         self._write(x,mask)
         if mask is not None:
             x = np.where(mask,x,self._decoder@self._h).clip(-.5,.5)
+        if self.grid_shape:
+            self._see_grid(x,action,mask is None)
         control = self._part("control")
         anchor,traces = self._part("anchor"),self._part("traces")
         if u is not None and control[0]:
@@ -200,12 +283,20 @@ class LokiMemory:
 
     def imagine(self,actions=()):
         x,z,traces = self._part("anchor"),self._part("z"),self._part("traces")
+        affine = self._part("affine") if self.grid_shape else None
         for action in actions:
             x,z,traces = self._next(x,z,traces,action)
+            if self.grid_shape:
+                affine = self._affine_step(affine,action)
+                self._image(x,self._part("retina"),affine)
         return self._output(x)
 
     def advance(self,action):
         x,z,t = self._next(self._part("anchor"),self._part("z"),self._part("traces"),action)
+        if self.grid_shape:
+            affine = self._part("affine")
+            affine[:] = self._affine_step(affine,action)
+            self._image(x,self._part("retina"),affine)
         self._part("anchor")[:] = x
         self._part("z")[:] = z
         self._part("traces")[:] = t
@@ -213,6 +304,9 @@ class LokiMemory:
         return self._output(x)
 
     def cut(self):
+        if self.grid_shape:
+            for name in ("retina","affine","origin","chart"):
+                self._part(name).fill(0)
         for name in ("anchor","z","traces","control","h"):
             self._part(name).fill(0)
 
@@ -220,13 +314,25 @@ class LokiMemory:
         x,mask = self._sense(cue,visible)
         h = self._settle(x,mask,self._h if carry else np.zeros_like(self._h))
         level = self._decoder@h
+        if self.grid_shape:
+            self._grid(level)[:] = transport.complete_pixels(self._grid(level)+.5,self._grid(x)+.5,self._grid(mask))-.5
         level[mask] = x[mask]
         traces = self._part("traces")
         if not carry:
             traces = np.zeros_like(traces)
         z = self._project(level)
+        if self.grid_shape:
+            source = self._grid(level).copy()
+            affine = np.zeros(3,np.float32)
         for a in actions:
             level,z,traces = self._next(level,z,traces,a)
+            if self.grid_shape:
+                affine = self._affine_step(affine,a)
+                if carry:
+                    self._image(level,source,affine)
+                else:
+                    self._grid(level)[:] = transport.render(source,self._grid(self._part("mean")),
+                        np.zeros_like(self._part("chart")),0.,*affine)
         return self._output(level)
 
     def predict_change(self,delta,visible):
@@ -237,6 +343,20 @@ class LokiMemory:
         x,mask = self._sense(.5+.5*delta,visible)
         read = self._part("synthesis")
         design = read[:,mask]
+        if self.features>256:
+            n = max(1.,float(self._part("samples")[0]))
+            precision = self._part("read_precision")
+            covariance = np.linalg.inv(precision.astype(float))/n
+            explained = ((covariance@read)*read).sum(axis=0)
+            variance = self._part("variance")/n
+            noise = np.maximum(variance-explained,.25*variance+.0002)
+            weighted = design/noise[mask]
+            gram = n*precision + weighted@design.T
+            z = np.linalg.solve(gram,weighted@(2*x[mask]))
+            # Small adaptation samples constrain the reliability of a marginal
+            # regression on untrained combinations of sensory components.
+            z *= n/(n+12*self.rank)
+            return np.repeat((z@read).clip(-1,1),self.group)[:self.width]
         gram = design@design.T
         gram.flat[::len(gram)+1] += .002
         z = np.linalg.solve(gram,design@(2*x[mask]))
@@ -311,7 +431,7 @@ class LokiMemory:
             name = tmp.name
         try:
             with open(name, "wb") as out:
-                np.savez(out, version=3, config=[self.width, self.budget, self.sleep], binding=binding, field=self.matrix)
+                np.savez(out, version=3, config=[self.width, self.budget, self.sleep], binding=binding, grid=self.grid_shape, field=self.matrix)
                 out.flush()
                 os.fsync(out.fileno())
             os.replace(name, path)
@@ -324,7 +444,7 @@ class LokiMemory:
             if "version" not in data or int(data["version"]) != 3 or data["binding"].item() != binding:
                 raise ValueError("expected a v3 field for this body wiring")
             width, budget, sleep = map(int, data["config"])
-            model = cls(width, budget, sleep=bool(sleep))
+            model = cls(width, budget, sleep=bool(sleep), grid_shape=tuple(map(int,data["grid"])) if "grid" in data else None)
             field = data["field"]
             if field.shape != model.matrix.shape or field.dtype != np.float32 or not np.isfinite(field).all():
                 raise ValueError("invalid field matrix")

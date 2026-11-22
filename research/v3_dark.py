@@ -41,7 +41,7 @@ def score(seed,models,trained,ref):
                 horizon={k:np.array(v).reshape(4,20).mean(axis=0).tolist() for k,v in outputs.items()})
 
 
-def run(seeds=range(3101,3113),file="v3_dark"):
+def run(seeds=range(3101,3113),file="v3_dark", *, lattice=False):
     _,_,_,ref,_ = setup()
     from atanor_os.emerge.inner import Inner
     torch.manual_seed(803)
@@ -50,6 +50,9 @@ def run(seeds=range(3101,3113),file="v3_dark"):
     training = [compound(s,208) for s in range(1,13)]
     ref.train_inner(inner,training,500,803)
     models = {"v2":prior_version()(96),"v3":LokiMemory(96)}
+    if lattice:
+        models["flat"] = models["v3"]
+        models["v3"] = LokiMemory(96,grid_shape=(4,8,3))
     for frames,acts in training:
         for m in models.values():
             m.cut()

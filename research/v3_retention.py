@@ -33,16 +33,16 @@ def measure(seed,version,scenes,important):
     return out
 
 
-def run():
+def run(fresh=range(3401,3413), file="v3_retention"):
     _,_,scenes,_,_ = setup()
     v2 = prior_version()
-    seeds = [522,*range(3401,3413)]
+    seeds = [522,*fresh]
     plain = [measure(s,v2,scenes,False) for s in seeds]
     marked = [measure(s,v2,scenes,True) for s in seeds[1:]]
     first = np.mean([r["t240_probe0"]["v3"] for r in plain[1:]])
     old = np.mean([r["t240_probe0"]["v2"] for r in plain[1:]])
     gates = {f"t{i}":compare(marked,f"t{i}_middle",("off",),.05,10) for i in (240,2048)}
-    write("v3_retention",dict(plain=plain,important=marked,first_gate=bool(max(first,plain[0]["t240_probe0"]["v3"])<=.01 and first<=1.1*old),
+    write(file,dict(plain=plain,important=marked,first_gate=bool(max(first,plain[0]["t240_probe0"]["v3"])<=.01 and first<=1.1*old),
                               sleep_gates=gates,mid_vs_v2={f"t{i}":compare(marked,f"t{i}_middle",("v2",),0,10) for i in (240,2048)}))
 
 

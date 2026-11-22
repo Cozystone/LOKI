@@ -4,6 +4,7 @@ from math import prod
 
 import numpy as np
 from .organ import LokiMemory
+from .transport import complete_pixels
 
 
 def array(value):
@@ -28,7 +29,12 @@ class AtanorMemory:
         self.channels = tuple((s.kind, tuple(s.shape)) for s in contract.sensors)
         self.motors = tuple(contract.motors)
         widths = [((s[0]+7)//8)*((s[1]+7)//8)*s[2] if k == "image" else prod(s) for k,s in self.channels]
-        self.memory = LokiMemory(sum(widths), budget)
+        grid = None
+        if self.channels and self.channels[-1][0]=="image" and sum(widths)<=2048:
+            h,w,c = self.channels[-1][1]
+            if w>8:
+                grid = ((h+7)//8,(w+7)//8,c)
+        self.memory = LokiMemory(sum(widths), budget, grid_shape=grid)
 
     def _bundle(self, raw, body, available):
         parts = []
@@ -88,6 +94,7 @@ class AtanorMemory:
 
     def restore(self, path, wiring_id):
         loaded = LokiMemory.load(path, binding=self._binding(wiring_id))
-        if loaded.budget != self.memory.budget or loaded.width != self.memory.width:
+        if (loaded.budget != self.memory.budget or loaded.width != self.memory.width
+                or loaded.grid_shape != self.memory.grid_shape):
             raise ValueError("incompatible memory dimensions")
         self.memory = loaded
