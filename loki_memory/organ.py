@@ -325,7 +325,7 @@ class LokiMemory:
         estimate = (design@self._part("effect_weights")).reshape(w,h,c).transpose(1,0,2)
         result = (np.zeros(self.width,np.float32) if estimate.size==self.width else
                   self.imagine(left)-self.imagine(right))
-        self._grid(result)[:] = estimate.clip(-1,1)
+        self._grid(result)[:] = .5*estimate.clip(-1,1)
         return result
 
     def learn_effect(self,left,right,endpoint_left,endpoint_right):

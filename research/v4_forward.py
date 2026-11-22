@@ -168,6 +168,7 @@ def evaluate(seed,base,networks,ref):
         # The judge advances independent copies only after forecasts are complete.
         truth = simulate(world,cmd[:1])[0,-1]-simulate(world,cmd[1:])[0,-1]
         rows.append(dict(substitutions=4*(i+1),identical=not np.any(truth).item(),actions=cmd.tolist(),
+                         predicted_energy=mse(estimate["v4"],0),
                          mse={k:mse(p,truth) for k,p in estimate.items()}))
     return dict(seed=seed,pairs=rows,mean={k:float(np.mean([r["mse"][k] for r in rows])) for k in rows[0]["mse"]})
 

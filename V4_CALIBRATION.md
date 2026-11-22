@@ -1,0 +1,3 @@
+# Calibration before the sealed v4 evaluation
+
+On the previously published 4001–4012 development rooms the full-strength signed readout had MSE 0.009332 and won 8/12 against zero. We evaluated output gains 0.25, 0.4, 0.5, 0.6, 0.7, 0.8 and 1.0 by scaling the same signed predictions. Of those meeting both primary gates against every control in development, 0.5 had the lowest mean error (0.01061). Freeze that global gain for all runs on the unseen rooms 5101–5112. The gain applies only to the trained difference readout. The development JSON records unscaled prediction energy and error. No endpoint from the new rooms contributed to this choice.
