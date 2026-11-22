@@ -1,0 +1,11 @@
+{
+  "steps": 100000,
+  "visible_sensor_float32_bytes": 25605120,
+  "numeric_state_bytes": 39217,
+  "checkpoint_bytes": 41939,
+  "resume_exact_steps": 128,
+  "seconds": 4.369888700020965,
+  "mean_ms": 0.04369888700020965,
+  "python_traced_peak_above_resident_bytes": 86860,
+  "host": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD"
+}

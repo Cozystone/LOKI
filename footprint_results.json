@@ -1,0 +1,16 @@
+{
+  "general": {
+    "imported_process_rss": 34226176,
+    "final_rss": 39059456,
+    "sampled_high_rss": 39550976,
+    "os_peak_working_set": 41218048,
+    "state_bytes": 261088
+  },
+  "recurrence": {
+    "imported_process_rss": 34390016,
+    "final_rss": 38875136,
+    "sampled_high_rss": 38875136,
+    "os_peak_working_set": 38875136,
+    "state_bytes": 39217
+  }
+}
