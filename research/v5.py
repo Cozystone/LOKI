@@ -43,6 +43,9 @@ class Trial:
         self.fields = {f"r{n}":LongTermCortex(core.width,n) for n in sizes}
         self.fields["all"] = LongTermCortex(core.width,16,selective=False)
         self.fifos = {k:Buffer(core.width,f.state_bytes) for k,f in self.fields.items() if k!="all"}
+        self.priority = Buffer(core.width,self.fields["r16"].state_bytes)
+        self.fields["wave_off"] = LongTermCortex(core.width,16,modes=0)
+        self.fields["no_sleep"] = LongTermCortex(core.width,16)
         self.writes = {k:0 for k in self.fields}
         self.mask = np.ones(core.width,bool)
         self.count = 0
@@ -52,21 +55,23 @@ class Trial:
             self.writes[k] += f.imprint(x,a,y,b,integrity_change=integrity)
         for fifo in self.fifos.values():
             fifo.add(x,a,y)
+        if abs(integrity)>=.08 or mse(y,b)>.12**2:
+            self.priority.add(x,a,y)
         self.count += 1
         if self.count%256==0:
             self.sleep()
 
     def sleep(self):
-        for c in self.fields.values():
-            c.sleep()
+        for name,c in self.fields.items():
+            if name!="no_sleep":
+                c.sleep()
 
     def predictions(self,x,a):
         b = self.core.recall(x,self.mask,[a],carry=False)
         result = dict(v4=b,last=x)
         result.update({k:c.predict(x,a,b) for k,c in self.fields.items()})
         result.update({"fifo_"+k:c.predict(x,a,b) for k,c in self.fifos.items()})
-        # Without sleep no coefficients are published: support=0, exactly the v4 baseline.
-        result["no_sleep"] = b
+        result["priority_fifo"] = self.priority.predict(x,a,b)
         return result
 
 
@@ -82,7 +87,7 @@ def structured(seed):
     rng = np.random.default_rng(seed)
     encoder = rng.normal(size=(6,96)).astype(np.float32)/2
     motor = rng.normal(size=(5,6,96)).astype(np.float32)/3
-    trial = Trial(LokiMemory(96),[4,16,64])
+    trial = Trial(LokiMemory(96),[16])
     probes = {k:[] for k in ("early","middle","late","exception","novel")}
     for i in range(24256):
         latent = rng.uniform(-1,1,6).astype(np.float32)
@@ -150,7 +155,7 @@ def rooms():
     trial.sleep()
     scores = summarize([errors(trial.predictions(x,a),y) for x,a,y in old])
     results = []
-    for seed in range(6201,6213):
+    for seed in range(6401,6413):
         w = World(1,make_room(seed),device="cpu",seed=seed,drain=0)
         rng = np.random.default_rng(seed)
         next_scores,effect_scores = [],[]
@@ -234,13 +239,13 @@ if __name__=="__main__":
     args=ap.parse_args()
     if args.task=="structured":
         if args.seed:
-            write("v5_seed_"+str(args.seed),structured(args.seed))
+            write("v5_confirm_seed_"+str(args.seed),structured(args.seed))
         else:
-            rows=[structured(s) for s in range(6101,6105)]
-            write("v5_structured",dict(rows=rows,gates={k:gates(rows,k,3) for k in ("early","novel")}))
+            rows=[structured(s) for s in range(6301,6305)]
+            write("v5_confirm_structured",dict(rows=rows,gates={k:gates(rows,k,3) for k in ("early","novel")}))
     elif args.task=="rooms":
         result=rooms()
         result["gates"]={k:gates(result["rows"],k,10) for k in ("novel","effect")}
-        write("v5_rooms",result)
+        write("v5_confirm_rooms",result)
     else:
-        write("v5_timing",timing())
+        write("v5_confirm_timing",timing())
