@@ -23,10 +23,10 @@ def main():
             c.sleep()
         if i+1 in (64,256,512,1024,4096,24000):
             c.sleep()
-            result.append(dict(events=i+1,cortex=float(np.mean([mse(c.predict(x,a,x),y) for x,a,y in probes])),
+            result.append(dict(events=i+1,cortex=float(np.mean([mse(c.recall_episode(x,a,x),y) for x,a,y in probes])),
                                fifo=float(np.mean([mse(fifo.predict(x,a,x),y) for x,a,y in probes])),
                                no_change=float(np.mean([mse(x,y) for x,a,y in probes]))))
-    write("v5_interference",dict(rows=result,seed=6580,first_probes=len(probes),fifo_frames=len(fifo.keys)))
+    write("v5_final_interference",dict(rows=result,seed=6580,first_probes=len(probes),fifo_frames=len(fifo.keys)))
 
 
 if __name__=="__main__":

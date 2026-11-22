@@ -2,12 +2,15 @@
 from pathlib import Path
 import os
 import tempfile
+import zipfile
 
 import numpy as np
 
+from .organ import LokiMemory
+
 
 class LongTermCortex:
-    """Single-writer RAM field. Only consolidated coefficients answer queries."""
+    """Single-writer RAM field with consolidated laws and online episodic waves."""
 
     rank = 40
 
@@ -33,12 +36,13 @@ class LongTermCortex:
         if modes not in (0,512):
             raise ValueError("supported mode counts are 0 and 512")
         self.modes = modes
+        # Draw the same basis in the wave-off control so the law features are paired.
+        phase_projection = rng.standard_normal((self.features+3,528),dtype=np.float32)
         if modes:
-            self.phase_projection = (rng.standard_normal((self.features+3,modes+16),
-                                                        dtype=np.float32)*5)
+            self.phase_projection = phase_projection*5
             self.hologram = np.zeros((2*modes,self.features+32),np.float32)
-        self.global_projection = rng.normal(size=(self.features,18)).astype(np.float32)/np.sqrt(self.features)
-        self.global_projection = self.global_projection.astype(np.float32)
+        self.global_projection = rng.normal(size=(self.features,18)).astype(np.float32)
+        self.global_projection /= np.sqrt(self.features)
         self.global_gram = np.zeros((125,125),np.float32)
         self.global_cross = np.zeros((125,self.features),np.float32)
         self.global_weights = np.zeros_like(self.global_cross)
@@ -65,7 +69,6 @@ class LongTermCortex:
         return (np.add.reduceat(x,starts)/np.minimum(self.group,self.width-starts)).astype(np.float32)
 
     def _key(self,x,action):
-        from .organ import LokiMemory
         projected = self._pool(x-.5) @ self.projection
         latent = projected[:8]*3
         angles = projected[8:]
@@ -96,7 +99,6 @@ class LongTermCortex:
         return result.clip(0,1)
 
     def _wave(self,x,action):
-        from .organ import LokiMemory
         angles = np.r_[self._pool(x-.5),LokiMemory._motor(action)] @ self.phase_projection
         co,si = np.cos(angles),np.sin(angles)
         n = self.modes
@@ -115,7 +117,6 @@ class LongTermCortex:
         return output,wave,tag,read
 
     def _global_key(self,x,action,b):
-        from .organ import LokiMemory
         motor = LokiMemory._motor(action)
         drive = np.r_[1.,motor,motor[0]*motor[1]]
         cue = self._pool(x-.5) @ self.global_projection
@@ -188,7 +189,6 @@ class LongTermCortex:
             self.activity[1] = min(2*self.modes,self.activity[1]+1)
         if self.selective and error<.025 and salient<.08:
             return False
-        phi,regions,mix = key
         if self.global_gram[0,0]>16384:
             self.global_gram *= .5
             self.global_cross *= .5
@@ -275,8 +275,17 @@ class CorticalMemory:
     def predict_effect(self,a,b):
         return self.predict(a)-self.predict(b)
 
+    def recall_episode(self,action):
+        baseline = self.core.imagine([action])
+        if not self.observed:
+            return baseline
+        return self.cortex.recall_episode(self.core.imagine(),action,baseline)
+
     def observe(self,frame,action=None,*,visible=None,integrity_change=0.):
         written = False
+        if visible is not None:
+            # Validate even an all-true mask before the cortex can be mutated.
+            self.core._sense(frame,visible)
         complete = visible is None or np.all(visible)
         if self.observed and complete and action is not None:
             written = self.cortex.imprint(self.core.imagine(),action,frame,self.core.imagine([action]),
@@ -292,3 +301,33 @@ class CorticalMemory:
     def advance(self,action):
         self.observed = False
         return self.core.advance(action)
+
+    def save(self,path,*,binding=""):
+        """Atomically publish one consistent core/field checkpoint between steps."""
+        path = Path(path)
+        with tempfile.TemporaryDirectory(dir=path.parent) as tmp:
+            folder = Path(tmp)
+            self.core.save(folder/"core.npz",binding=binding)
+            self.cortex.save(folder/"cortex.npz",binding=binding)
+            archive = folder/"memory.zip"
+            with zipfile.ZipFile(archive,"w",compression=zipfile.ZIP_STORED) as out:
+                for name in ("core.npz","cortex.npz"):
+                    out.write(folder/name,name)
+                out.writestr("observed",str(int(self.observed)))
+            with archive.open("rb+") as out:
+                os.fsync(out.fileno())
+            os.replace(archive,path)
+
+    @classmethod
+    def load(cls,path,*,binding=""):
+        with zipfile.ZipFile(path) as src:
+            with src.open("core.npz") as stream:
+                core = LokiMemory.load(stream,binding=binding)
+            with src.open("cortex.npz") as stream:
+                cortex = LongTermCortex.load(stream,binding=binding)
+            flag = src.read("observed")
+            if flag not in (b"0",b"1"):
+                raise ValueError("invalid observation boundary")
+        model = cls(core,cortex)
+        model.observed = flag==b"1"
+        return model

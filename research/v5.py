@@ -2,6 +2,8 @@
 import argparse
 from copy import deepcopy
 import json
+import os
+import platform
 from pathlib import Path
 import subprocess
 import sys
@@ -70,7 +72,7 @@ class Trial:
         b = self.core.recall(x,self.mask,[a],carry=False)
         result = dict(v4=b,last=x)
         result.update({k:(c.recall_episode(x,a,b) if episodic else c.predict(x,a,b)) for k,c in self.fields.items()})
-        result.update({"fifo_"+k:(c.recall_episode(x,a,b) if episodic else c.predict(x,a,b)) for k,c in self.fifos.items()})
+        result.update({"fifo_"+k:c.predict(x,a,b) for k,c in self.fifos.items()})
         result["priority_fifo"] = self.priority.predict(x,a,b)
         return result
 
@@ -184,16 +186,22 @@ def rooms():
     return dict(rows=results,revisited=scores,writes=trial.writes,trained=trial.count)
 
 
-def gates(rows,metric,needed):
+def gates(rows,metric,needed,controls=("v4","fifo_r16"),minimum=.1):
     result = {}
-    for k in ("v4","fifo_r16"):
+    for k in controls:
         ours = np.array([r["scores"][metric]["r16"] for r in rows])
         other = np.array([r["scores"][metric][k] for r in rows])
         wins = int(sum(ours<other))
         reduction = float(1-ours.mean()/other.mean())
         result[k] = dict(mean=float(ours.mean()),baseline=float(other.mean()),wins=wins,reduction=reduction,
-                         passed=wins>=needed and reduction>=.1)
+                         passed=wins>=needed and reduction>=minimum)
     return result
+
+
+def structured_result(rows):
+    verdict = {k:gates(rows,k,3) for k in ("early","novel")}
+    verdict["exception"] = gates(rows,"exception",4,("wave_off",),.3)
+    return dict(rows=rows,gates=verdict)
 
 
 def timing():
@@ -206,13 +214,27 @@ def timing():
     m.observe(x)
     m.observe(1-x,0)
     c.sleep()
-    times={k:[] for k in ("core","combined","cortex","core_observe","combined_observe","sleep")}
+    # Populate the deployed field before timing. No evaluator replay buffer is used.
+    for i in range(24000):
+        y = rng.uniform(.2,.8,96).astype(np.float32)
+        c.imprint(x,i%5,y,x)
+        if i%256==255:
+            c.sleep()
+        x=y
+    c.sleep()
+    fifo=Buffer(96,c.state_bytes)
+    for i in range(len(fifo.keys)):
+        y=rng.random(96,dtype=np.float32)
+        fifo.add(x,i%5,y)
+        x=y
+    times={k:[] for k in ("core","combined","episode_recall","cortex","fifo_lookup","core_observe","combined_observe","sleep")}
     single=deepcopy(core)
     for i in range(600):
         a=i%5
         y=rng.random(96,dtype=np.float32)
         for name,call in (("core",lambda:core.imagine([a])),("combined",lambda:m.predict(a)),
-                          ("cortex",lambda:c.predict(x,a,x)),("core_observe",lambda:single.observe(y,a)),
+                          ("episode_recall",lambda:m.recall_episode(a)),("cortex",lambda:c.predict(x,a,x)),
+                          ("fifo_lookup",lambda:fifo.predict(x,a,x)),("core_observe",lambda:single.observe(y,a)),
                           ("combined_observe",lambda:m.observe(y,a)),("sleep",lambda:c.sleep())):
             before=perf_counter()
             call()
@@ -228,7 +250,9 @@ def timing():
             resources[str(n)]=dict(array_bytes=c.state_bytes,file_bytes=path.stat().st_size,
                                    fifo_capacity=len(fifo.keys),fifo_bytes=sum(v.nbytes for v in vars(fifo).values()
                                    if isinstance(v,np.ndarray))+16)
-    return dict(ms={k:np.percentile(v[20:],[50,95]).tolist() for k,v in times.items()},
+    return dict(preloaded_events=24000,samples=580,warmup=20,python=platform.python_version(),numpy=np.__version__,
+                platform=platform.platform(),openblas_threads=os.environ.get("OPENBLAS_NUM_THREADS"),
+                ms={k:np.percentile(v[20:],[50,95]).tolist() for k,v in times.items()},
                 resources=resources,core_bytes=core.state_bytes)
 
 
@@ -242,10 +266,11 @@ if __name__=="__main__":
             write("v5_final_seed_"+str(args.seed),structured(args.seed))
         else:
             rows=[structured(s) for s in range(6501,6505)]
-            write("v5_final_structured",dict(rows=rows,gates={k:gates(rows,k,3) for k in ("early","novel")}))
+            write("v5_final_structured",structured_result(rows))
     elif args.task=="rooms":
         result=rooms()
         result["gates"]={k:gates(result["rows"],k,10) for k in ("novel","effect")}
+        result["gates"]["effect"].update(gates(result["rows"],"effect",10,("v4_paired",)))
         write("v5_final_rooms",result)
     else:
         write("v5_final_timing",timing())

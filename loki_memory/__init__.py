@@ -1,4 +1,6 @@
 """Bounded local sensory memory."""
 from .organ import LokiMemory
 
-__all__ = ["LokiMemory"]
+from .cortex import CorticalMemory, LongTermCortex
+
+__all__ = ["LokiMemory", "LongTermCortex", "CorticalMemory"]

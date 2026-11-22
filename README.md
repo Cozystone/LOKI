@@ -1,4 +1,33 @@
-# LOKI Memory v4
+# LOKI Memory
+
+LOKI는 몸의 감각과 행동에서 다음 변화를 배우는 로컬 기억기관이다. **v4**는 256 KiB 이하의 코어로 시간과 행동을 적분한다. **v5**는 코어에 선택적으로 연결하는 실험용 장기 피질이다. 반복되는 변화는 회귀 계수에, 한 번 겪은 큰 놀람은 공유 푸리에 장에 남긴다. 과거 프레임이나 사건별 키를 보관하지 않는다.
+
+## v5 장기 기억 사용
+
+96성분 감각에서 기본 피질의 수치 배열은 **1.43 MiB**다. 24,000번 쓴 상태에서 코어와 피질을 함께 읽는 데 이 개발용 CPU에서 p95 **0.76 ms**가 들었다. ATANOR 새 방 12개의 다음 시야 MSE는 v4보다 **7.9%** 낮았다. 사전에 정한 10% 기준에 미달해 공간 행동의 기본 경로는 계속 v4를 사용한다. 같은 방에서 측정한 전진 효과와 독립 사건을 많이 겹쳤을 때의 용량 한계는 [v5 결과](V5_RESULTS.md)에 있다.
+
+```python
+import numpy as np
+from loki_memory import CorticalMemory, LokiMemory, LongTermCortex
+
+memory = CorticalMemory(LokiMemory(96), LongTermCortex(96))
+x = np.linspace(0.2, 0.8, 96, dtype=np.float32)
+memory.observe(x)
+expected = memory.predict(2)                   # 행동 전에 후보 결과를 읽는다
+memory.observe(1-x, 2, integrity_change=-0.2)   # 몸이 실제 측정한 변화
+memory.cortex.sleep()                          # 유휴 시간에 누적 회귀를 푼다
+memory.cut()
+memory.observe(x)
+remembered = memory.recall_episode(2)           # 같은 단서에서 겪었던 이례적 결과
+memory.save("memory.zip", binding="body-v1")
+restored = CorticalMemory.load("memory.zip", binding="body-v1")
+```
+
+이 예제의 온전함 변화는 사용법을 보여주는 입력이다. 실기기에서는 몸에서 얻은 값만 전달하며, 측정값이 없으면 생략한다. 여러 행동을 비교할 때는 각 후보에 `predict`를 호출한다. 실행한 행동만 다음 관측과 함께 `observe`에 넘긴다. `advance`는 암전 한 박자, `cut`은 서로 이어지지 않는 경험의 경계를 뜻한다. 피질의 작업 위치는 RAM이고 디스크 파일은 재시작용이다.
+
+[최초 사전등록](V5_PROTOCOL.md) · [예외 기억 가설](V5_REVISION.md) · [최종 사전등록](V5_FINAL_PROTOCOL.md) · [수학과 저장 형식](V5_THEORY.md) · [대조 실험·재현 명령](V5_RESULTS.md)
+
+## v4 코어와 전진 효과
 
 LOKI는 감각과 행동에서 배우는 로컬 기억기관이다. v4가 답하려는 질문은 “같은 장면에서 같은 순서로 돌되, 멈춰 있던 몇 박자에 앞으로 걸었다면 마지막에 보이는 무엇이 달라질까?”이다. 두 계획을 같은 출발 상태에 주면 각 시야 성분이 얼마나 커지거나 작아질지 부호 있는 벡터로 반환한다.
 
