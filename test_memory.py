@@ -79,6 +79,59 @@ class FieldTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adapter.step([rgb,audio],15)
 
+    def test_chart_rollout_resume_and_missing_observations(self):
+        rng = np.random.default_rng(42)
+        grid = (4,8,3)
+        model = LokiMemory(100,grid_shape=grid)
+        for i in range(20):
+            model.observe(rng.random(100,dtype=np.float32),i%4)
+        state = model.matrix.copy()
+        plan = [0,3,1,1,0,2]*4
+        expected = model.imagine(plan)
+        np.testing.assert_array_equal(model.matrix,state)
+        for a in plan[:5]:
+            model.advance(a)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"grid.npz"
+            model.save(path)
+            restored = LokiMemory.load(path)
+            for a in plan[5:]:
+                result = restored.advance(a)
+        np.testing.assert_array_equal(result,expected)
+        old_chart = model._part("chart").copy()
+        old_retina = model._part("retina").copy()
+        expected_affine = model._affine_step(model._part("affine"),1)
+        cue = np.full(100,np.nan)
+        cue[0] = .7
+        model.observe(cue,1,visible=np.isfinite(cue))
+        np.testing.assert_array_equal(old_chart,model._part("chart"))
+        np.testing.assert_array_equal(old_retina,model._part("retina"))
+        np.testing.assert_array_equal(expected_affine,model._part("affine"))
+
+    def test_delta_is_independent_of_live_state(self):
+        rng = np.random.default_rng(81)
+        m = LokiMemory(360)
+        base = rng.uniform(-.35,.35,m.width).astype(np.float32)
+        for t in range(55):
+            m.observe(.5+np.sin(t*.3)*base,t%3)
+        mask = np.arange(m.width)%3==0
+        cue = np.where(mask,base,np.nan)
+        predicted = m.predict_change(cue,mask)
+        for a in (0,1,1,2):
+            m.advance(a)
+        m.cut()
+        np.testing.assert_array_equal(predicted,m.predict_change(cue,mask))
+        self.assertLess(np.mean((predicted[~mask]-base[~mask])**2),np.mean(base[~mask]**2))
+
+    def test_all_visible_and_implicit_masks_match(self):
+        rng = np.random.default_rng(8)
+        models = [LokiMemory(96,grid_shape=(4,8,3)) for _ in range(2)]
+        for t in range(7):
+            x = rng.random(96,dtype=np.float32)
+            models[0].observe(x,t)
+            models[1].observe(x,t,visible=np.ones(96,bool))
+        np.testing.assert_array_equal(models[0].matrix,models[1].matrix)
+
 
 if __name__=="__main__":
     unittest.main()

@@ -15,7 +15,8 @@ class LokiMemory:
         f = self.features = (width+self.group-1)//self.group
         r = self.rank = min(f, 20 if f<=256 else 6)
         self.grid_shape = () if grid_shape is None else tuple(grid_shape)
-        if self.grid_shape and (len(self.grid_shape)!=3 or min(self.grid_shape)<1
+        if self.grid_shape and (len(self.grid_shape)!=3
+                or any(not isinstance(v,(int,np.integer)) or v<1 for v in self.grid_shape)
                 or self.grid_shape[1]<2 or np.prod(self.grid_shape)>width or self.group!=1):
             raise ValueError("grid_shape must describe an unpooled HWC sensor suffix")
         self.bands = 12
@@ -224,12 +225,19 @@ class LokiMemory:
                  self._part("chart"),float(self._part("origin")[0]),*affine)
         return x
 
-    def _see_grid(self,x,action,complete):
+    def _see_grid(self,x,action,mask):
         flags = self._part("control")
         origin = self._part("origin")
         chart = self._part("chart")
         affine = self._part("affine")
         retinal = self._part("retina")
+        seen = None if mask is None else self._grid(mask)
+        if seen is not None and not seen.any():
+            if flags[0] and action is not None:
+                affine[:] = self._affine_step(affine,action)
+            self._image(x,retinal,affine)
+            return
+        complete = seen is None or seen.all()
         if flags[0] and action is not None:
             moved = self._affine_step(affine,action)
             if flags[1] and complete:
@@ -253,17 +261,20 @@ class LokiMemory:
         else:
             moved = np.zeros(3)
         retinal[:] = self._grid(x)
-        transport.deposit(chart,retinal,float(origin[0]),moved[1])
+        if complete:
+            transport.deposit(chart,retinal,float(origin[0]),moved[1])
         affine.fill(0)
 
     def observe(self,frame,action=None,*,visible=None):
         x,mask = self._sense(frame,visible)
+        if visible is not None and np.all(visible):
+            mask = None
         u = None if action is None else self._motor(action)
         self._write(x,mask)
         if mask is not None:
             x = np.where(mask,x,self._decoder@self._h).clip(-.5,.5)
         if self.grid_shape:
-            self._see_grid(x,action,mask is None)
+            self._see_grid(x,action,mask)
         control = self._part("control")
         anchor,traces = self._part("anchor"),self._part("traces")
         if u is not None and control[0]:

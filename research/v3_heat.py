@@ -48,12 +48,21 @@ def blind_inner(model, start, plan):
     return y.numpy().ravel().clip(0,1)
 
 
-def world(seed,v2):
+class ExponentialsOnly(LokiMemory):
+    def _tick(self,traces,u):
+        result = super()._tick(traces,u)
+        result[5:] = 0
+        return result
+
+
+def world(seed,v2,*,ablate=False):
     rng = np.random.default_rng(seed)
     wiring = rng.normal(size=(64,4))
     wiring /= np.abs(wiring).sum(axis=1,keepdims=True)
     wiring[32] = [0,0,0,1]
     models = {"v2":v2(64),"v3":LokiMemory(64)}
+    if ablate:
+        models["exp_only"] = ExponentialsOnly(64)
     streams = []
     for _ in range(6):
         plant = Plant(rng,wiring)
@@ -104,7 +113,7 @@ def world(seed,v2):
         trials = [v for v in rows if v["kind"]==kind]
         for metric in ("difference","endpoint","sign"):
             scores = {}
-            for name in ("v2","v3","last","inner"):
+            for name in (*models,"last","inner"):
                 if metric=="endpoint":
                     data = [(a[name]-a["truth"])**2 for v in trials for a in v["arms"]]
                 else:

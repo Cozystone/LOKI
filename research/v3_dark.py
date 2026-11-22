@@ -41,13 +41,13 @@ def score(seed,models,trained,ref):
                 horizon={k:np.array(v).reshape(4,20).mean(axis=0).tolist() for k,v in outputs.items()})
 
 
-def run(seeds=range(3101,3113),file="v3_dark", *, lattice=False):
+def trained_models(lattice=False,controls=4):
     _,_,_,ref,_ = setup()
     from atanor_os.emerge.inner import Inner
     torch.manual_seed(803)
     torch.set_num_threads(1)
-    inner = Inner(96,4,h=32)
-    training = [compound(s,208) for s in range(1,13)]
+    inner = Inner(96,controls,h=32)
+    training = [compound(s,208,controls) for s in range(1,13)]
     ref.train_inner(inner,training,500,803)
     models = {"v2":prior_version()(96),"v3":LokiMemory(96)}
     if lattice:
@@ -60,6 +60,11 @@ def run(seeds=range(3101,3113),file="v3_dark", *, lattice=False):
         for target,a in zip(frames[1:],acts):
             for m in models.values():
                 m.observe(target,int(a))
+    return models,inner,ref
+
+
+def run(seeds=range(3101,3113),file="v3_dark", *, lattice=False):
+    models,inner,ref = trained_models(lattice)
     rows = [score(s,models,inner,ref) for s in seeds]
     gates = {k:compare(rows,k,("inner","v2","last"),.1,10) for k in ("whole","late")}
     write(file,dict(rows=rows,gates=gates,passed=all(v["passed"] for g in gates.values() for v in g.values())))

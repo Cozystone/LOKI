@@ -1,0 +1,21 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.12",
+  "numpy": "2.4.6",
+  "bytes_seen": 1073741824,
+  "frames": 4096,
+  "field_bytes": 259992,
+  "wall_seconds": 2.6263971000153106,
+  "observe_seconds": 2.263813000114169,
+  "mean_observe_ms": 0.5526887207309983,
+  "rss_before": 43565056,
+  "rss_after": 48709632,
+  "transient_write_peak": 462172,
+  "layouts": {
+    "64": 113920,
+    "96": 129792,
+    "1920": 255360,
+    "1964": 259392,
+    "65536": 259992
+  }
+}

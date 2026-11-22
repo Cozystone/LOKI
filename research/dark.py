@@ -5,7 +5,7 @@ from loki_memory import LokiMemory
 from .reference import mse, setup, write
 
 
-def compound(seed, length):
+def compound(seed, length, controls=4):
     from atanor_os.emerge.room3d_gpu import World
     from atanor_os.emerge.room_vary import make_room
     rng = np.random.default_rng(seed)
@@ -15,9 +15,9 @@ def compound(seed, length):
     action = 0
     for t in range(length):
         if rng.random() < .42:
-            action = int(rng.integers(4))
+            action = int(rng.integers(controls))
         actions.append(action)
-        w.step(torch.tensor([action+1]))  # forward, turn in two directions, use
+        w.step(torch.tensor([(action+1)%5]))  # forward, turn in two directions, use
         frames.append(w.picture(8,4).numpy().ravel())
     return np.stack(frames), np.array(actions)
 
