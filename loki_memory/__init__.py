@@ -12,4 +12,6 @@ from .episodic import EpisodeMemory
 
 from .episode_graph import GraphMemory
 
-__all__ = ["LokiMemory", "LongTermCortex", "CorticalMemory", "ReverseMemory", "PortableMemory", "ContextMemory", "Transition", "BodyMemory", "EpisodeMemory", "GraphMemory"]
+from .belief import BeliefModel
+
+__all__ = ["BeliefModel", "LokiMemory", "LongTermCortex", "CorticalMemory", "ReverseMemory", "PortableMemory", "ContextMemory", "Transition", "BodyMemory", "EpisodeMemory", "GraphMemory"]

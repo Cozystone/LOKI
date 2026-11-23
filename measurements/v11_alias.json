@@ -1,0 +1,1160 @@
+{
+ "0": [
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  }
+ ],
+ "1": [
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    1.0,
+    1.0
+   ],
+   "entropy": -0.0,
+   "collapsed": 1.0,
+   "splits": 0,
+   "false_merge": 1,
+   "precision": 0.5,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.5
+  }
+ ],
+ "2": [
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 0.5,
+   "False": 0.5,
+   "mass": [
+    0.33326661586761475,
+    0.9993993639945984
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  },
+  {
+   "True": 1.0,
+   "False": 1.0,
+   "mass": [
+    0.9993993639945984,
+    0.33326661586761475
+   ],
+   "entropy": 1.3862943649291992,
+   "collapsed": 0.0,
+   "splits": 3,
+   "false_merge": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "nearest_mass": 0.5,
+   "cf_missing_mass": 0.33016419410705566
+  }
+ ]
+}

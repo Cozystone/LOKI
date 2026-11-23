@@ -1,0 +1,650 @@
+[
+ {
+  "seed": 12701,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12702,
+  "ordinary_source": 0.9375,
+  "robust_source": 1.0,
+  "local": [
+   1,
+   [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  ]
+ },
+ {
+  "seed": 12703,
+  "ordinary_source": 0.875,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12704,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12705,
+  "ordinary_source": 0.875,
+  "robust_source": 0.875,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12706,
+  "ordinary_source": 0.875,
+  "robust_source": 0.875,
+  "local": [
+   1,
+   [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  ]
+ },
+ {
+  "seed": 12707,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12708,
+  "ordinary_source": 1.0,
+  "robust_source": 1.0,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12709,
+  "ordinary_source": 0.8125,
+  "robust_source": 0.875,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12710,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.875,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12711,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12712,
+  "ordinary_source": 0.875,
+  "robust_source": 0.75,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12713,
+  "ordinary_source": 0.875,
+  "robust_source": 0.875,
+  "local": [
+   1,
+   [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  ]
+ },
+ {
+  "seed": 12714,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12715,
+  "ordinary_source": 1.0,
+  "robust_source": 1.0,
+  "local": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12716,
+  "ordinary_source": 0.75,
+  "robust_source": 0.625,
+  "local": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12717,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12718,
+  "ordinary_source": 0.875,
+  "robust_source": 0.9375,
+  "local": [
+   0,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12719,
+  "ordinary_source": 0.8125,
+  "robust_source": 0.6875,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12720,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.875,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12721,
+  "ordinary_source": 0.8125,
+  "robust_source": 0.75,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12722,
+  "ordinary_source": 1.0,
+  "robust_source": 1.0,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12723,
+  "ordinary_source": 0.9375,
+  "robust_source": 0.9375,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ },
+ {
+  "seed": 12724,
+  "ordinary_source": 0.8125,
+  "robust_source": 0.8125,
+  "local": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ],
+  "propagated": [
+   1,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  ]
+ }
+]

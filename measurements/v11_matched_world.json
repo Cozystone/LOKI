@@ -1,0 +1,294 @@
+{
+ "sealed": [
+  {
+   "seed": 12401,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12402,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12403,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12404,
+   "novel": 1,
+   "v10": 1,
+   "random": 1
+  },
+  {
+   "seed": 12405,
+   "novel": 1,
+   "v10": 1,
+   "random": 1
+  },
+  {
+   "seed": 12406,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12407,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12408,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12409,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12410,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12411,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12412,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12413,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12414,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12415,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12416,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12417,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12418,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12419,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12420,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12421,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12422,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 12423,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 12424,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  }
+ ],
+ "holdout": [
+  {
+   "seed": 13701,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13702,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13703,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13704,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 13705,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13706,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13707,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13708,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 13709,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13710,
+   "novel": 1,
+   "v10": 1,
+   "random": 1
+  },
+  {
+   "seed": 13711,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 13712,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13713,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13714,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13715,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 13716,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13717,
+   "novel": 1,
+   "v10": 1,
+   "random": 1
+  },
+  {
+   "seed": 13718,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13719,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13720,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  },
+  {
+   "seed": 13721,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13722,
+   "novel": 1,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13723,
+   "novel": 0,
+   "v10": 0,
+   "random": 0
+  },
+  {
+   "seed": 13724,
+   "novel": 1,
+   "v10": 1,
+   "random": 0
+  }
+ ]
+}
