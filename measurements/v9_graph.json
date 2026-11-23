@@ -1,0 +1,38 @@
+[
+  {
+    "ordinal_correct": 192,
+    "effect_correct": 52,
+    "trials": 64,
+    "disk_growth": 299008,
+    "write_ms": 0.6168,
+    "read_ms": 0.3982,
+    "state_bytes": 261968
+  },
+  {
+    "ordinal_correct": 192,
+    "effect_correct": 49,
+    "trials": 64,
+    "disk_growth": 299008,
+    "write_ms": 0.588765625,
+    "read_ms": 0.39385,
+    "state_bytes": 261968
+  },
+  {
+    "ordinal_correct": 192,
+    "effect_correct": 55,
+    "trials": 64,
+    "disk_growth": 299008,
+    "write_ms": 0.5665,
+    "read_ms": 0.40875,
+    "state_bytes": 261968
+  },
+  {
+    "ordinal_correct": 192,
+    "effect_correct": 48,
+    "trials": 64,
+    "disk_growth": 299008,
+    "write_ms": 0.611890625,
+    "read_ms": 0.43235,
+    "state_bytes": 261968
+  }
+]

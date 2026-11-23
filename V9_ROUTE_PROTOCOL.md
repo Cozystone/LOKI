@@ -1,0 +1,2 @@
+# Additional route hypothesis after observing blind latent rollout 0/24
+Conditionally use an experienced route when a separate unlabeled exploration stream supplies evidence for reversible action pairs. Infer reverse commands by frequent visual return after two consecutive nonstationary actions. Use stored predecessor links at recall; no hand-coded inverse, position, heading or trial steps. Test on the original 24 mazes, same and 180-degree-changed starting heading, report both; this is route replay, distinct from navigation to novel goals.

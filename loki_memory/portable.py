@@ -166,6 +166,7 @@ class PortableMemory:
                 self._check(db)
                 self._awake = True
                 stream = self._window(self._field, self._past)
+                stream.db = db
                 try:
                     yield stream
                     if stream.dirty:

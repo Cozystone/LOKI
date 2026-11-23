@@ -8,4 +8,8 @@ from .contextual import ContextMemory, Transition
 
 from .body import BodyMemory
 
-__all__ = ["LokiMemory", "LongTermCortex", "CorticalMemory", "ReverseMemory", "PortableMemory", "ContextMemory", "Transition", "BodyMemory"]
+from .episodic import EpisodeMemory
+
+from .episode_graph import GraphMemory
+
+__all__ = ["LokiMemory", "LongTermCortex", "CorticalMemory", "ReverseMemory", "PortableMemory", "ContextMemory", "Transition", "BodyMemory", "EpisodeMemory", "GraphMemory"]

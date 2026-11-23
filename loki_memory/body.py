@@ -37,9 +37,12 @@ class _BodyWindow(_Window):
         history = np.stack((pending.anchor[768:], pending.action, signals))
         key = self._field.key(Transition(frame, history))
         self.dirty = True
-        self._field.write_key(key, pending.anchor)
+        self._learn(key, pending, frame, signals)
         self.past = None
         return True
+
+    def _learn(self, key, pending, frame, signals):
+        self._field.write_key(key, pending.anchor)
 
     def observe(self, frame, signals=None):
         self._check()
