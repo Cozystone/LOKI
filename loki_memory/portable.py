@@ -46,7 +46,9 @@ class PortableField:
         return np.r_[np.cos(phase), np.sin(phase)] / np.float32(np.sqrt(self.modes))
 
     def write(self, frame, past):
-        key = self.key(frame)
+        self.write_key(self.key(frame), past)
+
+    def write_key(self, key, past):
         v = self.precision @ key
         gain = v / (1 + key @ v)
         self.weights += np.outer(gain, past - .5 - key @ self.weights)
@@ -88,6 +90,8 @@ def serialized(method):
 
 class PortableMemory:
     """Use the same physical database on both hosts. A stale writer cannot commit."""
+    field_type = PortableField
+
     def __init__(self, path, identity, body, epoch, field):
         self._lock = RLock()
         self._awake = False
@@ -110,7 +114,7 @@ class PortableMemory:
     def create(cls, path, body):
         body = cls._body(body)
         identity = uuid.uuid4().hex
-        field = PortableField()
+        field = cls.field_type()
         blob = field.data.tobytes()
         with transaction(path, create=True) as db:
             db.execute("CREATE TABLE loki7 (id TEXT PRIMARY KEY, body TEXT, epoch INTEGER, field BLOB, digest BLOB)")
@@ -127,7 +131,7 @@ class PortableMemory:
             epoch, blob, digest = row
             if hashlib.sha256(blob).digest() != digest:
                 raise ValueError("damaged field")
-            field = PortableField(blob)
+            field = cls.field_type(blob)
             db.execute("UPDATE loki7 SET epoch=epoch+1 WHERE id=?", (identity,))
         return cls(path, identity, body, epoch+1, field)
 
@@ -161,7 +165,7 @@ class PortableMemory:
             with transaction(self.path) as db:
                 self._check(db)
                 self._awake = True
-                stream = _Window(self._field, self._past)
+                stream = self._window(self._field, self._past)
                 try:
                     yield stream
                     if stream.dirty:
@@ -175,11 +179,15 @@ class PortableMemory:
                     # Discard uncommitted weights even after a partially applied fit.
                     if stream.dirty:
                         blob, = db.execute("SELECT field FROM loki7 WHERE id=?", (self.identity,)).fetchone()
-                        self._field = PortableField(blob)
+                        self._field = type(self).field_type(blob)
                     raise
                 finally:
                     stream.active = False
                     self._awake = False
+
+    @staticmethod
+    def _window(field, past):
+        return _Window(field, past)
 
     def observe(self, frame, signals=None):
         with self.wake() as stream:
