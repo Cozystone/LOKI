@@ -116,6 +116,22 @@ class ReverseMemory:
         key = self._wave(self._pool(x,4))
         return (.5 + key @ self.visual).reshape(16,16,3).clip(0,1)
 
+    def return_scores(self, cue, actions, glimpses=None):
+        """Rank candidate moves by their resemblance to the recalled predecessor."""
+        x = self._input(cue, (16,16,3))
+        past = self.recall(x)
+        actions = tuple(actions)
+        if not actions:
+            raise ValueError("at least one candidate is required")
+        if glimpses is not None:
+            if len(glimpses)!=len(actions):
+                raise ValueError("one real observation per candidate is required")
+            return np.array([-np.mean((self._input(g,(16,16,3))-past)**2) for g in glimpses])
+        cue4 = self._pool(x,4)
+        target = self._pool(past,2)-self._pool(x,2)
+        return np.array([-np.mean((self._wave(cue4,self.core._motor(a)) @ self.motor_map-target)**2)
+                         for a in actions])
+
     def pull(self, cue, levels, actions, *, base=None, use_path=True, use_sight=True):
         """Add recall-based differences to host action scores without advancing memory."""
         x = self._input(cue, (16,16,3))
