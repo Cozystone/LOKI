@@ -1,0 +1,2 @@
+# Revision 01 · correct local topology after a surprise
+Initial 180° 5/24, novel 8/24. Hypothesis: a frozen transition posterior repeatedly reroutes through a failed edge. On a low predictive mass (<.05) commit the actual observed transition and recompute action values. Keep observations, capacity, thresholds and acquisition frozen. Dev 11001+100 (overlaps prior sealed; use independent dev 10901 instead), sealed 11201..11224. Same thresholds. Evaluate frozen ablation on the new cohort.
