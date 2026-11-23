@@ -1,0 +1,31 @@
+{
+  "writes": [
+    {
+      "window": 1,
+      "windows": 256,
+      "write_ms_per_tick": 4.72606953125,
+      "commit_inclusive_window_p95_ms": 5.48015,
+      "logical_payload": 56721408
+    },
+    {
+      "window": 16,
+      "windows": 16,
+      "write_ms_per_tick": 0.410411328125,
+      "commit_inclusive_window_p95_ms": 10.576125000000001,
+      "logical_payload": 3545088
+    }
+  ],
+  "read_p50_p95_ms": [
+    [
+      0.0398,
+      0.063205
+    ],
+    [
+      0.0379,
+      0.0608
+    ]
+  ],
+  "max_signal_difference": 1.1920928955078125e-07,
+  "weights_bit_identical": true,
+  "rollback_bit_identical": true
+}
