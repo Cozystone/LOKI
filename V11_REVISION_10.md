@@ -1,0 +1,2 @@
+# Revision 10 · relative repeat cost
+Rev09 on held-out seeds meets orientation 21/24 but novel goals only 14/24. Hypothesis: absolute revisit penalties dominate discounted values for distant goals. Scale the revisit cost by the largest current goal value; otherwise freeze data, inference, planning budget. Dev 10001, sealed 12101..12124. Compare rev09 on same seeds and measure success, efficiency, errors. Also quantify achievable performance with full-state judge on supplied fragments.
