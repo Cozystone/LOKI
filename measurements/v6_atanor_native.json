@@ -1,0 +1,1007 @@
+{
+  "pin": "e4f401594f47de45e7eba7126813c31754eb1cf2",
+  "model": "room3d_ret6e.pt",
+  "sha256": "5fed86beb6f10deab1fe8caec4298e7ddb49983a306b7a7c53c221a948fcc023",
+  "trainable_params": 28192,
+  "relief_examples": 32,
+  "rows": [
+    {
+      "seed": 7301,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 9,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 9,
+          "scan_steps": 223
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 18,
+          "scan_steps": 108
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 18,
+          "scan_steps": 108
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 11
+        }
+      }
+    },
+    {
+      "seed": 7302,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 472
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 2,
+          "scan_steps": 317
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 23,
+          "scan_steps": 384
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7303,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 1,
+          "scan_steps": 286
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 22,
+          "scan_steps": 286
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 17,
+          "scan_steps": 260
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 13
+        }
+      }
+    },
+    {
+      "seed": 7304,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 8,
+          "scan_steps": 344
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 15,
+          "scan_steps": 288
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 17,
+          "scan_steps": 288
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7305,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 15,
+          "scan_steps": 141
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 7,
+          "scan_steps": 329
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 9,
+          "scan_steps": 352
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 11
+        }
+      }
+    },
+    {
+      "seed": 7306,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 13,
+          "scan_steps": 311
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 12,
+          "scan_steps": 228
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 24,
+          "scan_steps": 144
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7307,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 1,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 21,
+          "scan_steps": 279
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 21,
+          "scan_steps": 279
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 22,
+          "overrode_base": 22,
+          "scan_steps": 132
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 13
+        }
+      }
+    },
+    {
+      "seed": 7308,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 16,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 15,
+          "scan_steps": 201
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 16,
+          "scan_steps": 96
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 15,
+          "scan_steps": 201
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 10
+        }
+      }
+    },
+    {
+      "seed": 7309,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 26,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 26,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 26,
+          "overrode_base": 13,
+          "scan_steps": 247
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 26,
+          "overrode_base": 0,
+          "scan_steps": 156
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 26,
+          "overrode_base": 13,
+          "scan_steps": 247
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 15
+        }
+      }
+    },
+    {
+      "seed": 7310,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 11,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 144
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 23,
+          "scan_steps": 305
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 8,
+          "scan_steps": 305
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7311,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 4,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 18,
+          "scan_steps": 216
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 352
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 18,
+          "scan_steps": 216
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 11
+        }
+      }
+    },
+    {
+      "seed": 7312,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 0,
+          "scan_steps": 312
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 1,
+          "scan_steps": 247
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 5,
+          "scan_steps": 312
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 8
+        }
+      }
+    },
+    {
+      "seed": 7313,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 14,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 18,
+          "scan_steps": 234
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 8,
+          "scan_steps": 330
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 18,
+          "scan_steps": 234
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 11
+        }
+      }
+    },
+    {
+      "seed": 7314,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 23,
+          "scan_steps": 444
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 12,
+          "scan_steps": 383
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 23,
+          "scan_steps": 450
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7315,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 3,
+          "scan_steps": 292
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 0,
+          "scan_steps": 208
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 16,
+          "overrode_base": 9,
+          "scan_steps": 103
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 10
+        }
+      }
+    },
+    {
+      "seed": 7316,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 24,
+          "scan_steps": 468
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 23,
+          "scan_steps": 477
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 24,
+          "scan_steps": 479
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7317,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 2,
+          "scan_steps": 152
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 2,
+          "scan_steps": 152
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 12,
+          "scan_steps": 232
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 8
+        }
+      }
+    },
+    {
+      "seed": 7318,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 305
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 305
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 24,
+          "scan_steps": 294
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    },
+    {
+      "seed": 7319,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 2,
+          "scan_steps": 235
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 0,
+          "scan_steps": 120
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 20,
+          "scan_steps": 190
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 12
+        }
+      }
+    },
+    {
+      "seed": 7320,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 10,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 2,
+          "scan_steps": 118
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 1,
+          "scan_steps": 209
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 12,
+          "overrode_base": 10,
+          "scan_steps": 155
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 8
+        }
+      }
+    },
+    {
+      "seed": 7321,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 19,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 20,
+          "scan_steps": 260
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 20,
+          "scan_steps": 260
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 20,
+          "overrode_base": 19,
+          "scan_steps": 314
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 12
+        }
+      }
+    },
+    {
+      "seed": 7322,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 14,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 14,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 14,
+          "overrode_base": 0,
+          "scan_steps": 175
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 14,
+          "overrode_base": 0,
+          "scan_steps": 175
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 14,
+          "overrode_base": 14,
+          "scan_steps": 175
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 9
+        }
+      }
+    },
+    {
+      "seed": 7323,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 17,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 0,
+          "scan_steps": 352
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 2,
+          "scan_steps": 343
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 18,
+          "overrode_base": 17,
+          "scan_steps": 336
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 11
+        }
+      }
+    },
+    {
+      "seed": 7324,
+      "flipped": false,
+      "results": {
+        "core": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "core_recall": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 0,
+          "scan_steps": 0
+        },
+        "scan": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 312
+        },
+        "scan_shuffled": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 1,
+          "scan_steps": 312
+        },
+        "scan_visual": {
+          "success": 0,
+          "decisions": 24,
+          "overrode_base": 14,
+          "scan_steps": 444
+        },
+        "oracle": {
+          "success": 1,
+          "decisions": 14
+        }
+      }
+    }
+  ],
+  "totals": {
+    "False": {
+      "core": {
+        "success": 0,
+        "decisions": 474,
+        "overrode_base": 0,
+        "scan_steps": 0
+      },
+      "core_recall": {
+        "success": 0,
+        "decisions": 474,
+        "overrode_base": 103,
+        "scan_steps": 0
+      },
+      "scan": {
+        "success": 0,
+        "decisions": 474,
+        "overrode_base": 210,
+        "scan_steps": 6523
+      },
+      "scan_shuffled": {
+        "success": 0,
+        "decisions": 474,
+        "overrode_base": 207,
+        "scan_steps": 6265
+      },
+      "scan_visual": {
+        "success": 0,
+        "decisions": 474,
+        "overrode_base": 393,
+        "scan_steps": 6355
+      },
+      "oracle": {
+        "success": 24,
+        "decisions": 285
+      }
+    }
+  }
+}

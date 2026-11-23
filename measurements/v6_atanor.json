@@ -12,17 +12,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -33,17 +36,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -54,17 +60,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -75,17 +84,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -96,17 +108,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 7
+          "overrode_base": 7,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         }
       }
     },
@@ -117,17 +132,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 10
+          "overrode_base": 10,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 7
+          "overrode_base": 7,
+          "scan_steps": 0
         }
       }
     },
@@ -138,17 +156,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 8
+          "overrode_base": 8,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 8
+          "overrode_base": 8,
+          "scan_steps": 0
         }
       }
     },
@@ -159,17 +180,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 14
+          "overrode_base": 14,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         }
       }
     },
@@ -180,17 +204,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 14
+          "overrode_base": 14,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 7
+          "overrode_base": 7,
+          "scan_steps": 0
         }
       }
     },
@@ -201,17 +228,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 14
+          "overrode_base": 14,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 8
+          "overrode_base": 8,
+          "scan_steps": 0
         }
       }
     },
@@ -222,17 +252,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 15
+          "overrode_base": 15,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 20
+          "overrode_base": 20,
+          "scan_steps": 0
         }
       }
     },
@@ -243,17 +276,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 19
+          "overrode_base": 19,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 19
+          "overrode_base": 19,
+          "scan_steps": 0
         }
       }
     },
@@ -264,17 +300,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 12
+          "overrode_base": 12,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 3
+          "overrode_base": 3,
+          "scan_steps": 0
         }
       }
     },
@@ -285,17 +324,20 @@
         "core": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 14,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -306,17 +348,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 21
+          "overrode_base": 21,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 23
+          "overrode_base": 23,
+          "scan_steps": 0
         }
       }
     },
@@ -327,17 +372,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 22
+          "overrode_base": 22,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 22
+          "overrode_base": 22,
+          "scan_steps": 0
         }
       }
     },
@@ -348,17 +396,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 20
+          "overrode_base": 20,
+          "scan_steps": 0
         }
       }
     },
@@ -369,17 +420,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 20
+          "overrode_base": 20,
+          "scan_steps": 0
         }
       }
     },
@@ -390,17 +444,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -411,17 +468,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 2
+          "overrode_base": 2,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 17
+          "overrode_base": 17,
+          "scan_steps": 0
         }
       }
     },
@@ -432,17 +492,20 @@
         "core": {
           "success": 0,
           "decisions": 22,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 22,
-          "overrode_base": 21
+          "overrode_base": 21,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 22,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -453,17 +516,20 @@
         "core": {
           "success": 0,
           "decisions": 22,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 22,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 22,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -474,17 +540,20 @@
         "core": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -495,17 +564,20 @@
         "core": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 2
+          "overrode_base": 2,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 2
+          "overrode_base": 2,
+          "scan_steps": 0
         }
       }
     },
@@ -516,17 +588,20 @@
         "core": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -537,17 +612,20 @@
         "core": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 8
+          "overrode_base": 8,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -558,17 +636,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -579,17 +660,20 @@
         "core": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 20,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -600,17 +684,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 12
+          "overrode_base": 12,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 12
+          "overrode_base": 12,
+          "scan_steps": 0
         }
       }
     },
@@ -621,17 +708,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 23
+          "overrode_base": 23,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         }
       }
     },
@@ -642,17 +732,20 @@
         "core": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 4
+          "overrode_base": 4,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 9
+          "overrode_base": 9,
+          "scan_steps": 0
         }
       }
     },
@@ -663,17 +756,20 @@
         "core": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -684,17 +780,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -705,17 +804,20 @@
         "core": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 11
+          "overrode_base": 11,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 24,
-          "overrode_base": 11
+          "overrode_base": 11,
+          "scan_steps": 0
         }
       }
     },
@@ -726,17 +828,20 @@
         "core": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 25
+          "overrode_base": 25,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 10
+          "overrode_base": 10,
+          "scan_steps": 0
         }
       }
     },
@@ -747,17 +852,20 @@
         "core": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -768,17 +876,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -789,17 +900,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 7
+          "overrode_base": 7,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 7
+          "overrode_base": 7,
+          "scan_steps": 0
         }
       }
     },
@@ -810,17 +924,20 @@
         "core": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 7
+          "overrode_base": 7,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -831,17 +948,20 @@
         "core": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 15
+          "overrode_base": 15,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 16,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         }
       }
     },
@@ -852,17 +972,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 18
+          "overrode_base": 18,
+          "scan_steps": 0
         }
       }
     },
@@ -873,17 +996,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -894,17 +1020,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -915,17 +1044,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 16
+          "overrode_base": 16,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 16
+          "overrode_base": 16,
+          "scan_steps": 0
         }
       }
     },
@@ -936,17 +1068,20 @@
         "core": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 12
+          "overrode_base": 12,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 1
+          "overrode_base": 1,
+          "scan_steps": 0
         }
       }
     },
@@ -957,17 +1092,20 @@
         "core": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 13
+          "overrode_base": 13,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 26,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -978,17 +1116,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         }
       }
     },
@@ -999,17 +1140,20 @@
         "core": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 0
+          "overrode_base": 0,
+          "scan_steps": 0
         },
         "core_recall": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 18
+          "overrode_base": 18,
+          "scan_steps": 0
         },
         "shuffled": {
           "success": 0,
           "decisions": 18,
-          "overrode_base": 18
+          "overrode_base": 18,
+          "scan_steps": 0
         }
       }
     }
@@ -1019,34 +1163,40 @@
       "core": {
         "success": 0,
         "decisions": 470,
-        "overrode_base": 0
+        "overrode_base": 0,
+        "scan_steps": 0
       },
       "core_recall": {
         "success": 0,
         "decisions": 470,
-        "overrode_base": 172
+        "overrode_base": 172,
+        "scan_steps": 0
       },
       "shuffled": {
         "success": 0,
         "decisions": 470,
-        "overrode_base": 148
+        "overrode_base": 148,
+        "scan_steps": 0
       }
     },
     "True": {
       "core": {
         "success": 0,
         "decisions": 470,
-        "overrode_base": 0
+        "overrode_base": 0,
+        "scan_steps": 0
       },
       "core_recall": {
         "success": 0,
         "decisions": 470,
-        "overrode_base": 211
+        "overrode_base": 211,
+        "scan_steps": 0
       },
       "shuffled": {
         "success": 0,
         "decisions": 470,
-        "overrode_base": 189
+        "overrode_base": 189,
+        "scan_steps": 0
       }
     }
   }

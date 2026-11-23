@@ -1,5 +1,23 @@
 # LOKI Memory
 
+## v6 · 과거 시야를 떠올려 돌아가기
+
+v6는 현재 감각에서 직전의 16×16 RGB 시야를 재구성한다. 코어와 회상 기관을 합쳐 252.375 KiB다. 새 1인칭 3D 미로에서 후진 가능한 몸은 실제 후보 시야를 확인하면 24/24 돌아왔지만, 내부 예측만으로는 0/24였다. ATANOR의 학습된 `room3d_ret6e.pt`로 시험했을 때도 코어 단독과 회상 결합이 모두 0/24였다. [사진 원본과 회상본](examples/v6-photo-recall.png) · [3D 미로 귀환 경로](examples/v6-maze.png) · [판정·Claude 전달문·재현](V6_RESULTS.md)
+
+다음 코드는 한 번 본 전이에서 과거 시야를 읽는다. `previous`와 `current`는 0~1로 정규화한 16×16×3 실제 카메라 배열이고 `levels`는 같은 시점에 측정한 두 몸 채널이다.
+
+```python
+from loki_memory import ReverseMemory
+
+memory = ReverseMemory()
+memory.observe(previous, levels)
+memory.observe(current, next_levels, action=1)
+memory.cut()
+past_image = memory.recall(current)
+```
+
+## v4 코어와 v5 장기 피질
+
 LOKI는 몸의 감각과 행동에서 다음 변화를 배우는 로컬 기억기관이다. **v4**는 256 KiB 이하의 코어로 시간과 행동을 적분한다. **v5**는 코어에 선택적으로 연결하는 실험용 장기 피질이다. 반복되는 변화는 회귀 계수에, 한 번 겪은 큰 놀람은 공유 푸리에 장에 남긴다. 과거 프레임이나 사건별 키를 보관하지 않는다.
 
 ## v5 장기 기억 사용

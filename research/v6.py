@@ -3,7 +3,6 @@ import argparse
 import json
 import platform
 from itertools import product
-from pathlib import Path
 from time import perf_counter_ns
 
 import numpy as np

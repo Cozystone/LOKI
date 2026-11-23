@@ -1,13 +1,6 @@
 """Physical return in a first-person 3D maze. Positions are evaluator-only."""
-import argparse
-import hashlib
-import os
 from collections import defaultdict
 from functools import lru_cache
-from pathlib import Path
-import subprocess
-import sys
-from types import SimpleNamespace
 
 import numpy as np
 from PIL import Image, ImageDraw
