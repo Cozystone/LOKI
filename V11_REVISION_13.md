@@ -1,0 +1,2 @@
+# Revision 13 · acquire uncertain action outcomes from observed belief
+Rev12 balanced actions at only 250 starting draws: even a judge with true pose lacked an experienced <=32-step path in 4/24 novel cases and 6/24 reversed cases. Restore 1000 independent blind resets, choose the least-sampled action under the current sensory posterior (random tie). Same total measurements, no pose and no candidate scan. Freeze everything else. Dev 9701; final 12401..12424. Random-action ablation on identical endpoints, even when less favorable. Full suite and independent holdout if passed.
