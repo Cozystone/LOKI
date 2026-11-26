@@ -1,0 +1,14 @@
+[
+  {
+    "events": 10000,
+    "file_bytes": 168948,
+    "state_bytes": 168832,
+    "elapsed_s": 5.34678319998784
+  },
+  {
+    "events": 10000000,
+    "file_bytes": 168948,
+    "state_bytes": 168832,
+    "elapsed_s": 69.93526749999728
+  }
+]

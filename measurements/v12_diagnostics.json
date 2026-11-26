@@ -1,0 +1,314 @@
+[
+ {
+  "seed": 18101,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.3195,
+   0.1559
+  ],
+  "foresee32_ms": 8.2172,
+  "twin": 1.0
+ },
+ {
+  "seed": 18102,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2339,
+   0.1535
+  ],
+  "foresee32_ms": 1.2312,
+  "twin": 1.0
+ },
+ {
+  "seed": 18103,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2325,
+   0.1503
+  ],
+  "foresee32_ms": 1.2587,
+  "twin": 1.0
+ },
+ {
+  "seed": 18104,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2354,
+   0.147
+  ],
+  "foresee32_ms": 1.2495,
+  "twin": 1.0
+ },
+ {
+  "seed": 18105,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2361,
+   0.147
+  ],
+  "foresee32_ms": 1.2281,
+  "twin": 1.0
+ },
+ {
+  "seed": 18106,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2274,
+   0.1466
+  ],
+  "foresee32_ms": 1.2326,
+  "twin": 1.0
+ },
+ {
+  "seed": 18107,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2336,
+   0.1522
+  ],
+  "foresee32_ms": 1.4764,
+  "twin": 1.0
+ },
+ {
+  "seed": 18108,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2262,
+   0.1496
+  ],
+  "foresee32_ms": 1.2441,
+  "twin": 1.0
+ },
+ {
+  "seed": 18109,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2279,
+   0.1436
+  ],
+  "foresee32_ms": 1.2236,
+  "twin": 1.0
+ },
+ {
+  "seed": 18110,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.226,
+   0.1465
+  ],
+  "foresee32_ms": 1.2243,
+  "twin": 1.0
+ },
+ {
+  "seed": 18111,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2231,
+   0.1451
+  ],
+  "foresee32_ms": 1.2268,
+  "twin": 1.0
+ },
+ {
+  "seed": 18112,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2241,
+   0.145
+  ],
+  "foresee32_ms": 1.2176,
+  "twin": 1.0
+ },
+ {
+  "seed": 18113,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.227,
+   0.152
+  ],
+  "foresee32_ms": 1.2654,
+  "twin": 1.0
+ },
+ {
+  "seed": 18114,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2367,
+   0.149
+  ],
+  "foresee32_ms": 1.2254,
+  "twin": 1.0
+ },
+ {
+  "seed": 18115,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.231,
+   0.1472
+  ],
+  "foresee32_ms": 1.2313,
+  "twin": 1.0
+ },
+ {
+  "seed": 18116,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2256,
+   0.1484
+  ],
+  "foresee32_ms": 1.234,
+  "twin": 1.0
+ },
+ {
+  "seed": 18117,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2164,
+   0.1477
+  ],
+  "foresee32_ms": 1.2204,
+  "twin": 1.0
+ },
+ {
+  "seed": 18118,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2085,
+   0.1454
+  ],
+  "foresee32_ms": 1.1933,
+  "twin": 1.0
+ },
+ {
+  "seed": 18119,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2333,
+   0.1498
+  ],
+  "foresee32_ms": 1.243,
+  "twin": 1.0
+ },
+ {
+  "seed": 18120,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2233,
+   0.1521
+  ],
+  "foresee32_ms": 1.218,
+  "twin": 1.0
+ },
+ {
+  "seed": 18121,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2254,
+   0.1459
+  ],
+  "foresee32_ms": 1.2218,
+  "twin": 1.0
+ },
+ {
+  "seed": 18122,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2352,
+   0.1443
+  ],
+  "foresee32_ms": 1.2252,
+  "twin": 1.0
+ },
+ {
+  "seed": 18123,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2428,
+   0.1592
+  ],
+  "foresee32_ms": 1.389,
+  "twin": 1.0
+ },
+ {
+  "seed": 18124,
+  "goals": [
+   true,
+   true
+  ],
+  "journeys_ms": [
+   0.2395,
+   0.149
+  ],
+  "foresee32_ms": 1.2294,
+  "twin": 1.0
+ }
+]
