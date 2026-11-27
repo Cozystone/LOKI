@@ -1,0 +1,581 @@
+{
+  "returns": [
+    -1,
+    -1
+  ],
+  "reversed_route": [
+    -1,
+    -1
+  ],
+  "nuisance": [
+    -1,
+    -1
+  ],
+  "beats": 45,
+  "first_contact": 19,
+  "first_bank": 0,
+  "mirror_bank": 1,
+  "approvals_before_contact": 14,
+  "last_support": 0.0,
+  "split": true,
+  "old_relief_before": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "old_relief_after": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "expected": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "fresh_ring": [
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0883,
+      "commit_max_ms": 1.0035,
+      "bytes": 96600,
+      "digest": "70d844b684ef154db263bb8ca01a8be71d6caaf700da3c023d1a574c4d6f45df"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07781999999999997,
+      "commit_max_ms": 0.7671,
+      "bytes": 96600,
+      "digest": "c7335db318b881a9a67065856b8f547694836445d18b7673e8e7122ff59adb88"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.75,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07272999999999998,
+      "commit_max_ms": 0.6837,
+      "bytes": 96600,
+      "digest": "b1d1c00c6248de07913f39c49933ae4c8cfc2416ca2728f1f3b923450c84cbfd"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07211999999999998,
+      "commit_max_ms": 0.8979,
+      "bytes": 96600,
+      "digest": "07117c3572d4ada1c89553e417eb97121a9e67729e3562f8da3a44be45b7d76f"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07331999999999998,
+      "commit_max_ms": 0.6812,
+      "bytes": 96600,
+      "digest": "dd3a838bb3311bee6dcfda7469ca6633a5bcc432bb3c342bdba7fecc16647f8e"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07381999999999998,
+      "commit_max_ms": 0.6738,
+      "bytes": 96600,
+      "digest": "d36ee5873c98740f5e4f59f6f0454ab0121670aafc43201dab71c9319c6b46e2"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.08504999999999978,
+      "commit_max_ms": 0.6835,
+      "bytes": 96600,
+      "digest": "3e22c41f5d8cb0927167df9c7b718d33ec2bf3bfb9ea665b776614b79a28daa1"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0763,
+      "commit_max_ms": 0.6917,
+      "bytes": 96600,
+      "digest": "73c8cc0f86ac9abdb9aa16524c4667bc68369f1d7bcc45afbae67ac9f08c5086"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07912999999999998,
+      "commit_max_ms": 0.7196,
+      "bytes": 96600,
+      "digest": "8ecfe7fb830c884991cc656c5d49ab779a230042a31c340bece78f76aa05fe47"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07952999999999998,
+      "commit_max_ms": 0.6801,
+      "bytes": 96600,
+      "digest": "8036d3ed2487aff1f965faf317ee950c95f8d25e28d0daab0617b7f04e11f150"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07613999999999996,
+      "commit_max_ms": 0.6872,
+      "bytes": 96600,
+      "digest": "8c459a11d6365a788a88c0ef49ef7fbc0aa5844d361fbbd7c8548e3957519d31"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07350999999999999,
+      "commit_max_ms": 0.6851,
+      "bytes": 96600,
+      "digest": "93564743994f98436539d5a40f3699cd8c625825cb11e2979545e5456e85d13e"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07656999999999993,
+      "commit_max_ms": 0.7071,
+      "bytes": 96600,
+      "digest": "2d5e8596ce8152c4278a9c561dcc6bc56ee8c4dd44df7b9e49ab1391d4e928c1"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.75,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.08083999999999995,
+      "commit_max_ms": 0.6828,
+      "bytes": 96600,
+      "digest": "5877bb3feea710860af7bff3e73d892b7ad9951ca1d23ae428cbe687bd7067a7"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07511999999999998,
+      "commit_max_ms": 0.6811,
+      "bytes": 96600,
+      "digest": "bc364ac11e2346ac43544cce1880a87098382f7dbcc11a48eed0bf563edb42e3"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07300999999999999,
+      "commit_max_ms": 0.757,
+      "bytes": 96600,
+      "digest": "027ca62cf0f073aeecf5d03d1873c002e20afbd414b7153238113ff12528fede"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07333999999999996,
+      "commit_max_ms": 0.685,
+      "bytes": 96600,
+      "digest": "be21ca52045a7e281aa67e7dba55c99f28e97fbbf53534a7a27dac2e37f26d70"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0726,
+      "commit_max_ms": 0.6756,
+      "bytes": 96600,
+      "digest": "c0b805cdbc653be6e463acb289ef0624c5119f06bc2b003e2231672b32dfffa3"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07271,
+      "commit_max_ms": 0.6787,
+      "bytes": 96600,
+      "digest": "db66c65c3c25c53e1f221f305c819f389d7bf1c6e808ef191ee729f52e66a8e5"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07422999999999998,
+      "commit_max_ms": 0.6855,
+      "bytes": 96600,
+      "digest": "eeb177ce0af6f64435880bbe0a036c6d532cf18cf31a02e186b62829d204ed25"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07302999999999997,
+      "commit_max_ms": 0.6768,
+      "bytes": 96600,
+      "digest": "095578206a71d426e36c5111ea7e08e1333b07815a4e73e86da0f1f8cabf7042"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07730999999999999,
+      "commit_max_ms": 0.6662,
+      "bytes": 96600,
+      "digest": "8e26496c7299ba5aee151c5de82a48458d085f03b055c2a2c5ac9c22cdffe5de"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07371,
+      "commit_max_ms": 0.6785,
+      "bytes": 96600,
+      "digest": "822f491851e0c4fe29ec8925b91feaf833a857dbab5758dbad64f2dbbb21e154"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07250999999999999,
+      "commit_max_ms": 0.6782,
+      "bytes": 96600,
+      "digest": "4bde2bb71231f094aa78606ee0d487a2a56ecb6b5991eb6c4b77b1616e037b34"
+    }
+  ]
+}
