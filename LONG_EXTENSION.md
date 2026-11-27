@@ -1,0 +1,2 @@
+# Extension after initial scores
+The 20-step comparator tied 24/24 in both registered detours. Keep the original rejection. Fresh wirings 8500..8523, extend the middle corridor by 16 cells (36 total steps), test both targets for each model; count only paired two-target success. Reverse which anonymous channel depletes faster in alternate lives. Test first direction at zero deficit in both mirrored rate conditions. Benchmark actual paired observe+choose tick separately from consolidation. No claim of a new unseen route.
