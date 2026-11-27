@@ -1,0 +1,81 @@
+[
+  {
+    "seed": 28100,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.34375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07301999999999997,
+      "commit_max_ms": 0.7055,
+      "bytes": 96512,
+      "digest": "87043fe3d513e12d280fc5737a2687754f1408ef47ce8a476858b6da3e260c01"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8671875,
+          "mse": 0.01294695617434103
+        },
+        {
+          "sign": 0.6796875,
+          "mse": 0.042165993721545475
+        },
+        {
+          "sign": 0.8671875,
+          "mse": 0.011811871391758018
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00020189442524949495
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.796875,
+          "mse": 0.015161524560396083
+        },
+        {
+          "sign": 0.2890625,
+          "mse": 0.08056238277142608
+        },
+        {
+          "sign": 0.8046875,
+          "mse": 0.01536030416083331
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00026303171996195306
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  }
+]
