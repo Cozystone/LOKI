@@ -29,7 +29,9 @@ def _snapshot(tag, *arrays):
 class ContextWitness:
     """Defer changes to long-lived contexts until the end of a bounded encounter."""
 
-    def __init__(self, width=12, channels=2, banks=8, edges=96, window=64):
+    def __init__(self, width=12, channels=2, banks=8, edges=96, window=64, rare=False):
+        self.rare = rare
+        self.low = np.ones((2, banks), "f4") if rare else np.empty((0, banks), "f4")
         self.width = width
         size = 2 * width + 2 + channels
         self.edges = np.zeros((banks, edges, size), "f4")
@@ -44,6 +46,7 @@ class ContextWitness:
         self.t = 0
         self.ready = False
         self.total.fill(0)
+        self.low.fill(1)
 
     def _distance(self, bank, row):
         d = (bank - row) ** 2
@@ -59,6 +62,8 @@ class ContextWitness:
         if not len(active) or self.t < 4:
             return -1, 0.0
         scores = self.total[active] / self.t
+        if self.rare:
+            scores *= self.low[1, active]
         best = int(scores.argmax())
         alt = max(0.50, np.max(np.delete(scores, best), initial=0.0))
         support = float(np.clip((scores[best] - alt) / 0.40, 0, 1))
@@ -77,6 +82,9 @@ class ContextWitness:
             self.pending[self.t % len(self.pending)] = row
             distance = self._distance(self.edges, row)
             score = np.exp(-np.where(self.count > 0, distance, np.inf).min(1))
+            if self.rare:
+                self.low[1] = np.minimum(self.low[1], np.maximum(self.low[0], score))
+                self.low[0] = np.minimum(self.low[0], score)
             self.total += score
             self.t += 1
         self.prev[:] = view
@@ -123,7 +131,7 @@ class ContextWitness:
 
     def state(self):
         return _snapshot(
-            b"LOKIW101",
+            b"LOKIW102" if self.rare else b"LOKIW101",
             np.asarray([self.t, self.ready], dtype="<i8"),
             self.edges,
             self.count,
@@ -131,6 +139,7 @@ class ContextWitness:
             self.total,
             self.prev,
             self.pos,
+            *([self.low] if self.rare else []),
         )
 
     def sha(self):

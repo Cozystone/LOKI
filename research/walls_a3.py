@@ -37,13 +37,13 @@ def walk(grid, start, end):
     return seq[::-1]
 
 
-def measure(layout):
+def measure(layout, rare=False):
     grids = [layout(mirror=m)[0] for m in (False, True)]
     path = walk(grids[0], (8, 13), (1, 1)) + walk(grids[0], (1, 1), (14, 1))[1:]
 
-    def rows(grid):
+    def rows(grid, trajectory=None):
         data = []
-        for x, y in path:
+        for x, y in path if trajectory is None else trajectory:
             steps = []
             for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)):
                 k = 0
@@ -62,7 +62,7 @@ def measure(layout):
 
     first, second = map(rows, grids)
     contact = next(i for i, row in enumerate(first) if row[2].any())
-    s = ContextWitness()
+    s = ContextWitness(rare=rare)
     for row in first:
         s.observe(*row)
     a = s.consolidate()
@@ -80,7 +80,23 @@ def measure(layout):
     before = memory()
     evidence = [s.observe(*row) for row in second]
     b = s.consolidate()
+
+    def query(sequence):
+        s.cut()
+        return [s.observe(*row)[0] for row in sequence]
+
+    reverse = walk(grids[0], (8, 13), (14, 1)) + walk(grids[0], (14, 1), (1, 1))[1:]
+    nuisance = []
+    for disturbances in (1, 2):
+        seq = list(first)
+        for i in (5, 10)[:disturbances]:
+            x, p, r = seq[i]
+            seq[i] = (x, p, np.ones_like(r))
+        nuisance.append(query(seq)[-1])
     return dict(
+        returns=[query(first)[-1], query(second)[-1]],
+        reversed_route=[query(rows(grid, reverse))[-1] for grid in grids],
+        nuisance=nuisance,
         beats=len(path),
         first_contact=contact,
         first_bank=a,
@@ -97,6 +113,15 @@ def measure(layout):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("source", type=Path)
-    result = measure(load_layout(ap.parse_args().source))
-    Path("measurements/walls_a3.json").write_text(json.dumps(result, indent=2))
-    print(result)
+    ap.add_argument("--rare", action="store_true")
+    args = ap.parse_args()
+    result = measure(load_layout(args.source), args.rare)
+    if args.rare:
+        from research.four_walls import context_trial
+
+        result["fresh_ring"] = [
+            context_trial(i, rare=True) for i in range(28301, 28325)
+        ]
+    name = "walls_rare" if args.rare else "walls_a3"
+    Path(f"measurements/{name}.json").write_text(json.dumps(result, indent=2))
+    print({k: v for k, v in result.items() if k != "fresh_ring"})

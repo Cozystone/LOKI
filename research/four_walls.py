@@ -14,7 +14,7 @@ from loki_memory.walls import (
 )
 
 
-def context_trial(seed):
+def context_trial(seed, rare=False):
     rng = np.random.default_rng(seed)
     n = 16
     textures = rng.uniform(0.1, 0.9, (n, 12))
@@ -39,7 +39,7 @@ def context_trial(seed):
             )
         return records
 
-    s = ContextWitness()
+    s = ContextWitness(rare=rare)
     times = []
     sleep = []
 
