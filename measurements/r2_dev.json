@@ -1,0 +1,124 @@
+{
+  "rows": [
+    {
+      "seed": 29000,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 255,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 259,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "cpu1": {
+    "p95_ms": 0.5032499999999999,
+    "export_p95_ms": 0.014694999999999995,
+    "sleep_max_ms": 0.218,
+    "bytes": 58184
+  },
+  "cpu64": {
+    "p95_ms": 1.5869649999999997,
+    "export_p95_ms": 0.022224999999999988,
+    "sleep_max_ms": 0.3118,
+    "bytes": 58688
+  }
+}

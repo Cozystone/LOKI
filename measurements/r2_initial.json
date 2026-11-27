@@ -1,0 +1,106 @@
+{
+  "rows": [
+    {
+      "seed": 29000,
+      "partial": {
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 255,
+        "bytes": 58168,
+        "active": 64
+      },
+      "pooled": {
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 259,
+        "bytes": 58168,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "cpu1": {
+    "p95_ms": 0.4572649999999998,
+    "export_p95_ms": 0.017594999999999993,
+    "sleep_max_ms": 0.2832,
+    "bytes": 58168
+  },
+  "cpu64": {
+    "p95_ms": 2.662375,
+    "export_p95_ms": 0.021664999999999997,
+    "sleep_max_ms": 0.2788,
+    "bytes": 58672
+  }
+}
