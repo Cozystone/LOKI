@@ -1,0 +1,2 @@
+# v13 engineering revision 1 (before sealed accuracy)
+Initial complete triple p95 on RTX 5080 was 11.80 ms on hits and 25.45 ms on allocations. CPU allocation p95 was 1.13 ms. Eliminate GPU host round trips and small dispatches with device kernels; specialize CPU single-row path. Keep distances, budgets, acceptance gates, seeds and externally visible trace format fixed. Recheck batched conflicts and missing/invalid handles against the reference.
