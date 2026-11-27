@@ -1,0 +1,1706 @@
+[
+  {
+    "seed": 8500,
+    "full_p95": 0.0949,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0546,
+    "read_p95": 0.0601,
+    "sleep_p95": 3.9594699999999996,
+    "length": 36
+  },
+  {
+    "seed": 8501,
+    "full_p95": 0.1674,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0622,
+    "read_p95": 0.07530499999999993,
+    "sleep_p95": 4.112805,
+    "length": 36
+  },
+  {
+    "seed": 8502,
+    "full_p95": 0.2571,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.05784499999999998,
+    "read_p95": 0.17220000000000002,
+    "sleep_p95": 3.8539749999999997,
+    "length": 36
+  },
+  {
+    "seed": 8503,
+    "full_p95": 0.1904,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09657999999999993,
+    "read_p95": 0.08286499999999991,
+    "sleep_p95": 5.93854,
+    "length": 36
+  },
+  {
+    "seed": 8504,
+    "full_p95": 0.198425,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.08750499999999983,
+    "read_p95": 0.1553,
+    "sleep_p95": 5.598775,
+    "length": 36
+  },
+  {
+    "seed": 8505,
+    "full_p95": 0.2135,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09031499999999987,
+    "read_p95": 0.09932499999999979,
+    "sleep_p95": 4.761719999999999,
+    "length": 36
+  },
+  {
+    "seed": 8506,
+    "full_p95": 0.25072500000000003,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.08548999999999997,
+    "read_p95": 0.1359,
+    "sleep_p95": 5.588664999999997,
+    "length": 36
+  },
+  {
+    "seed": 8507,
+    "full_p95": 0.20045000000000002,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09203499999999995,
+    "read_p95": 0.16344499999999998,
+    "sleep_p95": 5.35466,
+    "length": 36
+  },
+  {
+    "seed": 8508,
+    "full_p95": 0.234125,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0859,
+    "read_p95": 0.13624999999999998,
+    "sleep_p95": 5.255945,
+    "length": 36
+  },
+  {
+    "seed": 8509,
+    "full_p95": 0.2277,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.11708999999999997,
+    "read_p95": 0.16389499999999996,
+    "sleep_p95": 5.215825,
+    "length": 36
+  },
+  {
+    "seed": 8510,
+    "full_p95": 0.257225,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.08967999999999993,
+    "read_p95": 0.1608,
+    "sleep_p95": 5.193909999999999,
+    "length": 36
+  },
+  {
+    "seed": 8511,
+    "full_p95": 0.22207500000000002,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0938699999999999,
+    "read_p95": 0.15325499999999997,
+    "sleep_p95": 4.956854999999999,
+    "length": 36
+  },
+  {
+    "seed": 8512,
+    "full_p95": 0.24065,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.1019249999999999,
+    "read_p95": 0.07875,
+    "sleep_p95": 5.57169,
+    "length": 36
+  },
+  {
+    "seed": 8513,
+    "full_p95": 0.23385,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09248999999999996,
+    "read_p95": 0.16321499999999975,
+    "sleep_p95": 5.613289999999999,
+    "length": 36
+  },
+  {
+    "seed": 8514,
+    "full_p95": 0.20482499999999998,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09640499999999984,
+    "read_p95": 0.1154,
+    "sleep_p95": 4.832904999999999,
+    "length": 36
+  },
+  {
+    "seed": 8515,
+    "full_p95": 0.1903,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.10378999999999997,
+    "read_p95": 0.10067499999999908,
+    "sleep_p95": 5.714379999999999,
+    "length": 36
+  },
+  {
+    "seed": 8516,
+    "full_p95": 0.193375,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09591499999999988,
+    "read_p95": 0.15744999999999998,
+    "sleep_p95": 5.000149999999999,
+    "length": 36
+  },
+  {
+    "seed": 8517,
+    "full_p95": 0.234625,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0921,
+    "read_p95": 0.13548499999999986,
+    "sleep_p95": 4.03642,
+    "length": 36
+  },
+  {
+    "seed": 8518,
+    "full_p95": 0.2267,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09782499999999991,
+    "read_p95": 0.1532,
+    "sleep_p95": 5.424904999999999,
+    "length": 36
+  },
+  {
+    "seed": 8519,
+    "full_p95": 0.1918,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0879199999999997,
+    "read_p95": 0.07512999999999995,
+    "sleep_p95": 5.148225,
+    "length": 36
+  },
+  {
+    "seed": 8520,
+    "full_p95": 0.2154,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0921,
+    "read_p95": 0.1255,
+    "sleep_p95": 4.840889999999999,
+    "length": 36
+  },
+  {
+    "seed": 8521,
+    "full_p95": 0.29925,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09344499999999999,
+    "read_p95": 0.19241999999999995,
+    "sleep_p95": 4.450804999999999,
+    "length": 36
+  },
+  {
+    "seed": 8522,
+    "full_p95": 0.2193,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "swap": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.09138999999999997,
+    "read_p95": 0.1261,
+    "sleep_p95": 4.827205,
+    "length": 36
+  },
+  {
+    "seed": 8523,
+    "full_p95": 0.20140000000000002,
+    "trials": {
+      "end": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "one": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 79
+      },
+      "20": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "shuffled": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "swap": {
+        "arrived": true,
+        "dead": false,
+        "first": true,
+        "ticks": 36
+      },
+      "future": {
+        "arrived": true,
+        "dead": false,
+        "first": false,
+        "ticks": 48
+      },
+      "delayed": {
+        "arrived": false,
+        "dead": true,
+        "first": true,
+        "ticks": 79
+      },
+      "one_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "20_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      },
+      "shuffled_swap": {
+        "arrived": false,
+        "dead": true,
+        "first": false,
+        "ticks": 41
+      }
+    },
+    "bytes": 68120,
+    "update_p95": 0.0981249999999999,
+    "read_p95": 0.15491,
+    "sleep_p95": 4.765199999999999,
+    "length": 36
+  }
+]

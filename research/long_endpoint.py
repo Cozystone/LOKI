@@ -50,7 +50,7 @@ class Roll20:
         return move
 
 
-def run(seed, double):
+def run(seed, double, extended=False):
     rng = np.random.default_rng(seed)
     limb = rng.permutation(np.arange(90)%4)
     sensors = rng.permutation(4)
@@ -58,6 +58,8 @@ def run(seed, double):
     way = [(0,0),(0,-2),(4,-2),(4,0)]
     if double:
         way += [(6,0),(6,-3),(10,-3),(10,0)]
+    if extended:
+        way[-2:] = [(26,-3),(26,0)]
     route = [way[0]]
     for endpoint in way[1:]:
         while route[-1] != endpoint:
@@ -67,6 +69,9 @@ def run(seed, double):
     floor = set(route+other)
     length = len(route)-1
     rate = np.array([.46,.08],dtype='f')/length
+    fast = int(extended and seed % 2)
+    if fast:
+        rate = rate[::-1].copy()
     def features(cell):
         return (torch.tensor([float(step(cell,i,floor)!=cell) for i in sensors]),
                 torch.tensor(np.array(cell)@basis,dtype=torch.float32))
@@ -140,9 +145,19 @@ def run(seed, double):
         return dict(arrived=False,dead=False,first=bool(first),ticks=tick)
     awake_choice = []
     trials = {name:trial(name) for name in ('end','one','20','shuffled')}
-    trials.update(swap=trial('end',1),future=trial('end',anticipate=True),
-                  delayed=trial('end',anticipate=True,wait=True))
-    return dict(trials=trials,bytes=sum(b.numel()*b.element_size() for b in memory.buffers()),
+    trials.update(swap=trial('end',1),future=trial('end',fast,anticipate=True),
+                  delayed=trial('end',fast,anticipate=True,wait=True))
+    full_ticks = []
+    if extended:
+        for name in ('one','20','shuffled'):
+            trials[name+'_swap'] = trial(name,1)
+        sense,path = inputs[route[0]]
+        for _ in range(256):
+            t = time.perf_counter_ns()
+            action = memory.choose(sense,path,d)
+            memory.observe(sense,path,action,d,d)
+            full_ticks.append((time.perf_counter_ns()-t)/1e6)
+    return dict(full_p95=float(np.percentile(full_ticks,95)) if full_ticks else None,trials=trials,bytes=sum(b.numel()*b.element_size() for b in memory.buffers()),
                 update_p95=float(np.percentile(awake,95)),read_p95=float(np.percentile(awake_choice,95)),
                 sleep_p95=float(np.percentile(replay,95)),length=length)
 
