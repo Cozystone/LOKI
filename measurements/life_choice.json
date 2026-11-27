@@ -1,0 +1,834 @@
+{
+  "torch": "2.11.0+cu128",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "seeds": [
+    8100,
+    8101,
+    8102,
+    8103,
+    8104,
+    8105,
+    8106,
+    8107,
+    8108,
+    8109,
+    8110,
+    8111,
+    8112,
+    8113,
+    8114,
+    8115,
+    8116,
+    8117,
+    8118,
+    8119,
+    8120,
+    8121,
+    8122,
+    8123
+  ],
+  "tensor_bytes": 63124,
+  "p95_ms": 0.2557899999999999,
+  "totals": {
+    "script": {
+      "refilled": 24,
+      "first_direct": 0,
+      "median_beats": 8.0
+    },
+    "oracle": {
+      "refilled": 24,
+      "first_direct": 0,
+      "median_beats": 8.0
+    },
+    "shortcut": {
+      "refilled": 24,
+      "first_direct": 24,
+      "median_beats": 4.0
+    },
+    "blocked": {
+      "refilled": 0,
+      "first_direct": 0,
+      "median_beats": 18.0
+    },
+    "shuffle": {
+      "refilled": 15,
+      "first_direct": 7,
+      "median_beats": 15.5
+    },
+    "erase": {
+      "refilled": 6,
+      "first_direct": 6,
+      "median_beats": 18.0
+    }
+  },
+  "lives": [
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 13,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 10,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 11,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 9,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 7,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 16,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 15,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 9,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 12,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 9,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 9,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 7,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "erase": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      }
+    },
+    {
+      "script": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "oracle": {
+        "refilled": true,
+        "beats": 8,
+        "first_direct": false
+      },
+      "shortcut": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      },
+      "blocked": {
+        "refilled": false,
+        "beats": 18,
+        "first_direct": false
+      },
+      "shuffle": {
+        "refilled": true,
+        "beats": 15,
+        "first_direct": true
+      },
+      "erase": {
+        "refilled": true,
+        "beats": 4,
+        "first_direct": true
+      }
+    }
+  ]
+}
