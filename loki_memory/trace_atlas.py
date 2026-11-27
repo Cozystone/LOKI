@@ -22,6 +22,14 @@ class TraceAtlas(TraceStore):
             ("triples", (buckets, 4, 3), torch.int64, -1),
             ("frequency", (buckets, 4), torch.int32, 0),
             ("previous", (self.b, 2), torch.int64, -1),
+            (
+                "events",
+                (self.n, 6),
+                torch.int64,
+                -1,
+            ),  # serial, body, trace, start, end, predecessor
+            ("tail", (self.b,), torch.int64, -1),
+            ("next_event", (1,), torch.int64, 0),
             ("cursor", (1,), torch.int64, 0),
         ):
             self.layout[name] = (shape, dtype)
@@ -162,9 +170,57 @@ class TraceAtlas(TraceStore):
     def _admission(self, key, pos, ctx, rows):
         return self._indexed(key, pos, ctx, rows, False, 1, True)
 
+    def _event(self, body, token, clock):
+        events = self.events.numpy()
+        tail = self.tail.numpy()
+        serial = int(tail[body])
+        if token < 0:
+            tail[body] = -1
+            return
+        if serial >= 0:
+            prev = events[serial % self.n]
+            if prev[0] != serial or clock > prev[4] + 1:
+                serial = -1
+            elif prev[2] == token:
+                prev[4] = clock
+                return
+        seq = self.next_event.numpy()
+        index = int(seq[0])
+        events[index % self.n] = (index, body, token, clock, clock, serial)
+        tail[body] = index
+        seq[0] += 1
+
+    def recall_episode(self, body, clock, steps=8):
+        """Oldest first, through the requested beat. Empty for expired or missing evidence."""
+        if not 0 <= body < self.b or steps < 1:
+            raise ValueError("invalid episode query")
+        e = self.events.numpy()
+        hits = np.flatnonzero(
+            (e[:, 1] == body) & (e[:, 3] <= clock) & (e[:, 4] >= clock)
+        )
+        if not len(hits):
+            return []
+        serial = int(e[hits, 0].max())
+        out = []
+        while serial >= 0 and len(out) < steps:
+            stored, who, token, start, end, previous = map(int, e[serial % self.n])
+            if stored != serial or who != body:
+                break
+            idx = token % self.n
+            if (
+                self.visits.numpy()[idx] == 0
+                or self.generation.numpy()[idx] != token // self.n
+            ):
+                break
+            out.append((token, start, min(end, clock)))
+            serial = previous
+        return out[::-1]
+
     def write(self, *args, **kwargs):
         ids = super().write(*args, **kwargs)
-        for token in ids.tolist():
+        rows = range(len(ids)) if kwargs.get("body") is None else kwargs["body"]
+        for r, token in zip(rows, ids.tolist()):
+            self._event(int(r), token, int(self.meta[0]))
             if token >= 0:
                 self._index(token % self.n)
         return ids
@@ -172,14 +228,37 @@ class TraceAtlas(TraceStore):
     def cut(self, body=None):
         super().cut(body)
         if body is None:
+            self.tail.fill_(-1)
             self.previous.fill_(-1)
         else:
+            self.tail[body] = -1
             self.previous[body] = -1
 
     def _motif(self, a, b):
         return ((int(a) * 73856093) ^ (int(b) * 19349663)) % len(self.triples)
 
     def link(self, id_prev, id_now, live, *, body=None):
+        if len(id_now) == 1:
+            r = 0 if body is None else int(body[0])
+            first, last = int(id_prev[0]), int(id_now[0])
+            keep = (
+                bool(live[0]) and not bool(self.boundary[r]) and min(first, last) >= 0
+            )
+            if keep:
+                i, j = first % self.n, last % self.n
+                g = self.generation.numpy()
+                v = self.visits.numpy()
+                c = self.chart.numpy()
+                keep = (
+                    v[i]
+                    and v[j]
+                    and g[i] == first // self.n
+                    and g[j] == last // self.n
+                    and c[i] == c[j]
+                )
+            super().link(id_prev, id_now, live, body=body)
+            self._transition(r, first, last, keep)
+            return
         rows = self._bodies(len(id_now), body).tolist()
         a, b = (
             torch.as_tensor(x, dtype=torch.long).reshape(-1) for x in (id_prev, id_now)
@@ -194,25 +273,28 @@ class TraceAtlas(TraceStore):
         valid &= ~self.boundary[rows]
         super().link(a, b, valid, body=body)
         for r, start, end, keep in zip(rows, a.tolist(), b.tolist(), valid.tolist()):
-            if not keep:
-                self.previous[r] = -1
-                continue
-            if start == end:
-                continue
-            first, last = self.previous[r].tolist()
-            if first >= 0 and last == start:
-                bucket = self._motif(first, start)
-                triple = self.triples.numpy()[bucket]
-                count = self.frequency.numpy()[bucket]
-                sample = (first, start, end)
-                hits = np.flatnonzero((triple == sample).all(1))
-                idx = int(hits[0]) if len(hits) else int(count.argmin())
-                if len(hits):
-                    count[idx] = min(2**31 - 1, int(count[idx]) + 1)
-                else:
-                    triple[idx] = sample
-                    count[idx] = 1
-            self.previous.numpy()[r] = (start, end)
+            self._transition(r, start, end, keep)
+
+    def _transition(self, r, start, end, keep):
+        if not keep:
+            self.previous[r] = -1
+            return
+        if start == end:
+            return
+        first, last = self.previous[r].tolist()
+        if first >= 0 and last == start:
+            bucket = self._motif(first, start)
+            triple = self.triples.numpy()[bucket]
+            count = self.frequency.numpy()[bucket]
+            sample = (first, start, end)
+            hits = np.flatnonzero((triple == sample).all(1))
+            idx = int(hits[0]) if len(hits) else int(count.argmin())
+            if len(hits):
+                count[idx] = min(2**31 - 1, int(count[idx]) + 1)
+            else:
+                triple[idx] = sample
+                count[idx] = 1
+        self.previous.numpy()[r] = (start, end)
 
     def continuations(self, first, second):
         row = self._motif(first, second)
