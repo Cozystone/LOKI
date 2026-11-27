@@ -1,0 +1,1576 @@
+{
+  "rows": [
+    {
+      "seed": 29301,
+      "baseline": {
+        "seed": 29301,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.009350315667688847,
+          0.009624375961720943,
+          0.009350315667688847,
+          0.009624375961720943
+        ],
+        "recycled": 210,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29301,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.009350315667688847,
+          0.009624375961720943,
+          0.009350315667688847,
+          0.009624375961720943
+        ],
+        "recycled": 210,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29302,
+      "baseline": {
+        "seed": 29302,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0073702167719602585,
+          0.0007279409328475595,
+          0.0007279409328475595,
+          0.0073702167719602585
+        ],
+        "recycled": 223,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29302,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0073702167719602585,
+          0.0007279409328475595,
+          0.0007279409328475595,
+          0.0073702167719602585
+        ],
+        "recycled": 223,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29303,
+      "baseline": {
+        "seed": 29303,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.025160150602459908,
+          0.025594497099518776,
+          0.025160150602459908,
+          0.025594497099518776
+        ],
+        "recycled": 186,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29303,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.025160150602459908,
+          0.025594497099518776,
+          0.025160150602459908,
+          0.025594497099518776
+        ],
+        "recycled": 186,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29304,
+      "baseline": {
+        "seed": 29304,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.00781639851629734,
+          0.013477576896548271,
+          0.013477576896548271,
+          0.00781639851629734
+        ],
+        "recycled": 195,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29304,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.00781639851629734,
+          0.013477576896548271,
+          0.013477576896548271,
+          0.00781639851629734
+        ],
+        "recycled": 195,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29305,
+      "baseline": {
+        "seed": 29305,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.02303418144583702,
+          0.01287892460823059,
+          0.01287892460823059,
+          0.02303418144583702
+        ],
+        "recycled": 209,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29305,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.02303418144583702,
+          0.01287892460823059,
+          0.01287892460823059,
+          0.02303418144583702
+        ],
+        "recycled": 209,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29306,
+      "baseline": {
+        "seed": 29306,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.019706787541508675,
+          0.01892271265387535,
+          0.019706787541508675,
+          0.01892271265387535
+        ],
+        "recycled": 209,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29306,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.019706787541508675,
+          0.01892271265387535,
+          0.019706787541508675,
+          0.01892271265387535
+        ],
+        "recycled": 209,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29307,
+      "baseline": {
+        "seed": 29307,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.01558171957731247,
+          0.011239700019359589,
+          0.01558171957731247,
+          0.011239700019359589
+        ],
+        "recycled": 197,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29307,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.01558171957731247,
+          0.011239700019359589,
+          0.01558171957731247,
+          0.011239700019359589
+        ],
+        "recycled": 197,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29308,
+      "baseline": {
+        "seed": 29308,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.015633031725883484,
+          0.007586669642478228,
+          0.007586669642478228,
+          0.015633031725883484
+        ],
+        "recycled": 226,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29308,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.015633031725883484,
+          0.007586669642478228,
+          0.007586669642478228,
+          0.015633031725883484
+        ],
+        "recycled": 226,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29309,
+      "baseline": {
+        "seed": 29309,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.006095810327678919,
+          0.013222822919487953,
+          0.006095810327678919,
+          0.013222822919487953
+        ],
+        "recycled": 196,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29309,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.006095810327678919,
+          0.013222822919487953,
+          0.006095810327678919,
+          0.013222822919487953
+        ],
+        "recycled": 196,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29310,
+      "baseline": {
+        "seed": 29310,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.019313465803861618,
+          0.025415224954485893,
+          0.025415224954485893,
+          0.019313465803861618
+        ],
+        "recycled": 210,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29310,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.019313465803861618,
+          0.025415224954485893,
+          0.025415224954485893,
+          0.019313465803861618
+        ],
+        "recycled": 210,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29311,
+      "baseline": {
+        "seed": 29311,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0072443606331944466,
+          0.014936280436813831,
+          0.014936280436813831,
+          0.0072443606331944466
+        ],
+        "recycled": 178,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29311,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0072443606331944466,
+          0.014936280436813831,
+          0.014936280436813831,
+          0.0072443606331944466
+        ],
+        "recycled": 178,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29312,
+      "baseline": {
+        "seed": 29312,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0063784001395106316,
+          0.029109448194503784,
+          0.0063784001395106316,
+          0.029109448194503784
+        ],
+        "recycled": 195,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29312,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0063784001395106316,
+          0.029109448194503784,
+          0.0063784001395106316,
+          0.029109448194503784
+        ],
+        "recycled": 195,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29313,
+      "baseline": {
+        "seed": 29313,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.01592698134481907,
+          0.046076834201812744,
+          0.046076834201812744,
+          0.01592698134481907
+        ],
+        "recycled": 178,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29313,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.01592698134481907,
+          0.046076834201812744,
+          0.046076834201812744,
+          0.01592698134481907
+        ],
+        "recycled": 178,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29314,
+      "baseline": {
+        "seed": 29314,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.012690912000834942,
+          0.024221735075116158,
+          0.024221735075116158,
+          0.012690912000834942
+        ],
+        "recycled": 190,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29314,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.012690912000834942,
+          0.024221735075116158,
+          0.024221735075116158,
+          0.012690912000834942
+        ],
+        "recycled": 190,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29315,
+      "baseline": {
+        "seed": 29315,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.00858992338180542,
+          0.015145665034651756,
+          0.00858992338180542,
+          0.015145665034651756
+        ],
+        "recycled": 199,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29315,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.00858992338180542,
+          0.015145665034651756,
+          0.00858992338180542,
+          0.015145665034651756
+        ],
+        "recycled": 199,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29316,
+      "baseline": {
+        "seed": 29316,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.008482798933982849,
+          0.02082173153758049,
+          0.02082173153758049,
+          0.008482798933982849
+        ],
+        "recycled": 197,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29316,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.008482798933982849,
+          0.02082173153758049,
+          0.02082173153758049,
+          0.008482798933982849
+        ],
+        "recycled": 197,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29317,
+      "baseline": {
+        "seed": 29317,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.008286993019282818,
+          0.016334936022758484,
+          0.016334936022758484,
+          0.008286993019282818
+        ],
+        "recycled": 220,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29317,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.008286993019282818,
+          0.016334936022758484,
+          0.016334936022758484,
+          0.008286993019282818
+        ],
+        "recycled": 220,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29318,
+      "baseline": {
+        "seed": 29318,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.015031439252197742,
+          0.03479501232504845,
+          0.03479501232504845,
+          0.015031439252197742
+        ],
+        "recycled": 218,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29318,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.015031439252197742,
+          0.03479501232504845,
+          0.03479501232504845,
+          0.015031439252197742
+        ],
+        "recycled": 218,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29319,
+      "baseline": {
+        "seed": 29319,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.005293902009725571,
+          0.014378647319972515,
+          0.005293902009725571,
+          0.014378647319972515
+        ],
+        "recycled": 188,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29319,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.005293902009725571,
+          0.014378647319972515,
+          0.005293902009725571,
+          0.014378647319972515
+        ],
+        "recycled": 188,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29320,
+      "baseline": {
+        "seed": 29320,
+        "alone": false,
+        "returned": false,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.011592836119234562,
+          0.010736040771007538,
+          0.010736040771007538,
+          0.011592836119234562
+        ],
+        "recycled": 195,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29320,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.011592836119234562,
+          0.010736040771007538,
+          0.010736040771007538,
+          0.011592836119234562
+        ],
+        "recycled": 195,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29321,
+      "baseline": {
+        "seed": 29321,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.005825687665492296,
+          0.00734732998535037,
+          0.005825687665492296,
+          0.00734732998535037
+        ],
+        "recycled": 224,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29321,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.005825687665492296,
+          0.00734732998535037,
+          0.005825687665492296,
+          0.00734732998535037
+        ],
+        "recycled": 224,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29322,
+      "baseline": {
+        "seed": 29322,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.02399832382798195,
+          0.023709813132882118,
+          0.02399832382798195,
+          0.023709813132882118
+        ],
+        "recycled": 214,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29322,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.02399832382798195,
+          0.023709813132882118,
+          0.02399832382798195,
+          0.023709813132882118
+        ],
+        "recycled": 214,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29323,
+      "baseline": {
+        "seed": 29323,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.013834529556334019,
+          0.01172224897891283,
+          0.013834529556334019,
+          0.01172224897891283
+        ],
+        "recycled": 205,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29323,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.013834529556334019,
+          0.01172224897891283,
+          0.013834529556334019,
+          0.01172224897891283
+        ],
+        "recycled": 205,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    },
+    {
+      "seed": 29324,
+      "baseline": {
+        "seed": 29324,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0099205132573843,
+          0.02308601513504982,
+          0.02308601513504982,
+          0.0099205132573843
+        ],
+        "recycled": 208,
+        "forgotten": 0
+      },
+      "revision": {
+        "seed": 29324,
+        "alone": true,
+        "returned": true,
+        "banks": [
+          0,
+          1,
+          2
+        ],
+        "distances": [
+          0.0099205132573843,
+          0.02308601513504982,
+          0.02308601513504982,
+          0.0099205132573843
+        ],
+        "recycled": 208,
+        "forgotten": 0
+      },
+      "fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": 0
+      },
+      "old_fixed": {
+        "probes": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "unseen_collision": -1
+      }
+    }
+  ],
+  "cpu1": {
+    "p95_ms": 0.49856,
+    "export_p95_ms": 0.011754999999999984,
+    "sleep_max_ms": 0.2125,
+    "bytes": 58720
+  },
+  "cpu64": {
+    "p95_ms": 1.0452749999999997,
+    "export_p95_ms": 0.0116,
+    "sleep_max_ms": 0.2173,
+    "bytes": 59224
+  }
+}
