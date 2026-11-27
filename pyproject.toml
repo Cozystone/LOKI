@@ -13,6 +13,7 @@ dependencies = ["numpy>=1.24"]
 trace = ["torch>=2.4"]
 lifelong = ["numba>=0.59"]
 journey = ["numba>=0.59"]
+research-walls = ["scipy>=1.10"]
 research-v11 = ["numba>=0.59", "matplotlib", "Pillow"]
 research-v10 = ["numba>=0.59", "matplotlib", "Pillow"]
 

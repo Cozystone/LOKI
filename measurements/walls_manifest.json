@@ -1,0 +1,20 @@
+{
+  "wall1": {
+    "empty_state_bytes": 153232,
+    "sha256": "0f9104bed599482925f87ec1ee8617ef52f7db02d2e90a35640d90d3b5c52978"
+  },
+  "wall2": {
+    "empty_state_bytes": 144,
+    "sha256": "8e51377eb99e42da7b6f05a8305bf78acd5c387d9b56a5da5c6b76577c3f9c87"
+  },
+  "wall3": {
+    "empty_state_bytes": 56,
+    "sha256": "c2c52eb7ba914f67baa48bb1e6faeee77032d05ec6dc3a77f36276c103e61b55"
+  },
+  "wall4": {
+    "empty_state_bytes": 1920,
+    "sha256": "7ef48c4d31ae5c3e5f76648d9a586cc30671cdc660c641310db898c02b322ec1"
+  },
+  "source_git_commit": "ed643f8ee4fe8db053240d296c989a702c46525d",
+  "source_sha256_git_blob_bytes": "3e7f24da76763394ffb32ebef6f5d1cee366b38df4bf9f6072dbb244d21dfc83"
+}

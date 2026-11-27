@@ -7,6 +7,7 @@ from time import perf_counter_ns
 import numpy as np
 
 from loki_memory.walls import (
+    RouteWitness,
     ContextWitness,
     DelayedEvidence,
     PopulationPrior,
@@ -14,7 +15,7 @@ from loki_memory.walls import (
 )
 
 
-def context_trial(seed, rare=False, calibrated=False):
+def context_trial(seed, rare=False, calibrated=False, route=False):
     rng = np.random.default_rng(seed)
     n = 16
     textures = rng.uniform(0.1, 0.9, (n, 12))
@@ -39,7 +40,7 @@ def context_trial(seed, rare=False, calibrated=False):
             )
         return records
 
-    s = ContextWitness(rare=rare, calibrated=calibrated)
+    s = RouteWitness() if route else ContextWitness(rare=rare, calibrated=calibrated)
     times = []
     sleep = []
 

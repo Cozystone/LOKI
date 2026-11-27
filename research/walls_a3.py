@@ -101,7 +101,11 @@ def measure(layout, rare=False, calibrated=False, route=False):
                 outputs = []
                 for grid in grids:
                     trace = [
-                        (np.clip(x + rng.normal(0, 0.01, x.shape), 0, 1), p, r)
+                        (
+                            np.clip(x + rng.normal(0, 0.01, x.shape), 0, 1),
+                            p + np.array([0.02, -0.015]) if route else p,
+                            r,
+                        )
                         for x, p, r in rows(grid, direction)
                     ]
                     outputs.append(query(trace)[-1])
@@ -109,6 +113,7 @@ def measure(layout, rare=False, calibrated=False, route=False):
     return dict(
         noisy_returns=noisy,
         state_bytes=len(s.state()),
+        reverse_readings=[query(rows(grid, reverse)) for grid in grids],
         returns=[query(first)[-1], query(second)[-1]],
         reversed_route=[query(rows(grid, reverse))[-1] for grid in grids],
         nuisance=nuisance,
@@ -153,6 +158,11 @@ if __name__ == "__main__":
         else "walls_a3"
     )
     if args.route:
+        from research.four_walls import context_trial
+
+        result["fresh_ring"] = [
+            context_trial(i, route=True) for i in range(28501, 28525)
+        ]
         name = "walls_route"
     Path(f"measurements/{name}.json").write_text(json.dumps(result, indent=2))
     print({k: v for k, v in result.items() if k != "fresh_ring"})

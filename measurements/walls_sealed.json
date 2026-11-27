@@ -1,0 +1,1898 @@
+[
+  {
+    "seed": 28201,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.59375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.09516999999999994,
+      "commit_max_ms": 0.734,
+      "bytes": 96512,
+      "digest": "0835ae7ae67e8352669d416ddc5cd23c7454894154a61bf61498a18f764e73fd"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.828125,
+          "mse": 0.015175149671102672
+        },
+        {
+          "sign": 0.6796875,
+          "mse": 0.04054238415738543
+        },
+        {
+          "sign": 0.859375,
+          "mse": 0.013783673909528976
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00024664187317785237
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.828125,
+          "mse": 0.013173885280042404
+        },
+        {
+          "sign": 0.3515625,
+          "mse": 0.07237542435496884
+        },
+        {
+          "sign": 0.796875,
+          "mse": 0.014718257624134633
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.0003005685075288191
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28202,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.8125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.06941,
+      "commit_max_ms": 0.6782,
+      "bytes": 96512,
+      "digest": "7e3b2ca48f6209976be01838c9c62e222ea94c790e169b96a7cf78dff7f1c73d"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8671875,
+          "mse": 0.013114100312154318
+        },
+        {
+          "sign": 0.6953125,
+          "mse": 0.041918559334391474
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.01246293981429963
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00019299433705078256
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8125,
+          "mse": 0.013568886555659642
+        },
+        {
+          "sign": 0.296875,
+          "mse": 0.07837930682365132
+        },
+        {
+          "sign": 0.75,
+          "mse": 0.014900301585307044
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.0002842006577162086
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28203,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.75,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07060999999999999,
+      "commit_max_ms": 0.7264,
+      "bytes": 96512,
+      "digest": "a4860ac0ddbf0b6c95ec3d7ddd7dab5eb713ea01506be19ee5fed32617aeda20"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.859375,
+          "mse": 0.011548338990650293
+        },
+        {
+          "sign": 0.6953125,
+          "mse": 0.04222662783719359
+        },
+        {
+          "sign": 0.9140625,
+          "mse": 0.010739564391739169
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00032015352693175376
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.84375,
+          "mse": 0.014740527585286694
+        },
+        {
+          "sign": 0.2734375,
+          "mse": 0.0790904149086149
+        },
+        {
+          "sign": 0.765625,
+          "mse": 0.017383959897672142
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.00025586208167212125
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28204,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.625,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07281999999999998,
+      "commit_max_ms": 0.6781,
+      "bytes": 96512,
+      "digest": "45dce93f9aa4ae770777d69c671d305ab80b125c8d2b92cb8258bbec10b73455"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.84375,
+          "mse": 0.014813255573094222
+        },
+        {
+          "sign": 0.6484375,
+          "mse": 0.042416588360937764
+        },
+        {
+          "sign": 0.796875,
+          "mse": 0.012845103412714878
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.0002629049279094934
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8359375,
+          "mse": 0.014182285252444617
+        },
+        {
+          "sign": 0.3125,
+          "mse": 0.09681194200207305
+        },
+        {
+          "sign": 0.8203125,
+          "mse": 0.01690236293114762
+        },
+        {
+          "sign": 1.0,
+          "mse": 0.00020597049900206692
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.375
+    }
+  },
+  {
+    "seed": 28205,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.46875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.075,
+      "commit_max_ms": 0.7567,
+      "bytes": 96512,
+      "digest": "5a06e46c0ef3e54a1136607b192861236718993aa293480ce36056ecb24d6062"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.84375,
+          "mse": 0.013695580508619807
+        },
+        {
+          "sign": 0.6640625,
+          "mse": 0.04210594853027497
+        },
+        {
+          "sign": 0.8359375,
+          "mse": 0.011807369782150998
+        },
+        {
+          "sign": 0.953125,
+          "mse": 0.000228815321732427
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.84375,
+          "mse": 0.014409319867739427
+        },
+        {
+          "sign": 0.28125,
+          "mse": 0.07470500711630348
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.015136360628716414
+        },
+        {
+          "sign": 1.0,
+          "mse": 0.00020674610910252015
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28206,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.65625,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0699,
+      "commit_max_ms": 0.6909,
+      "bytes": 96512,
+      "digest": "7c50f0871bb20fce203825ac4c905a04c1e516600c4a181345f3a9f333531443"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.84375,
+          "mse": 0.012474342091235692
+        },
+        {
+          "sign": 0.625,
+          "mse": 0.041769589745352796
+        },
+        {
+          "sign": 0.8515625,
+          "mse": 0.012008290383999837
+        },
+        {
+          "sign": 1.0,
+          "mse": 0.0002755523705216964
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.828125,
+          "mse": 0.01231099210508528
+        },
+        {
+          "sign": 0.34375,
+          "mse": 0.06542829304648809
+        },
+        {
+          "sign": 0.8125,
+          "mse": 0.013560414151163373
+        },
+        {
+          "sign": 0.9609375,
+          "mse": 0.00026009082116317764
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28207,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.75,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.09555999999999995,
+      "commit_max_ms": 0.6832,
+      "bytes": 96512,
+      "digest": "8000941cae722c5364a077a2ee799c936c818e7937ebc9107393e21f9f984ea4"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8046875,
+          "mse": 0.014452856065540202
+        },
+        {
+          "sign": 0.6953125,
+          "mse": 0.0339310538416928
+        },
+        {
+          "sign": 0.8515625,
+          "mse": 0.01271909202866703
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.0002875494319174843
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8828125,
+          "mse": 0.014449677645387132
+        },
+        {
+          "sign": 0.34375,
+          "mse": 0.05998833312148802
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.013534075836239149
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00029647281336501086
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28208,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.6875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07331,
+      "commit_max_ms": 0.6804,
+      "bytes": 96512,
+      "digest": "5797c86ebace5ea3837fa45258eb06fa2136b1b3d929db061b8ae10750ed2e2e"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8203125,
+          "mse": 0.013163197527032981
+        },
+        {
+          "sign": 0.6875,
+          "mse": 0.03317889143412618
+        },
+        {
+          "sign": 0.7890625,
+          "mse": 0.011981969179712441
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00028163698336432783
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.828125,
+          "mse": 0.01299472096587822
+        },
+        {
+          "sign": 0.296875,
+          "mse": 0.08978053411870413
+        },
+        {
+          "sign": 0.8515625,
+          "mse": 0.015113961160216773
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.0003097542331563798
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.25
+    }
+  },
+  {
+    "seed": 28209,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.78125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07050999999999999,
+      "commit_max_ms": 0.6937,
+      "bytes": 96512,
+      "digest": "04d0a4698dc04997cdd0065a011e00967d46b2df8613dee9177ffa166987f422"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8671875,
+          "mse": 0.01193199631086135
+        },
+        {
+          "sign": 0.625,
+          "mse": 0.04187020626901336
+        },
+        {
+          "sign": 0.8359375,
+          "mse": 0.010341784415320559
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.00024160297831634275
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.859375,
+          "mse": 0.014186487278423792
+        },
+        {
+          "sign": 0.3203125,
+          "mse": 0.08189993922473615
+        },
+        {
+          "sign": 0.8359375,
+          "mse": 0.014109007978870498
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00021305087210470364
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28210,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.06921,
+      "commit_max_ms": 0.6938,
+      "bytes": 96512,
+      "digest": "e885ec0af9d8fcbdd28a9d9abd70af2652cbc0546ef273ba01e0c3c73f549bae"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.84375,
+          "mse": 0.014333657620348023
+        },
+        {
+          "sign": 0.6796875,
+          "mse": 0.04388274383696131
+        },
+        {
+          "sign": 0.8359375,
+          "mse": 0.014021376430666706
+        },
+        {
+          "sign": 0.9375,
+          "mse": 0.0002732193019204296
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8671875,
+          "mse": 0.00879522616495633
+        },
+        {
+          "sign": 0.2890625,
+          "mse": 0.08871368634328652
+        },
+        {
+          "sign": 0.8984375,
+          "mse": 0.011519217226322884
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.0003112632033539593
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28211,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0702,
+      "commit_max_ms": 0.8072,
+      "bytes": 96512,
+      "digest": "d5ae3a805863da1a6899c0d1edbdf518829850ace475ac50f139a54af9a4708f"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.7890625,
+          "mse": 0.013774103429869376
+        },
+        {
+          "sign": 0.6171875,
+          "mse": 0.04175383802272968
+        },
+        {
+          "sign": 0.8046875,
+          "mse": 0.012051127333874236
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00030735120098775804
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.7734375,
+          "mse": 0.015541411813049152
+        },
+        {
+          "sign": 0.2890625,
+          "mse": 0.08339909215490257
+        },
+        {
+          "sign": 0.75,
+          "mse": 0.018347813001443274
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.0002562224416816643
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.25
+    }
+  },
+  {
+    "seed": 28212,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 1.0,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.10013999999999997,
+      "commit_max_ms": 0.6804,
+      "bytes": 96512,
+      "digest": "a809de4c464586708e4898519a8c46473cc662c74ea0a195dbf657eaab15a7f6"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.765625,
+          "mse": 0.016532707177015906
+        },
+        {
+          "sign": 0.6484375,
+          "mse": 0.04345790463768158
+        },
+        {
+          "sign": 0.8203125,
+          "mse": 0.013750334786241998
+        },
+        {
+          "sign": 0.953125,
+          "mse": 0.0002519808427039746
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8125,
+          "mse": 0.011583245196095139
+        },
+        {
+          "sign": 0.2734375,
+          "mse": 0.10047313335487758
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.016974459595165525
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00019463718856749392
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.25
+    }
+  },
+  {
+    "seed": 28213,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0707,
+      "commit_max_ms": 0.6807,
+      "bytes": 96512,
+      "digest": "fe472b75eeed81d57f5c5389401be359e387d3bddba6d7bf33351f7bcbb39133"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.921875,
+          "mse": 0.011533004118674773
+        },
+        {
+          "sign": 0.6796875,
+          "mse": 0.04659815204173316
+        },
+        {
+          "sign": 0.8828125,
+          "mse": 0.011090166058579029
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.000334564047725268
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.859375,
+          "mse": 0.010955589304782616
+        },
+        {
+          "sign": 0.375,
+          "mse": 0.09276193975416398
+        },
+        {
+          "sign": 0.859375,
+          "mse": 0.01622306701705864
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00022424623686999003
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28214,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07442999999999997,
+      "commit_max_ms": 0.6951,
+      "bytes": 96512,
+      "digest": "a3476848f60a428c36e97cd8c2478283e662184c72e4f7753899441f6c88945d"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8046875,
+          "mse": 0.012536976170330179
+        },
+        {
+          "sign": 0.7890625,
+          "mse": 0.02920871674625294
+        },
+        {
+          "sign": 0.8984375,
+          "mse": 0.010006595024758275
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.00023628065698662467
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.78125,
+          "mse": 0.016782677979462507
+        },
+        {
+          "sign": 0.3515625,
+          "mse": 0.0655126803473845
+        },
+        {
+          "sign": 0.7890625,
+          "mse": 0.016789126972081146
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00026826496804513694
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28215,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0708,
+      "commit_max_ms": 0.6847,
+      "bytes": 96512,
+      "digest": "839c90b06c4d2c7060582f1b487b1af7c3e5b9921060949a1ad51f2339ed7d42"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.75,
+          "mse": 0.01919591770617152
+        },
+        {
+          "sign": 0.6953125,
+          "mse": 0.03881406651749838
+        },
+        {
+          "sign": 0.765625,
+          "mse": 0.016420350231198415
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.00022165218816540963
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.828125,
+          "mse": 0.013886183224836052
+        },
+        {
+          "sign": 0.296875,
+          "mse": 0.08391289011388892
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.019046220550041324
+        },
+        {
+          "sign": 0.9609375,
+          "mse": 0.0002734234006997804
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.25
+    }
+  },
+  {
+    "seed": 28216,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.90625,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.06941,
+      "commit_max_ms": 0.7548,
+      "bytes": 96512,
+      "digest": "2427bf0039f740b7d611943a2fa61d2765708b8e48bd1d81ccdc5310e4ea87d1"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8515625,
+          "mse": 0.014097435806169931
+        },
+        {
+          "sign": 0.65625,
+          "mse": 0.03789731730859659
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.011858299579279991
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.0003148250608578271
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8515625,
+          "mse": 0.012104500553554758
+        },
+        {
+          "sign": 0.375,
+          "mse": 0.0644190570235616
+        },
+        {
+          "sign": 0.8515625,
+          "mse": 0.01309815359284846
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.00023565999851470185
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28217,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07060999999999999,
+      "commit_max_ms": 0.6701,
+      "bytes": 96512,
+      "digest": "bc55c6356e73e40781be2da5d27ac9505022a5eda99414d534a5269a2384205d"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.859375,
+          "mse": 0.011061244898458257
+        },
+        {
+          "sign": 0.6875,
+          "mse": 0.03632048682399601
+        },
+        {
+          "sign": 0.859375,
+          "mse": 0.00983430634089643
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00022150767103874103
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.84375,
+          "mse": 0.017491181935046434
+        },
+        {
+          "sign": 0.3515625,
+          "mse": 0.07247712067246907
+        },
+        {
+          "sign": 0.828125,
+          "mse": 0.01864586124725226
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00023223289840956015
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28218,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.8125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0694,
+      "commit_max_ms": 0.8361,
+      "bytes": 96512,
+      "digest": "eaf3f3419510854575432767d1a9b823ab9308f42dcffbf01cc1d1ee5a9b3a0b"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8515625,
+          "mse": 0.012859320044232084
+        },
+        {
+          "sign": 0.640625,
+          "mse": 0.0439859753821888
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.011727811740384014
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.0002554264931876599
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8359375,
+          "mse": 0.011966634169748977
+        },
+        {
+          "sign": 0.328125,
+          "mse": 0.08639281978582303
+        },
+        {
+          "sign": 0.8125,
+          "mse": 0.014258040862866719
+        },
+        {
+          "sign": 0.9375,
+          "mse": 0.00026132682684019607
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.25
+    }
+  },
+  {
+    "seed": 28219,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.84375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07011999999999997,
+      "commit_max_ms": 0.6903,
+      "bytes": 96512,
+      "digest": "3a4b120df8f68ed33a5175cbb4be2811e50b85bfe5e937060cbec7f56410b659"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8125,
+          "mse": 0.014109267934521056
+        },
+        {
+          "sign": 0.640625,
+          "mse": 0.0437194726700888
+        },
+        {
+          "sign": 0.8046875,
+          "mse": 0.012080904425169847
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00022530778058622047
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8359375,
+          "mse": 0.015196784088949856
+        },
+        {
+          "sign": 0.3359375,
+          "mse": 0.06890777417539162
+        },
+        {
+          "sign": 0.765625,
+          "mse": 0.015898300613198187
+        },
+        {
+          "sign": 0.984375,
+          "mse": 0.00027867648466044746
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28220,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07254999999999995,
+      "commit_max_ms": 0.798,
+      "bytes": 96512,
+      "digest": "b71fa44d742d6d97a8b1943d21419a84612550140e02e50b0a755ae6039cabd5"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.875,
+          "mse": 0.015421246486381861
+        },
+        {
+          "sign": 0.65625,
+          "mse": 0.045674821556553516
+        },
+        {
+          "sign": 0.859375,
+          "mse": 0.013718933214977545
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.0003018503104363962
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.859375,
+          "mse": 0.014412971825804963
+        },
+        {
+          "sign": 0.296875,
+          "mse": 0.09117453534300626
+        },
+        {
+          "sign": 0.8125,
+          "mse": 0.016416932201281157
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.00032743076992103803
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28221,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.8125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.07010999999999999,
+      "commit_max_ms": 0.6718,
+      "bytes": 96512,
+      "digest": "36e91b96ccedcf705f0889f866db9d372fb963c99c57b050fa58f1280d3ab8e8"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8203125,
+          "mse": 0.014557878530748537
+        },
+        {
+          "sign": 0.71875,
+          "mse": 0.03829921661163411
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.012780818845621395
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.000277976591229484
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.875,
+          "mse": 0.011822849403506693
+        },
+        {
+          "sign": 0.2890625,
+          "mse": 0.09449759926811102
+        },
+        {
+          "sign": 0.8828125,
+          "mse": 0.015042078083565835
+        },
+        {
+          "sign": 0.9765625,
+          "mse": 0.0002319662144492723
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28222,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.6875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.06974999999999995,
+      "commit_max_ms": 0.6849,
+      "bytes": 96512,
+      "digest": "6f8fd01708352119dc853e384b745afe40dc5c8fa49580a6e713648ab5460072"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8203125,
+          "mse": 0.012449222173454092
+        },
+        {
+          "sign": 0.6640625,
+          "mse": 0.04026540638421045
+        },
+        {
+          "sign": 0.828125,
+          "mse": 0.01115372501869982
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.00026705218188656364
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.859375,
+          "mse": 0.011161285952253689
+        },
+        {
+          "sign": 0.34375,
+          "mse": 0.07499078279070039
+        },
+        {
+          "sign": 0.7890625,
+          "mse": 0.013378434793485732
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.0002856449113451148
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  },
+  {
+    "seed": 28223,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.78125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0702,
+      "commit_max_ms": 0.757,
+      "bytes": 96512,
+      "digest": "48f98fb56de395f3a19fca2c34a1fccf4390860ca9f10043146a0c39dee47af6"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": false,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8046875,
+          "mse": 0.013583189265783318
+        },
+        {
+          "sign": 0.75,
+          "mse": 0.04083857053235265
+        },
+        {
+          "sign": 0.84375,
+          "mse": 0.01234559140959261
+        },
+        {
+          "sign": 0.96875,
+          "mse": 0.0002474016305081202
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.8359375,
+          "mse": 0.014998705740587771
+        },
+        {
+          "sign": 0.234375,
+          "mse": 0.09519574430019441
+        },
+        {
+          "sign": 0.828125,
+          "mse": 0.017552618999616718
+        },
+        {
+          "sign": 0.9609375,
+          "mse": 0.00020390654869464659
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.125
+    }
+  },
+  {
+    "seed": 28224,
+    "context": {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.0698,
+      "commit_max_ms": 0.7751,
+      "bytes": 96512,
+      "digest": "be79a81cabe61f5898b560a158b7789b4e72d7b5e0d8b1a4990e50bb6f046ca0"
+    },
+    "credit": {
+      "-1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      },
+      "1": {
+        "correct": true,
+        "shuffled": true,
+        "short": 0.0
+      }
+    },
+    "population": {
+      "matched": [
+        {
+          "sign": 0.8515625,
+          "mse": 0.012503399646250551
+        },
+        {
+          "sign": 0.6328125,
+          "mse": 0.040873911958812785
+        },
+        {
+          "sign": 0.8828125,
+          "mse": 0.011263109989890207
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.00024667399396952283
+        }
+      ],
+      "reversed": [
+        {
+          "sign": 0.890625,
+          "mse": 0.013167329032645536
+        },
+        {
+          "sign": 0.3125,
+          "mse": 0.06546069889713502
+        },
+        {
+          "sign": 0.8515625,
+          "mse": 0.01493658228303153
+        },
+        {
+          "sign": 0.9921875,
+          "mse": 0.00019717273570067498
+        }
+      ]
+    },
+    "align": {
+      "asymmetric": 1.0,
+      "symmetric": 0.0
+    }
+  }
+]

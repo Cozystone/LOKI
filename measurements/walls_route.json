@@ -1,0 +1,870 @@
+{
+  "noisy_returns": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "state_bytes": 153232,
+  "reverse_readings": [
+    [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      0
+    ],
+    [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      1
+    ]
+  ],
+  "returns": [
+    0,
+    1
+  ],
+  "reversed_route": [
+    0,
+    1
+  ],
+  "nuisance": [
+    0,
+    0
+  ],
+  "beats": 45,
+  "first_contact": 19,
+  "first_bank": 0,
+  "mirror_bank": 1,
+  "approvals_before_contact": 15,
+  "last_support": 0.0,
+  "split": true,
+  "old_relief_before": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "old_relief_after": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "expected": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "fresh_ring": [
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0625,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13172,
+      "commit_max_ms": 1.6177,
+      "bytes": 153232,
+      "digest": "20fba5b76e64c7f96653f70caed3d0feabd1d2e66dbbc5da6081a178ffe258a6"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.78125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13340999999999997,
+      "commit_max_ms": 1.5194,
+      "bytes": 153232,
+      "digest": "0f825d33d9f24305cf69aa4480122b066255f854e42165792f36690e217b99bd"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.46875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13210999999999998,
+      "commit_max_ms": 1.5128,
+      "bytes": 153232,
+      "digest": "513e5d32553975335a1006b43f211ae70ed470cf9bc70b2e1f3b7c65154804c3"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13721999999999998,
+      "commit_max_ms": 1.5702,
+      "bytes": 153232,
+      "digest": "2e9f835d8407353d97c5daa82d44db5ed180f547d30630977e2979887fd4c211"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.1268,
+      "commit_max_ms": 1.5689,
+      "bytes": 153232,
+      "digest": "e86f2faf1edc6519682b0f25d508e82c3b4c1c11e90238c177b48ee8c965c98a"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12471999999999998,
+      "commit_max_ms": 1.6687,
+      "bytes": 153232,
+      "digest": "d7e0f3cec6374d3d72b708d89ac893e978104440a8b75d2c74815aeb82659c4c"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13514999999999996,
+      "commit_max_ms": 1.5657,
+      "bytes": 153232,
+      "digest": "d78228861effe6b7254c9f70b811318302f236fd99d7fdb6072d09502b2756c8"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12602999999999998,
+      "commit_max_ms": 1.7786,
+      "bytes": 153232,
+      "digest": "47394859a35b0f41fa9bb4838d067860df71af20e8db1fc81c898b0e74ec9c91"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12650999999999998,
+      "commit_max_ms": 1.5525,
+      "bytes": 153232,
+      "digest": "40bbebcba698bb443338c8dcb678d2fcfda51f984f6fa9a9f1278b8c1dc8abcf"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.46875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0625,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12471,
+      "commit_max_ms": 1.5633,
+      "bytes": 153232,
+      "digest": "33e487084116f8143ab1049febf0a49eb69c119c7f411a397272ec0ba59e916d"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.75,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12471,
+      "commit_max_ms": 1.55,
+      "bytes": 153232,
+      "digest": "56093663cbfed58f8bd27e8fd56f6b5561d8bc06bea6afca5b18a15bec62a319"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5625,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13001,
+      "commit_max_ms": 1.5389,
+      "bytes": 153232,
+      "digest": "bac0cd56b14cf3a9a83279a06d0703be33c76bb3c9ed5f9a1f6eff81d54aca28"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0625,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12800999999999998,
+      "commit_max_ms": 1.5643,
+      "bytes": 153232,
+      "digest": "0d7bac7e34b22ae64302c6fd8bda951d144be71cbd0668b62f08e939b126de48"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13077999999999992,
+      "commit_max_ms": 1.5361,
+      "bytes": 153232,
+      "digest": "7dbe1d62397264b2e7990b62515fb6c29f2a9d5d7041590c86325260fbcef454"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.46875,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.1607999999999998,
+      "commit_max_ms": 1.5481,
+      "bytes": 153232,
+      "digest": "9df1a99d168de52c70ae7982a45524857922fa03b8abf4cd139c167da2e40f40"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12573999999999996,
+      "commit_max_ms": 1.5303,
+      "bytes": 153232,
+      "digest": "5be8545a54c66c4f0504a28dc2d61d6ae6fd2d007733930cc360af639b91600b"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12840999999999997,
+      "commit_max_ms": 1.517,
+      "bytes": 153232,
+      "digest": "59ddb0940a67ced4d5b14e8ea39042ae2c53546ea051c4fd9fa4a90b5d1ca003"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12710999999999997,
+      "commit_max_ms": 1.5335,
+      "bytes": 153232,
+      "digest": "aa435cd84c65e27636d81708ff5780855ac9bbe2b889c77fea1b07a7e483de86"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.78125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.1349799999999999,
+      "commit_max_ms": 1.5267,
+      "bytes": 153232,
+      "digest": "5f227f6fe1a0cc338c8e3623457b4fb1bc32ebc65f4813c6b509504afa4db30e"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5625,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12952999999999987,
+      "commit_max_ms": 1.5442,
+      "bytes": 153232,
+      "digest": "6443820774b9241a9a3960029d98a16a1a7e8a0da6ab4b4178633f5bd1efc7b9"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.4375,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.12611999999999998,
+      "commit_max_ms": 1.5117,
+      "bytes": 153232,
+      "digest": "68572c9d2007c46548463fd9db5ddc30f7043c8bc6fe8ce0ff5e7a9fd87ca59e"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0625,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.13164999999999996,
+      "commit_max_ms": 1.5331,
+      "bytes": 153232,
+      "digest": "981fea7e628e4346d16f18795c2425ed1c783fd94412dae4b0df509f178da690"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.5,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.17402999999999996,
+      "commit_max_ms": 1.5304,
+      "bytes": 153232,
+      "digest": "5aeb237c876e418f0f2cdc565aa4116bedf340bb4fe79c45511ef838ef55bfb0"
+    },
+    {
+      "known": 1.0,
+      "appearance": 0.5,
+      "no_relief": 0.53125,
+      "steps_median": 4.0,
+      "unseen_any": 0.0,
+      "first_false": 0.0,
+      "identical_false": true,
+      "base": [
+        1.0,
+        1.0
+      ],
+      "returned": [
+        1.0,
+        1.0
+      ],
+      "distinct": true,
+      "tick_p95_ms": 0.126,
+      "commit_max_ms": 1.5289,
+      "bytes": 153232,
+      "digest": "9018a21e619c92fdf697e82a7f2082efe355031dbcaa340c82916cdbb7f7bfd7"
+    }
+  ]
+}
