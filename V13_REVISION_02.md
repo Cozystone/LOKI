@@ -1,0 +1,1 @@
+One synchronized GPU B=64 pressure run exceeded the 2 ms p95 target (2.334 ms). Fuse the body-boundary mask read into the existing edge kernel, preserving the deferred clear after every row has consumed its mask. Use five independent warmed runs for each workload; publish all p95s. Treat a run above the target as a miss even if the median passes.
