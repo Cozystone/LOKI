@@ -6,7 +6,7 @@ from collections import deque
 from pathlib import Path
 import json
 import numpy as np
-from loki_memory.walls import ContextWitness
+from loki_memory.walls import ContextWitness, RouteWitness
 
 
 def load_layout(path):
@@ -37,7 +37,7 @@ def walk(grid, start, end):
     return seq[::-1]
 
 
-def measure(layout, rare=False, calibrated=False):
+def measure(layout, rare=False, calibrated=False, route=False):
     grids = [layout(mirror=m)[0] for m in (False, True)]
     path = walk(grids[0], (8, 13), (1, 1)) + walk(grids[0], (1, 1), (14, 1))[1:]
 
@@ -62,7 +62,7 @@ def measure(layout, rare=False, calibrated=False):
 
     first, second = map(rows, grids)
     contact = next(i for i, row in enumerate(first) if row[2].any())
-    s = ContextWitness(rare=rare, calibrated=calibrated)
+    s = RouteWitness() if route else ContextWitness(rare=rare, calibrated=calibrated)
     for row in first:
         s.observe(*row)
     a = s.consolidate()
@@ -94,8 +94,8 @@ def measure(layout, rare=False, calibrated=False):
             seq[i] = (x, p, np.ones_like(r))
         nuisance.append(query(seq)[-1])
     noisy = []
-    if calibrated:
-        for seed in range(28401, 28425):
+    if calibrated or route:
+        for seed in range(28501, 28525) if route else range(28401, 28425):
             rng = np.random.default_rng(seed)
             for direction in (path, reverse):
                 outputs = []
@@ -108,6 +108,7 @@ def measure(layout, rare=False, calibrated=False):
                 noisy.append(outputs)
     return dict(
         noisy_returns=noisy,
+        state_bytes=len(s.state()),
         returns=[query(first)[-1], query(second)[-1]],
         reversed_route=[query(rows(grid, reverse))[-1] for grid in grids],
         nuisance=nuisance,
@@ -129,9 +130,13 @@ if __name__ == "__main__":
     ap.add_argument("source", type=Path)
     ap.add_argument("--rare", action="store_true")
     ap.add_argument("--calibrated", action="store_true")
+    ap.add_argument("--route", action="store_true")
     args = ap.parse_args()
     result = measure(
-        load_layout(args.source), args.rare or args.calibrated, args.calibrated
+        load_layout(args.source),
+        args.rare or args.calibrated,
+        args.calibrated,
+        args.route,
     )
     if args.rare or args.calibrated:
         from research.four_walls import context_trial
@@ -147,5 +152,7 @@ if __name__ == "__main__":
         if args.rare
         else "walls_a3"
     )
+    if args.route:
+        name = "walls_route"
     Path(f"measurements/{name}.json").write_text(json.dumps(result, indent=2))
     print({k: v for k, v in result.items() if k != "fresh_ring"})

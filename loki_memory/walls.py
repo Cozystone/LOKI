@@ -274,3 +274,96 @@ class LagSignature:
 
         d = ((self.signature()[:, None] - other.signature()[None]) ** 2).mean(-1)
         return linear_sum_assignment(d)[1]
+
+
+class RouteWitness:
+    """Read-only alternative evidence from two distinct witnessed endpoints."""
+
+    def __init__(self, width=12, channels=2, banks=8, edges=96, window=64):
+        self.edge = ContextWitness(
+            width, channels, banks, edges, window, rare=True, calibrated=True
+        )
+        self.width = width
+        length = width + 2 + channels
+        self.ends = np.zeros((banks, edges, length), "f4")
+        self.count = np.zeros((banks, edges), "i4")
+        self.pending = np.zeros((window, length), "f4")
+        self.origin = np.zeros(2, "f4")
+        self.first = np.zeros((banks, 2), "f4")
+        self.votes = np.zeros(banks, "i4")
+        self.cut()
+
+    def cut(self):
+        self.edge.cut()
+        self.t = 0
+        self.votes.fill(0)
+
+    def distance(self, bank, row):
+        w = self.width
+        d = (bank - row) ** 2
+        return (
+            d[..., :w].mean(-1) / 0.015
+            + d[..., w : w + 2].mean(-1) / 0.001
+            + d[..., w + 2 :].mean(-1) / 0.12
+        )
+
+    def observe(self, view, pos, relief):
+        result = self.edge.observe(view, pos, relief)
+        if not self.t:
+            self.origin[:] = pos
+        local = (np.asarray(pos) - self.origin + 1) / 2
+        row = np.r_[view, local, relief]
+        self.pending[self.t % len(self.pending)] = row
+        self.t += 1
+        if np.sum(self.count.any(1)) < 2:
+            return result
+        costs = np.where(self.count, self.distance(self.ends, row), np.inf)
+        fits = np.exp(-costs.min(1))
+        best = int(fits.argmax())
+        if fits[best] > 0.82 and fits[best] - np.partition(fits, -2)[-2] > 0.65:
+            if not self.votes[best]:
+                self.first[best] = local
+                self.votes[best] = 1
+            elif np.linalg.norm(local - self.first[best]) > 0.06:
+                self.votes[best] = 2
+        winners = np.flatnonzero(self.votes == 2)
+        if result[0] < 0 and len(winners) == 1 and self.votes.sum() == 2:
+            return int(winners[0]), 0.82
+        return result
+
+    def consolidate(self):
+        chosen = self.edge.consolidate()
+        if chosen >= 0:
+            counts = self.count[chosen]
+            table = self.ends[chosen]
+            for i in range(max(0, self.t - len(self.pending)), self.t):
+                row = self.pending[i % len(self.pending)]
+                d = np.where(counts, self.distance(table, row), np.inf)
+                j = int(d.argmin())
+                if d[j] > 0.3:
+                    free = np.flatnonzero(counts == 0)
+                    if not len(free):
+                        continue
+                    j = int(free[0])
+                counts[j] = min(65535, int(counts[j]) + 1)
+                table[j] += (row - table[j]) / min(64, counts[j])
+        self.cut()
+        return chosen
+
+    def recall_edge(self, *args):
+        return self.edge.recall_edge(*args)
+
+    def state(self):
+        return self.edge.state() + _snapshot(
+            b"LOKIWR01",
+            self.ends,
+            self.count,
+            self.pending,
+            self.origin,
+            self.first,
+            self.votes,
+            np.int64(self.t),
+        )
+
+    def sha(self):
+        return hashlib.sha256(self.state()).hexdigest()
