@@ -1,0 +1,1 @@
+First scale run: 65,536 registered recall p95 .23-.38 ms, but exhaustive cold recall p95 15.64-17.47 ms. Add a bounded contiguous sensory projection and an arithmetic error margin before exact reranking. Count its RAM. Retest both insertion orders and all eight choices against the dense implementation. Same workload is engineering regression, not an independent replication.

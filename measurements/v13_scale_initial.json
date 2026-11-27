@@ -1,0 +1,134 @@
+[
+  {
+    "n": 8192,
+    "shuffled": false,
+    "active": 8192,
+    "state_bytes": 2883761,
+    "fixed_bytes": 2957489,
+    "populate_s": 1.6646314000245184,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 2.4374000495299697
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.1860100193880498,
+        "tick_p95_ms": 0.7660500123165547,
+        "examined_p50": 176.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 1.744385011261329,
+        "tick_p95_ms": null,
+        "examined_p50": 8192.0
+      }
+    }
+  },
+  {
+    "n": 8192,
+    "shuffled": true,
+    "active": 8192,
+    "state_bytes": 2883761,
+    "fixed_bytes": 2957489,
+    "populate_s": 1.647759799961932,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 0.5153999663889408
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.21637005847878732,
+        "tick_p95_ms": 0.7929799845442175,
+        "examined_p50": 176.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 2.5200599804520607,
+        "tick_p95_ms": null,
+        "examined_p50": 8192.0
+      }
+    }
+  },
+  {
+    "n": 65536,
+    "shuffled": false,
+    "active": 65536,
+    "state_bytes": 17563826,
+    "fixed_bytes": 18153650,
+    "populate_s": 14.599195400020108,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 0.681100063957274
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.37794004310853774,
+        "tick_p95_ms": 1.3479950197506696,
+        "examined_p50": 176.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 17.467054980807006,
+        "tick_p95_ms": null,
+        "examined_p50": 65536.0
+      }
+    }
+  },
+  {
+    "n": 65536,
+    "shuffled": true,
+    "active": 65536,
+    "state_bytes": 17563826,
+    "fixed_bytes": 18153650,
+    "populate_s": 14.88305229996331,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 0.6608000257983804
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.2306750102434307,
+        "tick_p95_ms": 0.8228000195231288,
+        "examined_p50": 160.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 15.636725013609976,
+        "tick_p95_ms": null,
+        "examined_p50": 65536.0
+      }
+    }
+  }
+]

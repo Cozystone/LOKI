@@ -18,6 +18,12 @@ __all__ = ["BeliefModel", "LokiMemory", "LongTermCortex", "CorticalMemory", "Rev
 
 # Keep the v4-only import path free of the v12 Numba dependency.
 def __getattr__(name):
+    if name == "TraceStore":
+        from .trace_store import TraceStore
+        return TraceStore
+    if name == "TraceAtlas":
+        from .trace_atlas import TraceAtlas
+        return TraceAtlas
     if name == "LokiV12":
         from .journey import LokiV12
         return LokiV12

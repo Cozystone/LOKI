@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "loki-sensory-memory"
-version = "0.12.0"
+version = "0.13.0"
 description = "Continuous residual memory with action-dependent phase transport"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24"]
 
 [project.optional-dependencies]
+trace = ["torch>=2.4"]
 lifelong = ["numba>=0.59"]
 journey = ["numba>=0.59"]
 research-v11 = ["numba>=0.59", "matplotlib", "Pillow"]
@@ -17,3 +18,6 @@ research-v10 = ["numba>=0.59", "matplotlib", "Pillow"]
 
 [tool.setuptools]
 packages = ["loki_memory"]
+
+[tool.setuptools.package-data]
+loki_memory = ["trace_kernels.cu"]

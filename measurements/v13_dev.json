@@ -1,0 +1,150 @@
+{
+  "rows": [
+    {
+      "seed": 26001,
+      "capacity": {
+        "64": 1.0,
+        "128": 1.0,
+        "256": 1.0,
+        "512": 1.0,
+        "1024": 1.0
+      },
+      "baseline": 1.0,
+      "before_sleep": [
+        1.0,
+        1.0
+      ],
+      "after_sleep": [
+        1.0,
+        1.0
+      ],
+      "context_alias_accuracy": 1.0,
+      "pos_alias": 1.0,
+      "cold_ambiguous_refused": true,
+      "reanchor_steps": 2,
+      "translation_error": 0.0,
+      "known_coverage": 1.0,
+      "ood_high": 0.0,
+      "novelty_auc": 1.0,
+      "sleep": {
+        "merged": 1,
+        "pruned": 2,
+        "freed": 3,
+        "value_sweeps": 1,
+        "committed": true,
+        "elapsed_ms": 9.42170002963394
+      },
+      "snapshot_bytes": 243016
+    },
+    {
+      "seed": 26002,
+      "capacity": {
+        "64": 1.0,
+        "128": 1.0,
+        "256": 1.0,
+        "512": 1.0,
+        "1024": 1.0
+      },
+      "baseline": 1.0,
+      "before_sleep": [
+        1.0,
+        1.0
+      ],
+      "after_sleep": [
+        1.0,
+        1.0
+      ],
+      "context_alias_accuracy": 1.0,
+      "pos_alias": 1.0,
+      "cold_ambiguous_refused": true,
+      "reanchor_steps": 2,
+      "translation_error": 0.0,
+      "known_coverage": 1.0,
+      "ood_high": 0.0,
+      "novelty_auc": 1.0,
+      "sleep": {
+        "merged": 1,
+        "pruned": 2,
+        "freed": 3,
+        "value_sweeps": 1,
+        "committed": true,
+        "elapsed_ms": 8.10900004580617
+      },
+      "snapshot_bytes": 243016
+    },
+    {
+      "seed": 26003,
+      "capacity": {
+        "64": 1.0,
+        "128": 1.0,
+        "256": 1.0,
+        "512": 1.0,
+        "1024": 1.0
+      },
+      "baseline": 1.0,
+      "before_sleep": [
+        1.0,
+        1.0
+      ],
+      "after_sleep": [
+        1.0,
+        1.0
+      ],
+      "context_alias_accuracy": 1.0,
+      "pos_alias": 1.0,
+      "cold_ambiguous_refused": true,
+      "reanchor_steps": 2,
+      "translation_error": 0.0,
+      "known_coverage": 1.0,
+      "ood_high": 0.0,
+      "novelty_auc": 1.0,
+      "sleep": {
+        "merged": 1,
+        "pruned": 2,
+        "freed": 3,
+        "value_sweeps": 1,
+        "committed": true,
+        "elapsed_ms": 8.021899964660406
+      },
+      "snapshot_bytes": 243016
+    }
+  ],
+  "episodes": {
+    "directional_value": 1.0,
+    "continuations": [
+      [
+        2
+      ],
+      [
+        4
+      ]
+    ],
+    "expected": [
+      [
+        2
+      ],
+      [
+        4
+      ]
+    ],
+    "unordered_best": 0.5,
+    "structural_role": 1.0,
+    "shuffled": 0.273046875,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 3,
+      "committed": true,
+      "elapsed_ms": 0.6549000972881913
+    },
+    "junction_values": [
+      0.485107421875,
+      0.485107421875
+    ],
+    "source_values": [
+      0.470458984375,
+      0.470458984375
+    ]
+  }
+}
