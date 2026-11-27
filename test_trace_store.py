@@ -85,6 +85,25 @@ class TraceTests(unittest.TestCase):
                 restored.store.recall_episode(0, 1), [(a, 0, 0), (b, 1, 1)]
             )
 
+    def test_combined_tick_equivalence(self):
+        a = TraceAtlas(1, 8)
+        b = TraceAtlas.load(a.state())
+        prev = [-1]
+        for t in range(30):
+            key = np.full((1, 32), (t % 5) / 4)
+            pos = None if t % 3 == 0 else [[t % 4, 0]]
+            ctx = np.zeros((1, 16))
+            args = (key, pos, ctx, [[0.2]], [0.1], t, [t % 7 != 0])
+            e = a.cue(key, pos, ctx)
+            now = a.write(*args)
+            a.link(prev, now, args[-1])
+            q, token = b.observe(*args, prev)
+            for x, y in zip(e, q):
+                torch.testing.assert_close(x, y)
+            torch.testing.assert_close(now, token)
+            self.assertEqual(a.state(), b.state())
+            prev = now
+
     def test_atlas_window_merge_and_stale_event(self):
         s = TraceAtlas(1, 8192)
         key = np.zeros((1, 32))

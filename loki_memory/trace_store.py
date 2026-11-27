@@ -469,25 +469,23 @@ class TraceStore:
         return self._cpu_query(key, pos, ctx, rows, False, 1)
 
     def _cpu_write(
-        self, key, pos, ctx, rows, rise, drop, clock, live, sensory_match=None
+        self, key, pos, ctx, rows, rise, drop, clock, live, match=None, unplaced=False
     ):
         self.meta.numpy()[0] = clock
         out = np.array([-1], np.int64)
         if not bool(live[0]):
             return torch.from_numpy(out)
         ids, sim, _, _ = (
-            self._admission(key, pos, ctx, rows)
-            if sensory_match is None
-            else sensory_match
+            self._admission(key, pos, ctx, rows) if match is None else match
         )
         r = int(rows[0])
-        frame = self.frame.numpy()[r] if sensory_match is None else -2
+        frame = self.frame.numpy()[r] if not unplaced else -2
         vis = self.visits.numpy()
         if float(sim[0, 0]) >= np.exp(-0.5):
             i = int(ids[0, 0]) % self.n
-            if (
-                sensory_match is None and not self.located.numpy()[r]
-            ) or self.chart.numpy()[i] != frame:
+            if (not unplaced and not self.located.numpy()[r]) or self.chart.numpy()[
+                i
+            ] != frame:
                 return torch.from_numpy(out)
         else:
             free = np.flatnonzero(vis == 0)
@@ -503,7 +501,7 @@ class TraceStore:
                 key.numpy()[0],
                 ctx.numpy()[0],
                 pos.numpy()[0] + self.offset.numpy()[r]
-                if sensory_match is None
+                if not unplaced
                 else np.zeros(2),
                 drop.numpy(),
                 [0],
@@ -515,7 +513,7 @@ class TraceStore:
         vis[i] = min(2147483647, int(vis[i]) + 1)
         self.last.numpy()[i] = clock
         self.chart.numpy()[i] = frame
-        if sensory_match is None:
+        if not unplaced:
             self.located.numpy()[r] = True
         out[0] = self.generation.numpy()[i] * self.n + i
         return torch.from_numpy(out)

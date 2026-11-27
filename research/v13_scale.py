@@ -69,7 +69,23 @@ def trial(n, shuffled):
             tick_p95_ms=float(np.percentile(tick, 95)) if tick else None,
             examined_p50=float(np.median(tested)),
         )
+    fused = []
+    for t, j in enumerate(rng.choice(n, 256, replace=False)):
+        args = (
+            key[j : j + 1],
+            pos[j : j + 1],
+            ctx,
+            rise,
+            drop,
+            n + 128 + t,
+            live,
+            prev,
+        )
+        start = perf_counter()
+        _, prev = s.observe(*args)
+        fused.append((perf_counter() - start) * 1000)
     return dict(
+        fused_p95_ms=float(np.percentile(fused, 95)),
         n=n,
         shuffled=shuffled,
         active=int((s.visits > 0).sum()),

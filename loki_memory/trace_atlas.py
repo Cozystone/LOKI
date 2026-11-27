@@ -296,7 +296,13 @@ class TraceAtlas(TraceStore):
                 args = key[sl], placeholder[sl], ctx[sl], rows[sl]
                 matched = self._indexed(*args, True, 1, scope="unplaced")
                 token = self._cpu_write(
-                    *args, rise[sl], drop[sl], int(clock), live[sl], matched
+                    *args,
+                    rise[sl],
+                    drop[sl],
+                    int(clock),
+                    live[sl],
+                    matched,
+                    unplaced=True,
                 ).item()
                 self._event(int(r), token, int(clock))
                 if token >= 0:
@@ -310,6 +316,33 @@ class TraceAtlas(TraceStore):
             if token >= 0:
                 self._index(token % self.n)
         return ids
+
+    def observe(self, key, pos, ctx, rise, drop, clock, live, previous, *, body=None):
+        """Cue, write and link in one serialized tick, sharing the exact placed ranking."""
+        if pos is None or len(key) != 1:
+            evidence = self.cue(key, pos, ctx, body=body)
+            now = self.write(key, pos, ctx, rise, drop, clock, live, body=body)
+        else:
+            args = self._inputs(key, pos, ctx, body)
+            rise = self._float(rise, self.c)
+            drop = torch.as_tensor(drop, dtype=torch.float32).detach().reshape(-1)
+            live = torch.as_tensor(live, dtype=torch.bool).reshape(-1)
+            if (
+                len(rise) != 1
+                or len(drop) != 1
+                or len(live) != 1
+                or not torch.isfinite(drop).all()
+                or int(clock) < int(self.meta[0])
+            ):
+                raise ValueError("invalid atlas tick")
+            evidence = self._indexed(*args, False, 8)
+            now = self._cpu_write(*args, rise, drop, int(clock), live, evidence)
+            token = int(now[0])
+            self._event(int(args[-1][0]), token, int(clock))
+            if token >= 0:
+                self._index(token % self.n)
+        self.link(previous, now, live, body=body)
+        return evidence, now
 
     def cut(self, body=None):
         super().cut(body)
