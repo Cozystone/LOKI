@@ -1,0 +1,2608 @@
+{
+  "rows": [
+    {
+      "seed": 29101,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 293,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 294,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29102,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 267,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 267,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29103,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 261,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 261,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29104,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 252,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 252,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29105,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 241,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 243,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29106,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 253,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 253,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29107,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 264,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 266,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29108,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 263,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 263,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29109,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 253,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 253,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29110,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 237,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 237,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29111,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 229,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 229,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29112,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 264,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 263,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29113,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 258,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 258,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29114,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 255,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 256,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29115,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 262,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 262,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29116,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 250,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 252,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29117,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 245,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 245,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29118,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 230,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 230,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29119,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 250,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 250,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29120,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 238,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 239,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29121,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 255,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 256,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29122,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 248,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 247,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29123,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 262,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          19,
+          18
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 263,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "seed": 29124,
+      "partial": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 1.0,
+        "fourth_bundle": 0,
+        "evictions": 1,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 1,
+        "base": 1.0,
+        "returned": 1.0,
+        "all_worlds": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          1,
+          2
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          true,
+          true
+        ],
+        "post_contact": [
+          0,
+          0
+        ],
+        "recycled": 246,
+        "bytes": 58184,
+        "active": 64
+      },
+      "pooled": {
+        "heldout_site_baseline": 1.0,
+        "heldout_site_return": 0.0,
+        "fourth_bundle": 0,
+        "evictions": 0,
+        "after_fourth": 0.0,
+        "unannounced_initial": 0,
+        "unannounced_post": 0,
+        "exact_twin_wrong": true,
+        "nuisance_splits": 0,
+        "base": 1.0,
+        "returned": 0.0,
+        "all_worlds": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "dedicated": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first_contact": [
+          18,
+          19
+        ],
+        "early": [
+          false,
+          false
+        ],
+        "final": [
+          false,
+          false
+        ],
+        "post_contact": [
+          null,
+          null
+        ],
+        "recycled": 246,
+        "bytes": 58184,
+        "active": 64
+      },
+      "oracle_partition": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "cpu1": {
+    "p95_ms": 0.6749149999999999,
+    "export_p95_ms": 0.019159999999999993,
+    "sleep_max_ms": 0.2887,
+    "bytes": 58184
+  },
+  "cpu64": {
+    "p95_ms": 1.7233399999999999,
+    "export_p95_ms": 0.0222,
+    "sleep_max_ms": 0.3959,
+    "bytes": 58688
+  }
+}

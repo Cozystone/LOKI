@@ -31,6 +31,8 @@ class PlaceBundles(nn.Module):
         field("counts", (slots,))
         field("walk", (slots, slots))
         field("prev", (bodies,), torch.int64, -1)
+        field("generation", (slots,), torch.int64)
+        field("context_generation", (bundles,), torch.int64)
         field("clock", (), torch.int64)
         field("moves", (), torch.int64)
         field("forgotten", (), torch.int64)
@@ -66,6 +68,7 @@ class PlaceBundles(nn.Module):
             )
             j = int(priority.argmin())
             self.moves.add_(1)
+            self.generation[j] += 1
             self.rates[:, j] = 0
             self.seen[:, j] = 0
             self.edges[:, j] = False
@@ -201,6 +204,7 @@ class PlaceBundles(nn.Module):
             bundle = int(self.recent.argmin())
             if self.recent[bundle] >= 0:
                 self.forgotten.add_(1)
+                self.context_generation[bundle] += 1
             self.rates[bundle] = 0
             self.seen[bundle] = 0
             self.edges[bundle] = False
@@ -227,3 +231,65 @@ class PlaceBundles(nn.Module):
                 self.Pu,
             )
         return self.C, self.rates[bundle, :, :-1], self.T * self.edges[bundle], self.Pu
+
+    @torch.no_grad()
+    def import_going(self, g):
+        """Seed one incumbent map, including a full 64-unit adult. Call only on an empty organ."""
+        if self.visits.any():
+            raise ValueError("destination already has a map")
+
+        def check(name, shape):
+            t = torch.as_tensor(
+                getattr(g, name), device=self.C.device, dtype=self.C.dtype
+            )
+            if t.shape != shape or not torch.isfinite(t).all():
+                raise ValueError("incompatible " + name)
+            return t
+
+        c = check("C", self.C.shape)
+        pu = check("Pu", self.Pu.shape)
+        r = check("R", self.fast[:, :-1].shape)
+        edges = check("T", self.T.shape)
+        cn = check("Cn", self.visits.shape)
+        denom = check("Vn", self.visits.shape) if getattr(g, "mended", True) else cn
+        used = int(getattr(g, "used", len(c)))
+        if (
+            not 0 < used <= len(c)
+            or (denom < 0).any()
+            or (cn < 0).any()
+            or (edges < 0).any()
+        ):
+            raise ValueError("invalid source map")
+        self.C[:used] = c[:used]
+        self.Pu[:used] = pu[:used]
+        self.visits[:used] = cn[:used].clamp_min(1)
+        self.T[:used, :used] = edges[:used, :used]
+        self.edges[0] = self.T > 0
+        self.seen[0, :used] = denom[:used]
+        self.rates[0, :used, :-1] = (r[:used] / denom[:used, None].clamp_min(1)).clamp(
+            0, 1
+        )
+        self.recent[0] = 0
+
+    def going_snapshot(self, bundle):
+        """Detached copies in Going.refresh's mended R/Vn convention."""
+        c, r, t, pu = self.going(bundle)
+        n = (
+            self.seen[bundle].clone()
+            if bundle >= 0 and self.recent[bundle] >= 0
+            else torch.zeros_like(self.visits)
+        )
+        return dict(
+            C=c.clone(),
+            Pu=pu.clone(),
+            T=t.clone(),
+            R=r * n[:, None],
+            Vn=n,
+            Cn=self.visits.clone(),
+            Pn=n.clone(),
+            used=int((self.visits > 0).sum()),
+            generation=self.generation.clone(),
+            context_generation=int(self.context_generation[bundle])
+            if bundle >= 0
+            else -1,
+        )
