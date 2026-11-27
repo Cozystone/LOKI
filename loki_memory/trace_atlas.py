@@ -38,6 +38,7 @@ class TraceAtlas(TraceStore):
         self.chain = np.full(self.n, -1, np.int32)
         self.bucket = np.full(self.n, -1, np.int32)
         self.sole_frame = None
+        self.has_unplaced = False
         # A contiguous sensory projection makes cold-start scans bandwidth-bound.
         self.scale = np.r_[np.full(32, 0.32**-0.5), np.full(16, 0.1296**-0.5)].astype(
             "f4"
@@ -72,6 +73,9 @@ class TraceAtlas(TraceStore):
         x, y = np.floor(self.features.numpy()[i, 48:50].astype("f4") / self.TILE)
         self.sensory[i] = self.features.numpy()[i, :48] * self.scale
         self.norm[i] = self.sensory[i] @ self.sensory[i]
+        if self.chart.numpy()[i] == -2:
+            self.has_unplaced = True
+            return
         dest = self._hash(x, y)
         old = self.bucket[i]
         if old != dest:
@@ -97,6 +101,7 @@ class TraceAtlas(TraceStore):
         self.chain.fill(-1)
         self.bucket.fill(-1)
         self.sole_frame = None
+        self.has_unplaced = False
         for i in np.flatnonzero(self.visits.numpy()):
             self._index(i)
 
@@ -106,7 +111,7 @@ class TraceAtlas(TraceStore):
         obj._rebuild()
         return obj
 
-    def _indexed(self, key, pos, ctx, body, landmark, k, admit=False):
+    def _indexed(self, key, pos, ctx, body, landmark, k, admit=False, scope="placed"):
         r = int(body[0])
         if (
             not landmark
@@ -145,12 +150,17 @@ class TraceAtlas(TraceStore):
                     sim = float(result[1][0, q - 1])
                     if sim > 0 and -2 * np.log(sim) + 1e-4 < (boundary / 0.65) ** 2:
                         return result
-        self.examined = int(np.count_nonzero(self.visits.numpy()))
+        live = self.visits.numpy() != 0
+        if scope == "unplaced":
+            live &= self.chart.numpy() == -2
+        elif scope == "placed" and self.has_unplaced:
+            live &= self.chart.numpy() >= 0
+        self.examined = int(np.count_nonzero(live))
         if self.examined:
             probe = np.concatenate((key.numpy()[0], ctx.numpy()[0])) * self.scale
             length = probe @ probe
             approx = self.norm + length - 2 * np.einsum("ij,j->i", self.sensory, probe)
-            approx[self.visits.numpy() == 0] = np.inf
+            approx[~live] = np.inf
             q = min(max(2, k), self.examined)
             pilot = np.argpartition(approx, q - 1)[:q]
             upper = approx[pilot]
@@ -171,7 +181,9 @@ class TraceAtlas(TraceStore):
             )
             active = np.flatnonzero(approx <= kth + error + 1e-5)
             return super()._cpu_query(key, pos, ctx, body, landmark, k, active)
-        return super()._cpu_query(key, pos, ctx, body, landmark, k)
+        return super()._cpu_query(
+            key, pos, ctx, body, landmark, k, np.empty(0, np.intp)
+        )
 
     def _cpu_query(self, key, pos, ctx, body, landmark, k):
         return self._indexed(key, pos, ctx, body, landmark, k)
@@ -225,9 +237,74 @@ class TraceAtlas(TraceStore):
             serial = previous
         return out[::-1]
 
-    def write(self, *args, **kwargs):
-        ids = super().write(*args, **kwargs)
-        rows = range(len(ids)) if kwargs.get("body") is None else kwargs["body"]
+    def _query(self, key, pos, ctx, body, landmark=False, k=8):
+        if len(key) > 1 and self.has_unplaced:
+            ranked = [
+                self._indexed(
+                    key[i : i + 1],
+                    pos[i : i + 1],
+                    ctx[i : i + 1],
+                    body[i : i + 1],
+                    landmark,
+                    k,
+                )
+                for i in range(len(key))
+            ]
+            return tuple(torch.cat(group) for group in zip(*ranked))
+        return super()._query(key, pos, ctx, body, landmark, k)
+
+    def cue(self, key, pos, ctx, *, body=None, k=8, landmark=False):
+        if pos is not None:
+            return super().cue(key, pos, ctx, body=body, k=k, landmark=landmark)
+        if k < 1 or not len(key):
+            raise ValueError("nonempty query and positive k required")
+        key, placeholder, ctx, rows = self._inputs(
+            key, torch.zeros((len(key), 2)), ctx, body
+        )
+        ranked = [
+            self._indexed(
+                key[i : i + 1],
+                placeholder[i : i + 1],
+                ctx[i : i + 1],
+                rows[i : i + 1],
+                True,
+                k,
+                scope="all",
+            )
+            for i in range(len(key))
+        ]
+        return tuple(torch.cat(group) for group in zip(*ranked))
+
+    def write(self, key, pos, ctx, rise, drop, clock, live, *, body=None):
+        if pos is None:
+            key, placeholder, ctx, rows = self._inputs(
+                key, torch.zeros((len(key), 2)), ctx, body
+            )
+            rise = self._float(rise, self.c)
+            drop = torch.as_tensor(drop, dtype=torch.float32).reshape(-1).detach()
+            live = torch.as_tensor(live, dtype=torch.bool).reshape(-1)
+            if (
+                not len(key) == len(rise) == len(drop) == len(live)
+                or not len(key)
+                or not drop.isfinite().all()
+                or int(clock) < int(self.meta[0])
+            ):
+                raise ValueError("invalid sensory write")
+            ids = []
+            for i, r in enumerate(rows):
+                sl = slice(i, i + 1)
+                args = key[sl], placeholder[sl], ctx[sl], rows[sl]
+                matched = self._indexed(*args, True, 1, scope="unplaced")
+                token = self._cpu_write(
+                    *args, rise[sl], drop[sl], int(clock), live[sl], matched
+                ).item()
+                self._event(int(r), token, int(clock))
+                if token >= 0:
+                    self._index(token % self.n)
+                ids.append(token)
+            return torch.tensor(ids)
+        ids = super().write(key, pos, ctx, rise, drop, clock, live, body=body)
+        rows = range(len(ids)) if body is None else body
         for r, token in zip(rows, ids.tolist()):
             self._event(int(r), token, int(self.meta[0]))
             if token >= 0:
@@ -434,13 +511,14 @@ class TraceAtlas(TraceStore):
                 ids = np.r_[ids, np.asarray([j for _, j in pairs], dtype=int)]
                 for i in ids:
                     h = self.bucket[i]
-                    cur = self.head[h]
-                    if cur == i:
-                        self.head[h] = self.chain[i]
-                    else:
-                        while self.chain[cur] != i:
-                            cur = self.chain[cur]
-                        self.chain[cur] = self.chain[i]
+                    if h >= 0:
+                        cur = self.head[h]
+                        if cur == i:
+                            self.head[h] = self.chain[i]
+                        else:
+                            while self.chain[cur] != i:
+                                cur = self.chain[cur]
+                            self.chain[cur] = self.chain[i]
                     self.bucket[i] = -1
                     self.chain[i] = -1
                     self.visits[i] = 0
