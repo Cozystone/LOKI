@@ -40,6 +40,9 @@ def bench(device, batch):
                 c = 1 - c
             if mode == "allocate" and i % max(1, 1024 // batch) == 0:
                 s.visits.zero_()
+                s.nbr.fill_(-1)
+                s.count.zero_()
+                prev = torch.full_like(prev, -1)
             if device == "cuda":
                 torch.cuda.synchronize()
             start = perf_counter_ns()

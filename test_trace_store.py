@@ -49,7 +49,7 @@ class TraceTests(unittest.TestCase):
         b = put(s, 3, 8)
         self.assertEqual(s.recall_episode(0, 8), [(b, 8, 8)])
         s.cut()
-        ids, _, conf, _ = s.cue(np.full((1, 32),2/3), [[2, 0]], ctx, landmark=True)
+        ids, _, conf, _ = s.cue(np.full((1, 32), 2 / 3), [[2, 0]], ctx, landmark=True)
         self.assertTrue(s.anchor(ids, conf, [[2, 0]]).item())
         new = put(s, 8, 9)
         self.assertEqual(s.recall_episode(0, 9), [(new, 9, 9)])
@@ -84,6 +84,45 @@ class TraceTests(unittest.TestCase):
             self.assertEqual(
                 restored.store.recall_episode(0, 1), [(a, 0, 0), (b, 1, 1)]
             )
+
+    def test_atlas_window_merge_and_stale_event(self):
+        s = TraceAtlas(1, 8192)
+        key = np.zeros((1, 32))
+        ctx = np.zeros((1, 16))
+        a, b = [
+            s.write(key, [[p, 0]], ctx, [[1]], [0], i, [True]).item()
+            for i, p in enumerate((0, 0.70))
+        ]
+        self.assertNotEqual(a, b)
+        report = s.consolidate()
+        self.assertEqual(report["merged"], 1)
+        self.assertFalse(s.read([b])["valid"].item())
+        self.assertEqual(s.recall_episode(0, 1), [])
+        self.assertEqual(s.recall_episode(0, 0), [(a, 0, 0)])
+        self.assertEqual(s.cue(key, [[0, 0]], ctx)[0][0, 0].item(), a)
+
+    def test_indistinguishable_cues_and_multi_chart(self):
+        s = TraceAtlas(1, 128)
+        rng = np.random.default_rng(36)
+        key = rng.random((96, 32), dtype="f4")
+        ctx = rng.random((96, 16), dtype="f4")
+        pos = rng.random((96, 2), dtype="f4") * 20
+        for i in range(96):
+            if i == 48:
+                s.cut()
+            s.write(
+                key[i : i + 1], pos[i : i + 1], ctx[i : i + 1], [[1]], [0], i, [True]
+            )
+        for i in range(0, 96, 3):
+            args = s._inputs(key[i : i + 1], pos[i : i + 1], ctx[i : i + 1], None)
+            indexed = s._cpu_query(*args, False, 8)
+            dense = TraceStore._cpu_query(s, *args, False, 8)
+            torch.testing.assert_close(indexed[0], dense[0])
+        # Two externally labelled worlds with identical evidence yield identical reports.
+        q = s.cue(key[:1], pos[:1], ctx[:1])
+        self.assertTrue(
+            all(torch.equal(a, b) for a, b in zip(q, s.cue(key[:1], pos[:1], ctx[:1])))
+        )
 
     def test_interrupted_save(self):
         with tempfile.TemporaryDirectory() as d:

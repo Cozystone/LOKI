@@ -146,13 +146,22 @@ class TraceAtlas(TraceStore):
                     if sim > 0 and -2 * np.log(sim) + 1e-4 < (boundary / 0.65) ** 2:
                         return result
         self.examined = int(np.count_nonzero(self.visits.numpy()))
-        if self.examined and (landmark or not bool(self.located[r])):
+        if self.examined:
             probe = np.concatenate((key.numpy()[0], ctx.numpy()[0])) * self.scale
             length = probe @ probe
             approx = self.norm + length - 2 * np.einsum("ij,j->i", self.sensory, probe)
             approx[self.visits.numpy() == 0] = np.inf
             q = min(max(2, k), self.examined)
-            kth = np.partition(approx, q - 1)[q - 1]
+            pilot = np.argpartition(approx, q - 1)[:q]
+            upper = approx[pilot]
+            if not landmark and bool(self.located[r]):
+                delta = self.features.numpy()[pilot, 48:50].astype("f4") - (
+                    pos.numpy()[0] + self.offset.numpy()[r]
+                )
+                upper = upper + np.sum(delta * delta, axis=1) / 0.4225 * (
+                    self.chart.numpy()[pilot] == int(self.frame[r])
+                )
+            kth = upper.max()
             # Round-off bound for two 48-term dot products and rescaling, on both
             # sides of the ranking threshold. Recompute survivors in canonical units.
             error = (
@@ -367,9 +376,62 @@ class TraceAtlas(TraceStore):
                 targets = self.nbr.numpy()
                 incoming = targets[(targets >= 0)] % self.n
                 ids = ids[~np.isin(ids, incoming)]
+            # Compare only overlapping x intervals within this maintenance window.
+            # Linked vertices stay intact; no path rewiring is needed in a partial sweep.
+            points = self.features.numpy()[begin:end].astype("f4")
+            occupied = np.flatnonzero((v.numpy() > 0) & ~ok.any(1).numpy())
+            ordered = occupied[np.argsort(points[occupied, 48], kind="stable")]
+            xs = points[ordered, 48]
+            pairs = []
+            taken = set()
+            for order, i in enumerate(ordered):
+                if i in taken:
+                    continue
+                stop = np.searchsorted(xs, xs[order] + 0.76, side="right")
+                cand = ordered[order + 1 : stop]
+                if not len(cand):
+                    continue
+                diff = points[cand] - points[i]
+                distance = (
+                    np.sum(diff[:, :32] ** 2, 1) / 0.32
+                    + np.sum(diff[:, 32:48] ** 2, 1) / 0.1296
+                    + np.sum(diff[:, 48:50] ** 2, 1) / 0.4225
+                )
+                near = cand[
+                    (distance < 1.35)
+                    & (self.chart.numpy()[begin + cand] == int(self.chart[begin + i]))
+                ]
+                for j in near:
+                    if j not in taken:
+                        pairs.append((begin + i, begin + j))
+                        taken.update((i, j))
+                        break
+            if pairs:
+                targets = self.nbr.numpy()
+                incoming = set((targets[targets >= 0] % self.n).tolist())
+                pairs = [
+                    (i, j) for i, j in pairs if i not in incoming and j not in incoming
+                ]
+                ids = np.setdiff1d(ids, np.asarray(pairs, dtype=int).ravel())
             if (perf_counter() - start) * 1000 < budget_ms:
                 self.value[sl] = val
                 self.cursor[0] = end % self.n
+                pruned = len(ids)
+                for i, j in pairs:
+                    weights = self.visits[[i, j]].float()
+                    blend = (self.features[[i, j]].float() * weights[:, None]).sum(
+                        0
+                    ) / weights.sum()
+                    blend[50] = self.features[[i, j], 50].max()
+                    self.features[i] = blend
+                    self.relief[i] = torch.maximum(self.relief[i], self.relief[j])
+                    self.value[i] = torch.maximum(self.value[i], self.value[j])
+                    self.last[i] = torch.maximum(self.last[i], self.last[j])
+                    self.visits[i] = min(
+                        2**31 - 1, int(self.visits[i]) + int(self.visits[j])
+                    )
+                    self._index(i)
+                ids = np.r_[ids, np.asarray([j for _, j in pairs], dtype=int)]
                 for i in ids:
                     h = self.bucket[i]
                     cur = self.head[h]
@@ -387,7 +449,8 @@ class TraceAtlas(TraceStore):
                     self.nbr[i] = -1
                     self.count[i] = 0
                 report.update(
-                    pruned=len(ids),
+                    merged=len(pairs),
+                    pruned=pruned,
                     freed=len(ids),
                     scanned=end - begin,
                     value_sweeps=1,

@@ -7,7 +7,16 @@ from time import perf_counter
 import numpy as np
 import torch
 from loki_memory.trace_atlas import TraceAtlas
-from loki_memory.trace_store import TraceStore
+
+
+def exhaustive(store, key, pos, ctx, cold):
+    # Independent row-by-row metric over the full populated table, no atlas bounds.
+    f = store.features.numpy()
+    cost = np.sum((f[:, :32] - key.numpy()[0]) ** 2, 1) / 0.32
+    cost += np.sum((f[:, 32:48] - ctx.numpy()[0]) ** 2, 1) / 0.1296
+    if not cold:
+        cost += np.sum((f[:, 48:50] - pos.numpy()[0]) ** 2, 1) / 0.4225
+    return np.argsort(cost, kind="stable")[:8]
 
 
 def trial(n, shuffled):
@@ -37,6 +46,7 @@ def trial(n, shuffled):
         exact = []
         for t, j in enumerate(rng.choice(n, 128, replace=False)):
             args = s._inputs(key[j : j + 1], pos[j : j + 1], ctx, None)
+            ref = exhaustive(s, *args[:3], cold)
             begin = perf_counter()
             ids, *_ = s.cue(*args[:3], landmark=cold)
             times.append((perf_counter() - begin) * 1000)
@@ -46,8 +56,7 @@ def trial(n, shuffled):
                 s.link(prev, found, live)
                 tick.append((perf_counter() - begin) * 1000)
                 prev = found
-            ref = TraceStore._cpu_query(s, *args, cold, 8)[0]
-            correct.append(torch.equal(ref, ids))
+            correct.append(np.array_equal(ref, ids.numpy()[0]))
             exact.append(
                 np.array_equal(
                     s.features.numpy()[int(ids[0, 0]) % n, :32], key[j].astype("f2")
