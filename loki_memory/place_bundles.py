@@ -5,10 +5,19 @@ from torch import nn
 
 
 class PlaceBundles(nn.Module):
-    def __init__(self, channels=2, bodies=1, slots=64, bundles=3, pooled=False):
+    def __init__(
+        self,
+        channels=2,
+        bodies=1,
+        slots=64,
+        bundles=3,
+        pooled=False,
+        supported_motion=True,
+    ):
         super().__init__()
         if min(channels, bodies, slots, bundles) < 1:
             raise ValueError("invalid geometry")
+        self.supported_motion = supported_motion
         self.pooled = pooled
         self.register_buffer("reading", torch.tensor(-1, dtype=torch.int64))
         self.register_buffer("splits", torch.tensor(0, dtype=torch.int64))
@@ -91,6 +100,9 @@ class PlaceBundles(nn.Module):
             return 0, 1.0
         # Only witnessed positive discrepancies or relief provide positive identity evidence.
         informative = self.fast > 0.15
+        if self.supported_motion and informative[:, :-1].any():
+            witnessed = self.rates[:, :, -1].amax(0) > 0.15
+            informative[:, -1] &= witnessed
         if not informative.any() or not active.any():
             return -1, 0.0
         observed = self.seen > 0
@@ -163,6 +175,10 @@ class PlaceBundles(nn.Module):
                 & ((self.rates[current, u] - out).abs() > 0.4)
                 & (self.seen[current, u, None] > 0)
             )
+            if self.supported_motion:
+                alternative = self.rates[:, u, -1] > 0.15
+                alternative[current] = False
+                contradiction[:, -1] &= alternative.any(0)
             if contradiction.any():
                 self.sleep()
                 self.cut()

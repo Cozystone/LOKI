@@ -85,13 +85,13 @@ def live(s, grid, start, sites, seed, tour):
     return first, distance
 
 
-def trial(seed, generate):
+def trial(seed, generate, supported_motion=False):
     grid, _ = generate(seed)
     where = lambda s: next(
         (x, y) for y, row in enumerate(grid) for x, ch in enumerate(row) if ch == s
     )
     a = (grid, where("s"), [where("w"), where("f")])
-    s = PlaceBundles()
+    s = PlaceBundles(supported_motion=supported_motion)
     live(s, *a, seed, True)
     bank_a = s.sleep()
     alone, _ = live(copy.deepcopy(s), *a, seed + 55, False)
