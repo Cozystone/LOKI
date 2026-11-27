@@ -1,0 +1,39 @@
+{
+  "beats": 45,
+  "first_contact": 19,
+  "first_bank": 0,
+  "mirror_bank": 0,
+  "approvals_before_contact": 15,
+  "last_support": 1.0,
+  "split": false,
+  "old_relief_before": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "old_relief_after": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "expected": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ]
+}
