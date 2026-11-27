@@ -1,0 +1,11 @@
+{
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:05:56) [MSC v.1942 64 bit (AMD64)]",
+  "torch": "2.11.0+cu128",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "host_cpu": "Ryzen 9 9950X3D",
+  "start_rss": 21536768,
+  "after_import_rss": 516857856,
+  "resident_65536_touched": 552120320,
+  "with_snapshot_rss": 575995904,
+  "peak_so_far": 617287680
+}

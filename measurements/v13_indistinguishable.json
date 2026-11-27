@@ -1,0 +1,202 @@
+[
+  {
+    "seed": 26741,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 1.7927959561347961e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.02431221678853035
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.14283423125743866
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.46038079261779785
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9152755737304688
+    }
+  },
+  {
+    "seed": 26742,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 1.0011717677116394e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.02439221180975437
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.1430053859949112
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.46059268712997437
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9153425097465515
+    }
+  },
+  {
+    "seed": 26743,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 9.778887033462524e-07
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.02435898780822754
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.1429368108510971
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.4605083465576172
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9153156280517578
+    }
+  },
+  {
+    "seed": 26744,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 1.83936208486557e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.024270962923765182
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.1427459418773651
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.46026360988616943
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9152388572692871
+    }
+  },
+  {
+    "seed": 26745,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 1.210719347000122e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.02441215142607689
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.14304816722869873
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.4606474041938782
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9153591394424438
+    }
+  },
+  {
+    "seed": 26746,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 1.816079020500183e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.024403773248195648
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.1430376172065735
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.4606318473815918
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9153546690940857
+    }
+  },
+  {
+    "seed": 26747,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 1.4668330550193787e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.02445368468761444
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.1431429386138916
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.46076756715774536
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9153966307640076
+    }
+  },
+  {
+    "seed": 26748,
+    "with_pose": 1.0,
+    "omit_pose": 0.5,
+    "0": {
+      "high_wrong": 1.0,
+      "mean_novelty": 2.291053533554077e-06
+    },
+    "0.02": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.024353086948394775
+    },
+    "0.05": {
+      "high_wrong": 1.0,
+      "mean_novelty": 0.14292217791080475
+    },
+    "0.1": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.4604877233505249
+    },
+    "0.2": {
+      "high_wrong": 0.0,
+      "mean_novelty": 0.9153093695640564
+    }
+  }
+]

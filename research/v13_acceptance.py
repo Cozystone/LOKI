@@ -3,6 +3,7 @@
 import argparse
 import importlib.util
 import json
+from types import SimpleNamespace
 from pathlib import Path
 import numpy as np
 import torch
@@ -216,14 +217,34 @@ def episodes():
     )
 
 
+def saturation_fixture(seed, n, D):
+    """Reproduce only the observation field consumed from the v11 generator."""
+    rng = np.random.default_rng(seed + 600001)
+
+    def texture():
+        v = (rng.random(D) < 0.5).astype("f4")
+        return (np.roll(v, 1) + 2 * v + np.roll(v, -1)) / 4
+
+    codes = [texture() for _ in range(n)]
+    seen = set()
+    for i, row in enumerate(codes):
+        while row.tobytes() in seen:
+            row = texture()
+        codes[i] = row
+        seen.add(row.tobytes())
+    return SimpleNamespace(codes=np.stack(codes))
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--worlds", type=Path, required=True)
+    ap.add_argument("--worlds", type=Path)
     ap.add_argument("--sealed", action="store_true")
     args = ap.parse_args()
-    spec = importlib.util.spec_from_file_location("v11_worlds", args.worlds)
-    worlds = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(worlds)
+    worlds = SimpleNamespace(saturation=saturation_fixture)
+    if args.worlds:
+        spec = importlib.util.spec_from_file_location("v11_worlds", args.worlds)
+        worlds = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(worlds)
     torch.set_num_threads(1)
     rows = [
         run(i, worlds)

@@ -1,0 +1,138 @@
+[
+  {
+    "fused_p95_ms": 0.422074954258278,
+    "n": 8192,
+    "shuffled": false,
+    "active": 8192,
+    "state_bytes": 3276994,
+    "fixed_bytes": 4956546,
+    "populate_s": 1.858596200007014,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 8.152799913659692
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.296795048052445,
+        "tick_p95_ms": 0.6755299458745867,
+        "examined_p50": 176.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.35460002254694695,
+        "tick_p95_ms": null,
+        "examined_p50": 8192.0
+      }
+    }
+  },
+  {
+    "fused_p95_ms": 0.3518000594340265,
+    "n": 8192,
+    "shuffled": true,
+    "active": 8192,
+    "state_bytes": 3276994,
+    "fixed_bytes": 4956546,
+    "populate_s": 1.81873259996064,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 7.334599969908595
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.2937299490440637,
+        "tick_p95_ms": 0.6478300085291265,
+        "examined_p50": 176.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.31145004322752357,
+        "tick_p95_ms": null,
+        "examined_p50": 8192.0
+      }
+    }
+  },
+  {
+    "fused_p95_ms": 0.6864499882794917,
+    "n": 65536,
+    "shuffled": false,
+    "active": 65536,
+    "state_bytes": 20709571,
+    "fixed_bytes": 34144643,
+    "populate_s": 18.679659000015818,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 7.610299973748624
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.9296199830714609,
+        "tick_p95_ms": 1.9437749870121472,
+        "examined_p50": 176.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 1.5947699721436939,
+        "tick_p95_ms": null,
+        "examined_p50": 65536.0
+      }
+    }
+  },
+  {
+    "fused_p95_ms": 0.5420499655883759,
+    "n": 65536,
+    "shuffled": true,
+    "active": 65536,
+    "state_bytes": 20709571,
+    "fixed_bytes": 34144643,
+    "populate_s": 28.484953599981964,
+    "sleep": {
+      "merged": 0,
+      "pruned": 0,
+      "freed": 0,
+      "value_sweeps": 1,
+      "committed": true,
+      "scanned": 512,
+      "elapsed_ms": 6.9645000621676445
+    },
+    "queries": {
+      "registered": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 0.7471149845514446,
+        "tick_p95_ms": 1.5055249794386327,
+        "examined_p50": 160.0
+      },
+      "cold": {
+        "top8": 1.0,
+        "top1": 1.0,
+        "p95_ms": 1.7423949262592937,
+        "tick_p95_ms": null,
+        "examined_p50": 65536.0
+      }
+    }
+  }
+]
