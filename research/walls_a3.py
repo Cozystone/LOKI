@@ -37,7 +37,7 @@ def walk(grid, start, end):
     return seq[::-1]
 
 
-def measure(layout, rare=False):
+def measure(layout, rare=False, calibrated=False):
     grids = [layout(mirror=m)[0] for m in (False, True)]
     path = walk(grids[0], (8, 13), (1, 1)) + walk(grids[0], (1, 1), (14, 1))[1:]
 
@@ -62,7 +62,7 @@ def measure(layout, rare=False):
 
     first, second = map(rows, grids)
     contact = next(i for i, row in enumerate(first) if row[2].any())
-    s = ContextWitness(rare=rare)
+    s = ContextWitness(rare=rare, calibrated=calibrated)
     for row in first:
         s.observe(*row)
     a = s.consolidate()
@@ -93,7 +93,21 @@ def measure(layout, rare=False):
             x, p, r = seq[i]
             seq[i] = (x, p, np.ones_like(r))
         nuisance.append(query(seq)[-1])
+    noisy = []
+    if calibrated:
+        for seed in range(28401, 28425):
+            rng = np.random.default_rng(seed)
+            for direction in (path, reverse):
+                outputs = []
+                for grid in grids:
+                    trace = [
+                        (np.clip(x + rng.normal(0, 0.01, x.shape), 0, 1), p, r)
+                        for x, p, r in rows(grid, direction)
+                    ]
+                    outputs.append(query(trace)[-1])
+                noisy.append(outputs)
     return dict(
+        noisy_returns=noisy,
         returns=[query(first)[-1], query(second)[-1]],
         reversed_route=[query(rows(grid, reverse))[-1] for grid in grids],
         nuisance=nuisance,
@@ -114,14 +128,24 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("source", type=Path)
     ap.add_argument("--rare", action="store_true")
+    ap.add_argument("--calibrated", action="store_true")
     args = ap.parse_args()
-    result = measure(load_layout(args.source), args.rare)
-    if args.rare:
+    result = measure(
+        load_layout(args.source), args.rare or args.calibrated, args.calibrated
+    )
+    if args.rare or args.calibrated:
         from research.four_walls import context_trial
 
         result["fresh_ring"] = [
-            context_trial(i, rare=True) for i in range(28301, 28325)
+            context_trial(i, rare=True, calibrated=args.calibrated)
+            for i in (range(28401, 28425) if args.calibrated else range(28301, 28325))
         ]
-    name = "walls_rare" if args.rare else "walls_a3"
+    name = (
+        "walls_calibrated"
+        if args.calibrated
+        else "walls_rare"
+        if args.rare
+        else "walls_a3"
+    )
     Path(f"measurements/{name}.json").write_text(json.dumps(result, indent=2))
     print({k: v for k, v in result.items() if k != "fresh_ring"})

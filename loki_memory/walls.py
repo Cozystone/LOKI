@@ -29,7 +29,20 @@ def _snapshot(tag, *arrays):
 class ContextWitness:
     """Defer changes to long-lived contexts until the end of a bounded encounter."""
 
-    def __init__(self, width=12, channels=2, banks=8, edges=96, window=64, rare=False):
+    def __init__(
+        self,
+        width=12,
+        channels=2,
+        banks=8,
+        edges=96,
+        window=64,
+        rare=False,
+        calibrated=False,
+    ):
+        if calibrated and not rare:
+            raise ValueError("calibration needs discrepancy tracking")
+        self.calibrated = calibrated
+        self.fit = np.ones(banks if calibrated else 0, "f4")
         self.rare = rare
         self.low = np.ones((2, banks), "f4") if rare else np.empty((0, banks), "f4")
         self.width = width
@@ -64,6 +77,8 @@ class ContextWitness:
         scores = self.total[active] / self.t
         if self.rare:
             scores *= self.low[1, active]
+        if self.calibrated:
+            scores = np.minimum(1, scores / self.fit[active])
         best = int(scores.argmax())
         alt = max(0.50, np.max(np.delete(scores, best), initial=0.0))
         support = float(np.clip((scores[best] - alt) / 0.40, 0, 1))
@@ -114,6 +129,13 @@ class ContextWitness:
                 j = int(free[0])
             counts[j] = min(65535, int(counts[j]) + 1)
             table[j] += (row - table[j]) / min(64, counts[j])
+        if self.calibrated:
+            length = min(self.t, len(self.pending))
+            witnessed = self.pending[:length]
+            cost = self._distance(table[None, :, :], witnessed[:, None, :])
+            scores = np.exp(-np.where(counts[None, :], cost, np.inf).min(1))
+            reference = scores.mean() * np.partition(scores, 1)[1]
+            self.fit[chosen] = np.clip(reference, 0.8, 1)
         self.cut()
         return chosen
 
@@ -131,7 +153,11 @@ class ContextWitness:
 
     def state(self):
         return _snapshot(
-            b"LOKIW102" if self.rare else b"LOKIW101",
+            b"LOKIW103"
+            if self.calibrated
+            else b"LOKIW102"
+            if self.rare
+            else b"LOKIW101",
             np.asarray([self.t, self.ready], dtype="<i8"),
             self.edges,
             self.count,
@@ -140,6 +166,7 @@ class ContextWitness:
             self.prev,
             self.pos,
             *([self.low] if self.rare else []),
+            *([self.fit] if self.calibrated else []),
         )
 
     def sha(self):
