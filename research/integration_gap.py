@@ -8,7 +8,7 @@ import numpy as np
 from loki_memory.bout_outcomes import BoutOutcomes
 
 
-def life(seed, integrated, distinct, calibrated, cost, current=False):
+def life(seed, integrated, distinct, calibrated, cost, current=False, prospective=False, walk_return=False):
     rng=np.random.default_rng(seed)
     wire=rng.permutation(5)
     # Ordinals and the world's causal wiring are harness-private.
@@ -17,6 +17,7 @@ def life(seed, integrated, distinct, calibrated, cost, current=False):
     model=BoutOutcomes(5)
     pending=np.zeros(21)
     d=.55
+    background=0.
     clock=0
     rows=[]
     for t in range(480):
@@ -35,7 +36,8 @@ def life(seed, integrated, distinct, calibrated, cost, current=False):
         # Fixed paired exploration noise; this is NOT epistemic agency.
         u,proposal,jitter=rng.random(),rng.random(),rng.random(5)
         durations=int(rng.integers(4,12))
-        expected=np.clip(d+estimate,0,1)
+        at_arrival = d + lag*background if prospective else d
+        expected=np.clip(at_arrival+estimate,0,1)
         arm=int(np.argmin(expected**2+1e-9*jitter[:len(ids)]))
         if u<.16:
             arm=int(proposal*len(ids))
@@ -45,6 +47,8 @@ def life(seed, integrated, distinct, calibrated, cost, current=False):
             relief=.12 if arm==3 else 0.
         else:
             relief=.13 if arm==right else (.032 if arm==3 else 0.)
+        if walk_return and phase==2:
+            relief=.13 if arm==4 else 0.
         pending[(clock+delay)%len(pending)]+=relief
         saturated=0
         for beat in range(durations):
@@ -54,12 +58,16 @@ def life(seed, integrated, distinct, calibrated, cost, current=False):
             pending[i]=0
             model.observe(observed if beat==0 else -1,d-old)
             saturated+=int(d==1 and old<1)
+            if d>old and d<1:
+                background+=.05*(d-old-background)
             clock+=1
         rows.append((arm,lag,saturated))
     result=[]
     for phase in range(3):
         part=rows[phase*160:(phase+1)*160]
         correct=3 if phase==0 else (true if phase==1 else 3-true)
+        if walk_return and phase==2:
+            correct=4
         hit=np.array([r[0]==correct for r in part])
         first=next((t+10 for t in range(151) if sum(hit[t:t+10])>=7),None)
         result.append(dict(tail=float(hit[-40:].mean()),correct=int(hit.sum()),
