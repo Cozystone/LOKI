@@ -68,9 +68,9 @@ def bench(device, batch):
 
 if __name__ == "__main__":
     torch.set_num_threads(1)
-    rows = {"cpu1": bench("cpu", 1)}
+    rows = {"cpu1": [bench("cpu", 1) for _ in range(5)]}
     if torch.cuda.is_available():
-        rows["gpu64"] = bench("cuda", 64)
+        rows["gpu64"] = [bench("cuda", 64) for _ in range(5)]
         rows["gpu"] = torch.cuda.get_device_name()
     print(rows)
     Path("measurements/v13_latency.json").write_text(json.dumps(rows, indent=2))

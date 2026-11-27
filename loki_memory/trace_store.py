@@ -557,8 +557,6 @@ class TraceStore:
                 neighbors[k] = t
                 counts[k] = v
             return
-        mask = mask & ~self.boundary[rows]
-        self.boundary[rows] = False
         if a.is_cuda and 0 < len(a) <= 64:
             from .trace_cuda import launch
 
@@ -570,6 +568,8 @@ class TraceStore:
                 a.contiguous(),
                 b.contiguous(),
                 mask.contiguous(),
+                self.boundary,
+                rows,
                 self.visits,
                 self.generation,
                 self.chart,
@@ -578,7 +578,13 @@ class TraceStore:
                 self.n,
                 len(a),
             )
+            if body is None:
+                self.boundary[: len(a)].zero_()
+            else:
+                self.boundary[rows] = False
             return
+        mask = mask & ~self.boundary[rows]
+        self.boundary[rows] = False
         i, ok = self._valid(a)
         j, valid = self._valid(b)
         keep = ok & valid & mask & (a != b) & (self.chart[i] == self.chart[j])

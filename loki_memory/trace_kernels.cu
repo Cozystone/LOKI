@@ -58,15 +58,14 @@ extern "C" __global__ void update(H* f,H* relief,int* visits,I* last,I* chart,co
  *dest=put((prior*get(*dest)+sum)/(prior+count));}
  if(!k){visits[i]=(int)min(2147483647LL,(I)old+count);last[i]=meta[0];chart[i]=frame[r];}
 }
-extern "C" __global__ void edges(const I* prev,const I* now,const bool* live,const int* visits,
+extern "C" __global__ void edges(const I* prev,const I* now,const bool* live,const bool* boundary,const I* rows,const int* visits,
  const I* gen,const I* chart,I* nbr,int* cnt,int N,int B){
- extern __shared__ I scratch[]; // unused: supplied workspace is local to the participating warp
  int b=blockIdx.x;if(threadIdx.x||prev[b]<0)return;
  for(int j=0;j<b;j++)if(prev[j]==prev[b])return;
  int i=prev[b]%N;if(!visits[i]||gen[i]!=prev[b]/N)return;
  I ids[72];int v[72],used=0;
  for(int k=0;k<8;k++)if(cnt[i*8+k]){ids[used]=nbr[i*8+k];v[used++]=cnt[i*8+k];}
- for(int j=b;j<B;j++)if(prev[j]==prev[b]&&live[j]&&now[j]>=0&&now[j]!=prev[b]){
+ for(int j=b;j<B;j++)if(prev[j]==prev[b]&&live[j]&&!boundary[rows[j]]&&now[j]>=0&&now[j]!=prev[b]){
  int t=now[j]%N;if(!visits[t]||gen[t]!=now[j]/N||chart[t]!=chart[i])continue;
  int k=0;while(k<used&&ids[k]!=now[j])k++;if(k==used){ids[k]=now[j];v[k]=0;used++;}if(v[k]<2147483647)v[k]++;}
  for(int k=0;k<8;k++){
