@@ -1,0 +1,218 @@
+[
+  {
+    "seed": 11401,
+    "angle_error": 0.937534249531048,
+    "frozen_error": 119.46989843886236,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.05505499999999997,
+    "bytes": 6224
+  },
+  {
+    "seed": 11402,
+    "angle_error": 3.1193528500168366,
+    "frozen_error": 120.58175299312614,
+    "correct": 0.75,
+    "shuffled": 0.0,
+    "p95_ms": 0.04805499999999997,
+    "bytes": 6224
+  },
+  {
+    "seed": 11403,
+    "angle_error": 0.002011639644449019,
+    "frozen_error": 119.72020751984417,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.06630999999999994,
+    "bytes": 6224
+  },
+  {
+    "seed": 11404,
+    "angle_error": 0.7551454862271353,
+    "frozen_error": 120.24050354185465,
+    "correct": 1.0,
+    "shuffled": 0.0,
+    "p95_ms": 0.0503,
+    "bytes": 6224
+  },
+  {
+    "seed": 11405,
+    "angle_error": 5.831915593867886,
+    "frozen_error": 119.59039267135748,
+    "correct": 1.0,
+    "shuffled": 0.75,
+    "p95_ms": 0.05255499999999997,
+    "bytes": 6224
+  },
+  {
+    "seed": 11406,
+    "angle_error": 1.9630089785453069,
+    "frozen_error": 120.03972163445415,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.05035499999999997,
+    "bytes": 6224
+  },
+  {
+    "seed": 11407,
+    "angle_error": 1.3203147128852044,
+    "frozen_error": 120.67251440391395,
+    "correct": 1.0,
+    "shuffled": 0.0,
+    "p95_ms": 0.0486,
+    "bytes": 6224
+  },
+  {
+    "seed": 11408,
+    "angle_error": 2.57264809611836,
+    "frozen_error": 119.95226712102875,
+    "correct": 0.75,
+    "shuffled": 0.75,
+    "p95_ms": 0.048354999999999974,
+    "bytes": 6224
+  },
+  {
+    "seed": 11409,
+    "angle_error": 1.8371157782468386,
+    "frozen_error": 120.49682864341155,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.0476,
+    "bytes": 6224
+  },
+  {
+    "seed": 11410,
+    "angle_error": 2.740341311736211,
+    "frozen_error": 120.55964693314544,
+    "correct": 1.0,
+    "shuffled": 0.25,
+    "p95_ms": 0.048,
+    "bytes": 6224
+  },
+  {
+    "seed": 11411,
+    "angle_error": 4.050958282461942,
+    "frozen_error": 119.59661835998396,
+    "correct": 1.0,
+    "shuffled": 0.0,
+    "p95_ms": 0.0479,
+    "bytes": 6224
+  },
+  {
+    "seed": 11412,
+    "angle_error": 2.7856661699123717,
+    "frozen_error": 119.66596589365932,
+    "correct": 0.75,
+    "shuffled": 0.75,
+    "p95_ms": 0.0486,
+    "bytes": 6224
+  },
+  {
+    "seed": 11413,
+    "angle_error": 4.498772539344514,
+    "frozen_error": 120.10487813949354,
+    "correct": 0.75,
+    "shuffled": 0.75,
+    "p95_ms": 0.04895499999999997,
+    "bytes": 6224
+  },
+  {
+    "seed": 11414,
+    "angle_error": 0.9194027676849161,
+    "frozen_error": 118.8576716420999,
+    "correct": 1.0,
+    "shuffled": 0.15625,
+    "p95_ms": 0.0484,
+    "bytes": 6224
+  },
+  {
+    "seed": 11415,
+    "angle_error": 2.4914406558927586,
+    "frozen_error": 119.60532172619502,
+    "correct": 0.75,
+    "shuffled": 0.5,
+    "p95_ms": 0.0487,
+    "bytes": 6224
+  },
+  {
+    "seed": 11416,
+    "angle_error": 0.6129185810923167,
+    "frozen_error": 121.15978980862188,
+    "correct": 1.0,
+    "shuffled": 0.25,
+    "p95_ms": 0.050554999999999975,
+    "bytes": 6224
+  },
+  {
+    "seed": 11417,
+    "angle_error": 2.5119431309573157,
+    "frozen_error": 120.7700879265639,
+    "correct": 1.0,
+    "shuffled": 0.75,
+    "p95_ms": 0.0488,
+    "bytes": 6224
+  },
+  {
+    "seed": 11418,
+    "angle_error": 0.9867161574077212,
+    "frozen_error": 120.28710649363242,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.05941999999999989,
+    "bytes": 6224
+  },
+  {
+    "seed": 11419,
+    "angle_error": 2.5517937302720877,
+    "frozen_error": 120.0918560612265,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.0485,
+    "bytes": 6224
+  },
+  {
+    "seed": 11420,
+    "angle_error": 0.37228941798707815,
+    "frozen_error": 119.70264348553033,
+    "correct": 0.75,
+    "shuffled": 0.75,
+    "p95_ms": 0.0657,
+    "bytes": 6224
+  },
+  {
+    "seed": 11421,
+    "angle_error": 2.0821775283496278,
+    "frozen_error": 120.0142522608069,
+    "correct": 0.75,
+    "shuffled": 0.75,
+    "p95_ms": 0.0501,
+    "bytes": 6224
+  },
+  {
+    "seed": 11422,
+    "angle_error": 1.775731225602208,
+    "frozen_error": 119.95143497264992,
+    "correct": 0.75,
+    "shuffled": 0.25,
+    "p95_ms": 0.0481,
+    "bytes": 6224
+  },
+  {
+    "seed": 11423,
+    "angle_error": 0.3863374986345859,
+    "frozen_error": 118.91115229849461,
+    "correct": 1.0,
+    "shuffled": 0.5,
+    "p95_ms": 0.0483,
+    "bytes": 6224
+  },
+  {
+    "seed": 11424,
+    "angle_error": 3.3421891315461867,
+    "frozen_error": 119.49456202150266,
+    "correct": 0.75,
+    "shuffled": 0.25,
+    "p95_ms": 0.0543,
+    "bytes": 6224
+  }
+]
