@@ -1,0 +1,134 @@
+{
+  "protocol": "atanor_os/WORLD_A_PROTOCOL.md LV2",
+  "quiet": {
+    "rel": null,
+    "checked": null,
+    "turns_not_scored": 0
+  },
+  "being": "s3_e",
+  "bodies": 8,
+  "seed": 9782,
+  "deaths_by_phase": [
+    0,
+    3,
+    0
+  ],
+  "presses_by_phase": [
+    {
+      "none": 1808,
+      "first": 0,
+      "second": 0,
+      "both": 112
+    },
+    {
+      "none": 3618,
+      "first": 204,
+      "second": 18,
+      "both": 0
+    },
+    {
+      "none": 3616,
+      "first": 32,
+      "second": 192,
+      "both": 0
+    }
+  ],
+  "causal_share_last_third": [
+    null,
+    0.987,
+    0.961
+  ],
+  "who_chose_by_phase": [
+    {
+      "pull": 773,
+      "value": 0,
+      "random": 0,
+      "held": 965,
+      "tried": 182
+    },
+    {
+      "pull": 1910,
+      "value": 0,
+      "random": 0,
+      "held": 1534,
+      "tried": 396
+    },
+    {
+      "pull": 940,
+      "value": 0,
+      "random": 0,
+      "held": 2530,
+      "tried": 370
+    }
+  ],
+  "cells_walked_by_phase": [
+    533.7,
+    983.9,
+    528.2
+  ],
+  "gut": {
+    "asked": 0,
+    "known": 0,
+    "journeys": 0
+  },
+  "remaps": 0,
+  "seconds": 183,
+  "shadow_movement_gut": [
+    {
+      "t": 250,
+      "phase": 1,
+      "first": -0.041,
+      "second": -0.0516,
+      "walk": -0.0475,
+      "n": [
+        134,
+        89,
+        9
+      ]
+    },
+    {
+      "t": 500,
+      "phase": 1,
+      "first": -0.0068,
+      "second": -0.0383,
+      "walk": -0.0554,
+      "n": [
+        231,
+        142,
+        15
+      ]
+    },
+    {
+      "t": 750,
+      "phase": 2,
+      "first": -0.01,
+      "second": -0.0347,
+      "walk": -0.0477,
+      "n": [
+        337,
+        190,
+        17
+      ]
+    },
+    {
+      "t": 1000,
+      "phase": 2,
+      "first": -0.02,
+      "second": -0.0012,
+      "walk": -0.0454,
+      "n": [
+        362,
+        289,
+        16
+      ]
+    }
+  ],
+  "place_gut_actions": null,
+  "motor_probe": {
+    "active": true,
+    "at_choice": true,
+    "native": false,
+    "changed": 3988,
+    "due": 4029
+  }
+}

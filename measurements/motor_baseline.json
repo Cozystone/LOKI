@@ -1,0 +1,132 @@
+{
+  "protocol": "atanor_os/WORLD_A_PROTOCOL.md LV2",
+  "quiet": {
+    "rel": null,
+    "checked": null,
+    "turns_not_scored": 0
+  },
+  "being": "s3_e",
+  "bodies": 8,
+  "seed": 9781,
+  "deaths_by_phase": [
+    0,
+    12,
+    21
+  ],
+  "presses_by_phase": [
+    {
+      "none": 1818,
+      "first": 0,
+      "second": 0,
+      "both": 102
+    },
+    {
+      "none": 3634,
+      "first": 123,
+      "second": 83,
+      "both": 0
+    },
+    {
+      "none": 3626,
+      "first": 131,
+      "second": 83,
+      "both": 0
+    }
+  ],
+  "causal_share_last_third": [
+    null,
+    0.583,
+    0.423
+  ],
+  "who_chose_by_phase": [
+    {
+      "pull": 304,
+      "value": 0,
+      "random": 0,
+      "held": 1457,
+      "tried": 159
+    },
+    {
+      "pull": 501,
+      "value": 0,
+      "random": 0,
+      "held": 2957,
+      "tried": 382
+    },
+    {
+      "pull": 459,
+      "value": 0,
+      "random": 0,
+      "held": 2982,
+      "tried": 399
+    }
+  ],
+  "cells_walked_by_phase": [
+    427.7,
+    765.6,
+    912.4
+  ],
+  "gut": {
+    "asked": 0,
+    "known": 0,
+    "journeys": 0
+  },
+  "remaps": 0,
+  "seconds": 100,
+  "shadow_movement_gut": [
+    {
+      "t": 250,
+      "phase": 1,
+      "first": -0.0404,
+      "second": -0.0661,
+      "walk": -0.0394,
+      "n": [
+        118,
+        119,
+        24
+      ]
+    },
+    {
+      "t": 500,
+      "phase": 1,
+      "first": -0.0353,
+      "second": -0.0956,
+      "walk": -0.052,
+      "n": [
+        242,
+        238,
+        47
+      ]
+    },
+    {
+      "t": 750,
+      "phase": 2,
+      "first": -0.0436,
+      "second": -0.105,
+      "walk": -0.0558,
+      "n": [
+        350,
+        320,
+        62
+      ]
+    },
+    {
+      "t": 1000,
+      "phase": 2,
+      "first": -0.0842,
+      "second": -0.0993,
+      "walk": -0.083,
+      "n": [
+        451,
+        426,
+        83
+      ]
+    }
+  ],
+  "place_gut_actions": null,
+  "motor_probe": {
+    "active": false,
+    "changed": 0,
+    "due": 0
+  }
+}

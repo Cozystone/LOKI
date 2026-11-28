@@ -1,0 +1,86 @@
+{
+  "protocol": "atanor_os/WORLD_A_PROTOCOL.md LV2",
+  "quiet": {
+    "rel": null,
+    "checked": null,
+    "turns_not_scored": 0
+  },
+  "being": "s3_e",
+  "bodies": 2,
+  "seed": 9781,
+  "deaths_by_phase": [
+    0,
+    0,
+    0
+  ],
+  "presses_by_phase": [
+    {
+      "none": 76,
+      "first": 0,
+      "second": 0,
+      "both": 4
+    },
+    {
+      "none": 151,
+      "first": 7,
+      "second": 2,
+      "both": 0
+    },
+    {
+      "none": 150,
+      "first": 8,
+      "second": 2,
+      "both": 0
+    }
+  ],
+  "causal_share_last_third": [
+    null,
+    1.0,
+    0.25
+  ],
+  "who_chose_by_phase": [
+    {
+      "pull": 26,
+      "value": 0,
+      "random": 0,
+      "held": 43,
+      "tried": 11
+    },
+    {
+      "pull": 84,
+      "value": 0,
+      "random": 0,
+      "held": 60,
+      "tried": 16
+    },
+    {
+      "pull": 99,
+      "value": 0,
+      "random": 0,
+      "held": 54,
+      "tried": 7
+    }
+  ],
+  "cells_walked_by_phase": [
+    19.5,
+    26.2,
+    40.9
+  ],
+  "gut": {
+    "asked": 0,
+    "known": 0,
+    "journeys": 0
+  },
+  "remaps": 0,
+  "seconds": 36,
+  "shadow_movement_gut": [],
+  "place_gut_actions": null,
+  "motor_probe": {
+    "active": true,
+    "at_choice": true,
+    "native": false,
+    "changed": 211,
+    "due": 223
+  },
+  "trajectory_sha256": "262c5202f2e53ac9c92e5f822e41fc1ac69a1b20bcdcb396a82eb14fecea3b0d"
+}

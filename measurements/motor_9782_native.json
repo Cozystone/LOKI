@@ -1,0 +1,134 @@
+{
+  "protocol": "atanor_os/WORLD_A_PROTOCOL.md LV2",
+  "quiet": {
+    "rel": null,
+    "checked": null,
+    "turns_not_scored": 0
+  },
+  "being": "s3_e",
+  "bodies": 8,
+  "seed": 9782,
+  "deaths_by_phase": [
+    0,
+    16,
+    14
+  ],
+  "presses_by_phase": [
+    {
+      "none": 1816,
+      "first": 0,
+      "second": 0,
+      "both": 104
+    },
+    {
+      "none": 3634,
+      "first": 115,
+      "second": 91,
+      "both": 0
+    },
+    {
+      "none": 3642,
+      "first": 103,
+      "second": 95,
+      "both": 0
+    }
+  ],
+  "causal_share_last_third": [
+    null,
+    0.527,
+    0.422
+  ],
+  "who_chose_by_phase": [
+    {
+      "pull": 289,
+      "value": 0,
+      "random": 0,
+      "held": 1449,
+      "tried": 182
+    },
+    {
+      "pull": 540,
+      "value": 0,
+      "random": 0,
+      "held": 2904,
+      "tried": 396
+    },
+    {
+      "pull": 437,
+      "value": 0,
+      "random": 0,
+      "held": 3033,
+      "tried": 370
+    }
+  ],
+  "cells_walked_by_phase": [
+    345.8,
+    843.1,
+    788.0
+  ],
+  "gut": {
+    "asked": 0,
+    "known": 0,
+    "journeys": 0
+  },
+  "remaps": 0,
+  "seconds": 183,
+  "shadow_movement_gut": [
+    {
+      "t": 250,
+      "phase": 1,
+      "first": -0.0609,
+      "second": -0.0645,
+      "walk": -0.0643,
+      "n": [
+        134,
+        118,
+        26
+      ]
+    },
+    {
+      "t": 500,
+      "phase": 1,
+      "first": -0.0572,
+      "second": -0.0917,
+      "walk": -0.0429,
+      "n": [
+        258,
+        229,
+        43
+      ]
+    },
+    {
+      "t": 750,
+      "phase": 2,
+      "first": -0.0761,
+      "second": -0.1349,
+      "walk": -0.0908,
+      "n": [
+        355,
+        324,
+        62
+      ]
+    },
+    {
+      "t": 1000,
+      "phase": 2,
+      "first": -0.0924,
+      "second": -0.1082,
+      "walk": -0.1144,
+      "n": [
+        427,
+        416,
+        72
+      ]
+    }
+  ],
+  "place_gut_actions": null,
+  "motor_probe": {
+    "active": false,
+    "at_choice": false,
+    "native": true,
+    "changed": 0,
+    "due": 0
+  }
+}

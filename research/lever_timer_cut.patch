@@ -1,0 +1,13 @@
+--- a/tools/lever_world.py
++++ b/tools/lever_world.py
+@@ -111,3 +111,9 @@
+         if B.dead.any():
+-            rebirth(B, O, Mi, info); B.felt[:] = 0; B.busy[:] = torch.where(B.dead, torch.zeros_like(B.busy), B.busy); x = O(B.raw())
++            cut = B.dead.clone()
++            rebirth(B, O, Mi, info)
++            B.busy[cut] = 0
++            B.rise_in[cut] = -1
++            B.fall_in[cut] = -1
++            B.felt[:] = 0
++            x = O(B.raw())
+         t += 1
